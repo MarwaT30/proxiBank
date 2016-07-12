@@ -1,12 +1,26 @@
 package fr.adaming.model;
 
-public class Personne {
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
+@MappedSuperclass
+
+public abstract class Personne {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@Column(name="nom")
 	private String nom;
+	@Column(name="prenom")
 	private String prenom;
+	@Column(name="adresse")
 	private String adresse;
+	@Column(name="code postal")
 	private int codePostal;
+	@Column(name="telephone")
 	private long telephone;
 	/**
 	 * @return the id
@@ -81,6 +95,7 @@ public class Personne {
 		this.telephone = telephone;
 	}
 	/**
+	 * constructor of class Personne using the following parameters
 	 * @param nom
 	 * @param prenom
 	 * @param adresse
@@ -97,11 +112,14 @@ public class Personne {
 		this.telephone = telephone;
 	}
 	/**
-	 * 
+	 * empty constructor of class Personne
 	 */
 	public Personne() {
 		super();
 	}
+
+
+	
 	
 	
 }
