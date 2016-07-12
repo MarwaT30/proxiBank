@@ -3,8 +3,12 @@ package fr.adaming.model;
 import java.io.Serializable;
 
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -18,9 +22,10 @@ public class Client extends Personne implements Serializable{
 	 * 
 	 */
 	@Transient
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 86L;
 	
-	
+	@ManyToOne
+	@JoinColumn(name="client_id",referencedColumnName="id")
 	@Column(name="conseiller clientele")
 	private ConseillerClientele conseiller;
 	
