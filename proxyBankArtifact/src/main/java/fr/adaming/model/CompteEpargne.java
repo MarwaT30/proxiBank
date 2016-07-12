@@ -1,9 +1,11 @@
 package fr.adaming.model;
 
+import javax.persistence.Column;
 import javax.persistence.OneToOne;
 
 public class CompteEpargne extends Compte {
 	
+	@Column(name = "taux")
 	private float taux;
 	
 	// Association

@@ -1,9 +1,12 @@
 package fr.adaming.model;
 
+import javax.persistence.Column;
+
 public class CompteCourant extends Compte {
 	/**
 	 * le découvert autorisé (positif)
 	 */
+	@Column(name = "aut_decouvert")
 	private float autDecouvert;
 
 	public CompteCourant() {
