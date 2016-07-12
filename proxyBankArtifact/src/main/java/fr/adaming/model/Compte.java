@@ -5,11 +5,15 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 
 @MappedSuperclass
 public abstract class Compte {
+	@ManyToOne
+	@JoinColumn(name="client_id_fk", referencedColumnName="id_client")
 	private Client client;
 	@Id
 	@Column(name = "numero_compte")
@@ -18,8 +22,6 @@ public abstract class Compte {
 	private float solde;
 	@Column(name = "date_ouverture")
 	private Date dateOuverture;
-	@Column(name = "client_id")
-	private int idClient;
 
 	/**
 	 * ctor vide
