@@ -1,5 +1,51 @@
 package fr.adaming.dao;
 
+import java.util.List;
+
+import fr.adaming.model.Agence;
+import fr.adaming.model.Client;
+import fr.adaming.model.ConseillerClientele;
+
 public interface IConseillerDao {
 
+	/**
+	 * 
+	 * @return
+	 */
+	public List<Client> getAllConseillers();
+
+/**
+ * 
+ * @param agence
+ * @return liste des conseillers clientèle de l'agence
+ */
+	public List<Client> getConseillersByAgence(Agence agence);
+
+	/**
+	 * ajouter un conseiller dans la BD
+	 * @param conseiller
+	 * @return 1 si OK
+	 */
+	public int ajouterConseiller(ConseillerClientele conseiller);
+
+	/**
+	 * modifier un conseiller de la BD
+	 * @param conseiller
+	 * @return 1 si OK
+	 */
+	public int modifierConseiller(ConseillerClientele conseiller);
+
+	/**
+	 * supprimer le conseiller de la BD
+	 * @param id
+	 * @return 1 si OK
+	 */
+	public int supprimerConseiller(int id);
+
+	/**
+	 * supprimer le conseiller de la BD
+	 * @param conseiller
+	 * @return 1 si OK
+	 */
+	public int supprimerConseiller(ConseillerClientele conseiller);
 }
