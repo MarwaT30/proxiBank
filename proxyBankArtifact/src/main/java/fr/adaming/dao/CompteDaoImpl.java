@@ -36,7 +36,7 @@ public class CompteDaoImpl implements ICompteDao{
 	}
 
 	@Override
-	public int supprimercompte(Compte compte) {
+	public int supprimerCompte(Compte compte) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

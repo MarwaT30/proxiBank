@@ -30,5 +30,5 @@ public interface ICompteDao {
 	 * @param compte
 	 * @return
 	 */
-	public int supprimercompte(Compte compte);
+	public int supprimerCompte(Compte compte);
 }

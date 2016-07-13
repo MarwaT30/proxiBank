@@ -23,7 +23,7 @@ public interface ICarteService {
 	 * @param compte
 	 * @return
 	 */
-	public int modifierCompte(Compte compte);
+	public int modifierCarte(Compte compte);
 
 	/**
 	 * 
