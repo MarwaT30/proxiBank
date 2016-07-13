@@ -41,6 +41,14 @@ public class ClientManagedBean implements Serializable {
 		super();
 	}
 
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
 	public List<Client> getListeClients() {
 		return listeClients;
 	}
