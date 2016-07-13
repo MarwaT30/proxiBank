@@ -12,7 +12,7 @@ import javax.persistence.MappedSuperclass;
 public abstract class Compte {
 
 	@Id
-	@Column(name = "numero_compte")
+	@Column(name = "id_compte")
 	private int numero;
 	@Column(name = "solde")
 	private float solde;

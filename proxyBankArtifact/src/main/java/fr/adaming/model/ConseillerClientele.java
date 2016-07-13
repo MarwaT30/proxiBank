@@ -26,7 +26,7 @@ public class ConseillerClientele extends Personne implements Serializable{
 	private Agence agence;
 	
 	@OneToMany(mappedBy="conseiller",cascade=CascadeType.ALL)
-	private List<Client> clients=new ArrayList<Client>();
+	private List<Client> clients;//=new ArrayList<Client>();
 	/**
 	 * empty constructor for class ConseillerClientele
 	 */

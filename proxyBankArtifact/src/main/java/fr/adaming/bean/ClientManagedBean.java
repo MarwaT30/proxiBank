@@ -11,7 +11,7 @@ import fr.adaming.service.IClientService;
 @ManagedBean(name = "clientMB")
 @SessionScoped
 public class ClientManagedBean implements Serializable {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 615713187L;
 
 	private int id;
 	private String nom, prenom, adresse;
