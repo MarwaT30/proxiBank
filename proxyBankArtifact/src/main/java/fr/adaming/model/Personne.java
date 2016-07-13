@@ -19,7 +19,7 @@ public abstract class Personne {
 	private String prenom;
 	@Column(name = "adresse")
 	private String adresse;
-	@Column(name = "code postal")
+	@Column(name = "code_postal")
 	private int codePostal;
 	@Column(name = "telephone")
 	private long telephone;
