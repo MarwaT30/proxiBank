@@ -18,11 +18,6 @@ import fr.adaming.model.*;
 @Table(name="conseillers")
 public class ConseillerClientele extends Personne implements Serializable{
 
-	
-	
-	/**
-	 * 
-	 */
 	@Transient
 	private static final long serialVersionUID = 86L;
 
@@ -65,7 +60,6 @@ public class ConseillerClientele extends Personne implements Serializable{
 	public ConseillerClientele(String nom, String prenom, String adresse,
 			int codePostal, long telephone,Agence agence) {
 		super(nom, prenom, adresse, codePostal, telephone);
-		this.agence=agence;
 		// TODO Auto-generated constructor stub
 	}
 
