@@ -21,7 +21,7 @@ public class Agence {
 	private Date dateCreation;
 
 	// Association
-	@OneToOne(mappedBy = "agence")
+//	@OneToOne(mappedBy = "agence_gerant")
 	private Gerant gerant;
 
 	@OneToMany(mappedBy ="agence")

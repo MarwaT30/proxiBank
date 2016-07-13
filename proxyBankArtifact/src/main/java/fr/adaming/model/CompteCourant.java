@@ -14,8 +14,8 @@ public class CompteCourant extends Compte {
 	@Column(name = "aut_decouvert")
 	private float autDecouvert;
 	
-	@OneToOne(mappedBy="compteLie")
-	private CarteBancaire carte;
+//	@OneToOne(mappedBy="compteLie")
+//	private CarteBancaire carte;
 
 	public CompteCourant() {
 		autDecouvert = 1000;

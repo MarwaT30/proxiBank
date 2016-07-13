@@ -14,16 +14,16 @@ public abstract class CarteBancaire {
 	private int id_carte;
 
 	// Association
-	@OneToOne
-	@JoinColumn(name = "compte_id", referencedColumnName = "id_compte")
-	private CompteCourant compteLie;
+//	@OneToOne
+//	@JoinColumn(name = "compte_id", referencedColumnName = "id_compte")
+//	private CompteCourant compteLie;
 
-	public CompteCourant getCompteLie() {
-		return compteLie;
-	}
-
-	public void setCompteLie(CompteCourant compte) {
-		this.compteLie = compte;
-	}
+//	public CompteCourant getCompteLie() {
+//		return compteLie;
+//	}
+//
+//	public void setCompteLie(CompteCourant compte) {
+//		this.compteLie = compte;
+//	}
 
 }

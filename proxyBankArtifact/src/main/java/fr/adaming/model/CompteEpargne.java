@@ -12,10 +12,6 @@ public class CompteEpargne extends Compte {
 	@Column(name = "taux")
 	private float taux;
 	
-	// Association
-	@OneToOne(mappedBy = "compte")
-	private CarteBancaire carte;
-
 	public CompteEpargne() {
 		taux = 3;
 	}

@@ -11,10 +11,10 @@ import javax.persistence.Transient;
 @Entity(name = "gerantEntity")
 @Table(name = "gerants")
 public class Gerant extends ConseillerClientele implements Serializable {
-	// Association
-	@OneToOne
-	@JoinColumn(name = "agence_id", referencedColumnName = "id_agence")
-	private Agence agence;
+//	// Association
+//	@OneToOne
+//	@JoinColumn(name = "agence_gerant", referencedColumnName = "id_agence")
+//	private Agence agence;
 
 	/**
 	 * 
