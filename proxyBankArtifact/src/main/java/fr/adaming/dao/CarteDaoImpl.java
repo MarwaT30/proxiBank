@@ -31,7 +31,7 @@ public class CarteDaoImpl implements ICarteDao {
 	}
 
 	@Override
-	public int modifierCompte(Compte compte) {
+	public int modifierCarte(Compte compte) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
