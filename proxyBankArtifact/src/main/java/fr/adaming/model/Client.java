@@ -27,7 +27,7 @@ public class Client extends Personne implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="client_id",referencedColumnName="id")
-	@Column(name="conseiller clientele")
+//	@Column(name="conseiller_clientele")
 	private ConseillerClientele conseiller;
 	
 	@OneToMany(mappedBy="client",cascade=CascadeType.ALL)

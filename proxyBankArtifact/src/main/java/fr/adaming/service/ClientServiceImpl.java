@@ -33,6 +33,7 @@ public class ClientServiceImpl implements IClientService {
 	@Override
 	public int supprimerClient(int id) {
 		return clientDao.supprimerClient(id);
+		// TODO supprimer comptes associes
 	}
 
 	@Override

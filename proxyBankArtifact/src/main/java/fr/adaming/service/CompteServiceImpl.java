@@ -25,6 +25,6 @@ public class CompteServiceImpl implements ICompteService {
 	@Override
 	public int supprimerCompte(Compte compte) {
 		return compteDao.supprimerCompte(compte);
+		// TODO supprimer cartes associées
 	}
-
 }

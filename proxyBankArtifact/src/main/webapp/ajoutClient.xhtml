@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Accueil</title>
+</h:head>
+<h:body>
+	<ui:decorate template="/templates/layout.xhtml">
+		<ui:define name="content">
+			<h1>Ajout d'un utilisateur</h1>
+			<div align="center">
+				<h:form>
+					<h:panelGrid columns="2">
+						entrer le nom : 
+						<h:inputText id="nom" value="#{clientMB.nom}" />
+						entrer le prénom : 
+						<h:inputText id="prenom" value="#{clientMB.prenom}" />
+						entrer le mail : 
+						<h:inputText id="mail" value="#{clientMB.mail}" />
+						entrer le mot de passe : 
+						<h:inputText id="password" value="#{clientMB.password}" />
+					</h:panelGrid>
+					<h:commandButton value="Valider" action="#{clientMB.ajouter}"></h:commandButton>
+				</h:form>
+			</div>
+			<h:form>
+				<h:commandButton value="Accueil" action="#{agentMB.actualiserListe}" />
+				<p:breadCrumb>
+					<p:menuitem value="Accueil" url="accueil.xhtml" />
+					<p:menuitem value="Nouvel utilisateur" url="ajout.xhtml" />
+					<p:menuitem value="Modifier utilisateur" url="modif.xhtml" />
+					<p:menuitem value="Supprimer utilisateur" url="suppr.xhtml" />
+				</p:breadCrumb>
+			</h:form>
+		</ui:define>
+	</ui:decorate>
+</h:body>
+</html>
