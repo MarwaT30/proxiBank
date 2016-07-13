@@ -5,8 +5,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 
 @MappedSuperclass
 public abstract class Compte {
@@ -19,7 +19,7 @@ public abstract class Compte {
 	@Column(name = "date_ouverture")
 	private Date dateOuverture;
 
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "client", referencedColumnName = "id")
 	private Client client;
 

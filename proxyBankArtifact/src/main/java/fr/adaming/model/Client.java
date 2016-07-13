@@ -1,7 +1,6 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
-
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -23,8 +23,15 @@ public class Client extends Personne implements Serializable {
 	@JoinColumn(name = "client_id", referencedColumnName = "id")
 	private ConseillerClientele conseiller;
 
-	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-	private List<Compte> comptes;
+//	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+//	private List<Compte> comptes;
+	
+	@OneToOne(mappedBy="client")
+	private CompteCourant compteCourant;
+	
+	@OneToOne(mappedBy="client")
+	private CompteEpargne compteEpargne;
+	
 
 	/**
 	 * empty constructor for class Client
