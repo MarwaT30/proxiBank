@@ -1,8 +1,12 @@
 package fr.adaming.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity(name = "compteEpargneEntity")
+@Table(name = "comptes_epargne")
 public class CompteEpargne extends Compte {
 	
 	@Column(name = "taux")

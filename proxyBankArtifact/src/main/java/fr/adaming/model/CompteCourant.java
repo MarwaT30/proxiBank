@@ -1,7 +1,11 @@
 package fr.adaming.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity(name = "compteCourantEntity")
+@Table(name = "comptes_courants")
 public class CompteCourant extends Compte {
 	/**
 	 * le découvert autorisé (positif)

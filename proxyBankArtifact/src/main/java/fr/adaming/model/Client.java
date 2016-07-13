@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-@Entity(name = "ClientEntity")
+@Entity(name = "clientEntity")
 @Table(name = "clients")
 public class Client extends Personne implements Serializable {
 	
