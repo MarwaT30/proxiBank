@@ -20,7 +20,7 @@ public class Client extends Personne implements Serializable {
 	private static final long serialVersionUID = 86L;
 
 	@ManyToOne
-	@JoinColumn(name = "client_id", referencedColumnName = "id")
+	@JoinColumn(name = "conseiller_id", referencedColumnName = "id")
 	private ConseillerClientele conseiller;
 
 //	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
