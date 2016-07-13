@@ -12,9 +12,7 @@ import javax.persistence.Table;
 
 @MappedSuperclass
 public abstract class Compte {
-	@ManyToOne
-	@JoinColumn(name="client_id_fk", referencedColumnName="id_client")
-	private Client client;
+
 	@Id
 	@Column(name = "numero_compte")
 	private int numero;
@@ -22,6 +20,10 @@ public abstract class Compte {
 	private float solde;
 	@Column(name = "date_ouverture")
 	private Date dateOuverture;
+	
+	@ManyToOne
+	@JoinColumn(name="client_id_fk", referencedColumnName="id_client")
+	private Client client;
 
 	/**
 	 * ctor vide
@@ -52,7 +54,6 @@ public abstract class Compte {
 
 	public void setClient(Client client) {
 		this.client = client;
-		this.idClient = client.getId();
 	}
 
 	public int getNumero() {
