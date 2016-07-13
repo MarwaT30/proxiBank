@@ -83,13 +83,14 @@ public class ClientDaoImpl implements IClientDao{
 		Session session=sessionFactory.openSession();
 		
 		//avec SQL natif
-		String sqlreq="update employes set nom=:nom1, prenom=:prenom1, adresse=:adresse1, codePostal=:codePostal1, telephone=:telephone1 where id=:id1";
+		String sqlreq="update employes set nom=:nom1, prenom=:prenom1, adresse=:adresse1, codePostal=:codePostal1,ville=:ville1, telephone=:telephone1 where id=:id1";
 		SQLQuery query=session.createSQLQuery(sqlreq);
 		query.addEntity(Client.class);//ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
 		query.setParameter("nom1", client.getNom());
 		query.setParameter("prenom1", client.getPrenom());
 		query.setParameter("adresse1", client.getAdresse());
-		query.setParameter("codePostal", client.getCodePostal());
+		query.setParameter("codePostal1", client.getCodePostal());
+		query.setParameter("ville1", client.getVille());
 		query.setParameter("telephone1", client.getTelephone());
 		query.setParameter("id1", client.getId());
 		query.executeUpdate();
@@ -127,7 +128,7 @@ public class ClientDaoImpl implements IClientDao{
 
 		
 		//declaration de la requete
-		String hqlReq = "delete from EmpEntity where nom=:nom1 and prenom=:prenom1 and adresse=:adresse1 and codePostal=:codePostal1 and telephone=:telephone1";
+		String hqlReq = "delete from EmpEntity where nom=:nom1 and prenom=:prenom1 and adresse=:adresse1 and codePostal=:codePostal1 and ville=:ville1 and telephone=:telephone1";
 				
 		//creer la requete
 		Query query = session.createQuery(hqlReq);
@@ -136,9 +137,10 @@ public class ClientDaoImpl implements IClientDao{
 		query.setParameter("nom1", client.getNom());
 		query.setParameter("prenom1", client.getPrenom());
 		query.setParameter("adresse1", client.getAdresse());
-		query.setParameter("codePostal", client.getCodePostal());
+		query.setParameter("codePostal1", client.getCodePostal());
+		query.setParameter("ville1", client.getVille());
 		query.setParameter("telephone1", client.getTelephone());
-		query.setParameter("id1", client.getId());
+
 
 	    
 	    //envoyer la requete
