@@ -37,12 +37,13 @@ public class Gerant extends ConseillerClientele implements Serializable {
 	 * @param prenom
 	 * @param adresse
 	 * @param codePostal
+	 * @param ville
 	 * @param telephone
 	 * @param agence
 	 */
-	public Gerant(String nom, String prenom, String adresse, int codePostal,
+	public Gerant(String nom, String prenom, String adresse, int codePostal,String ville,
 			long telephone, Agence agence) {
-		super(nom, prenom, adresse, codePostal, telephone, agence);
+		super(nom, prenom, adresse, codePostal,ville, telephone, agence);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -53,11 +54,12 @@ public class Gerant extends ConseillerClientele implements Serializable {
 	 * @param prenom
 	 * @param adresse
 	 * @param codePostal
+	 * @param ville
 	 * @param telephone
 	 */
-	public Gerant(String nom, String prenom, String adresse, int codePostal,
+	public Gerant(String nom, String prenom, String adresse, int codePostal,String ville,
 			long telephone) {
-		super(nom, prenom, adresse, codePostal, telephone);
+		super(nom, prenom, adresse, codePostal,ville, telephone);
 		// TODO Auto-generated constructor stub
 	}
 

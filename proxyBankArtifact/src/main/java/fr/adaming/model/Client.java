@@ -48,11 +48,12 @@ public class Client extends Personne implements Serializable {
 	 * @param prenom
 	 * @param adresse
 	 * @param codePostal
+	 * @param ville
 	 * @param telephone
 	 */
-	public Client(String nom, String prenom, String adresse, int codePostal,
+	public Client(String nom, String prenom, String adresse, int codePostal,String ville,
 			long telephone) {
-		super(nom, prenom, adresse, codePostal, telephone);
+		super(nom, prenom, adresse, codePostal,ville, telephone);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -63,12 +64,13 @@ public class Client extends Personne implements Serializable {
 	 * @param prenom
 	 * @param adresse
 	 * @param codePostal
+	 * @param ville
 	 * @param telephone
 	 * @param conseiller
 	 */
-	public Client(String nom, String prenom, String adresse, int codePostal,
+	public Client(String nom, String prenom, String adresse, int codePostal,String ville,
 			long telephone, ConseillerClientele conseiller) {
-		super(nom, prenom, adresse, codePostal, telephone);
+		super(nom, prenom, adresse, codePostal,ville, telephone);
 		this.conseiller = conseiller;
 
 		// TODO Auto-generated constructor stub

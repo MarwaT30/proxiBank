@@ -21,6 +21,8 @@ public abstract class Personne {
 	private String adresse;
 	@Column(name = "code_postal")
 	private int codePostal;
+	@Column(name = "ville")
+	private String ville;
 	@Column(name = "telephone")
 	private long telephone;
 
@@ -115,21 +117,37 @@ public abstract class Personne {
 	}
 
 	/**
+	 * @return the ville
+	 */
+	public String getVille() {
+		return ville;
+	}
+
+	/**
+	 * @param ville the ville to set
+	 */
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	/**
 	 * constructor of class Personne using the following parameters
 	 * 
 	 * @param nom
 	 * @param prenom
 	 * @param adresse
 	 * @param codePostal
+	 * @param ville
 	 * @param telephone
 	 */
-	public Personne(String nom, String prenom, String adresse, int codePostal,
+	public Personne(String nom, String prenom, String adresse, int codePostal,String ville,
 			long telephone) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
 		this.codePostal = codePostal;
+		this.ville=ville;
 		this.telephone = telephone;
 	}
 

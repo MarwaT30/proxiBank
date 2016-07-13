@@ -41,11 +41,12 @@ public class ConseillerClientele extends Personne implements Serializable{
 	 * @param prenom
 	 * @param adresse
 	 * @param codePostal
+	 * @param ville
 	 * @param telephone
 	 */
 	public ConseillerClientele(String nom, String prenom, String adresse,
-			int codePostal, long telephone) {
-		super(nom, prenom, adresse, codePostal, telephone);
+			int codePostal,String ville, long telephone) {
+		super(nom, prenom, adresse, codePostal,ville, telephone);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -55,11 +56,12 @@ public class ConseillerClientele extends Personne implements Serializable{
 	 * @param prenom
 	 * @param adresse
 	 * @param codePostal
+	 * @param ville
 	 * @param telephone
 	 */
 	public ConseillerClientele(String nom, String prenom, String adresse,
-			int codePostal, long telephone,Agence agence) {
-		super(nom, prenom, adresse, codePostal, telephone);
+			int codePostal,String ville, long telephone,Agence agence) {
+		super(nom, prenom, adresse, codePostal,ville, telephone);
 		// TODO Auto-generated constructor stub
 	}
 
