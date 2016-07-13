@@ -80,4 +80,12 @@ public abstract class Compte {
 		this.dateOuverture = dateOuverture;
 	}
 
+	public int retirer(double somme){
+		// TODO
+		return 1;
+	}
+	public int deposer(double somme){
+		// TODO
+		return 1;
+	}
 }

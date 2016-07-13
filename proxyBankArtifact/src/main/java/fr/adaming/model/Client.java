@@ -22,10 +22,6 @@ import javax.persistence.Transient;
 
 public class Client extends Personne implements Serializable{
 
-	
-	/**
-	 * 
-	 */
 	@Transient
 	private static final long serialVersionUID = 86L;
 	
