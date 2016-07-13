@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Index</title>
+</h:head>
+<h:body>
+	<h3>Liste des utilisateurs :</h3>
+	<h:form>
+		<h:commandButton value="Rafraichir" action="#{clientMB.reload()}" />
+	</h:form>
+	<p:dataTable var="users" value="#{clientMB.listeClients}">
+		<p:column headerText="Id">
+			<h:outputText value="#{users.id}" />
+		</p:column>
+		<p:column headerText="Nom">
+			<h:outputText value="#{users.nom}" />
+		</p:column>
+		<p:column headerText="Prenom">
+			<h:outputText value="#{users.prenom}" />
+		</p:column>
+
+	</p:dataTable>
+
+<!-- 	<h3>Ajouter un utilisateur :</h3> -->
+<!-- 	<h:form> -->
+<!-- 	Nom : <h:inputText id="nom" value="#{clientMB.nom}" /> -->
+<!-- 		<br /> -->
+<!-- 	Prénom : <h:inputText id="prenom" value="#{clientMB.prenom}" /> -->
+<!-- 		<br /> -->
+
+<!-- 		<h:commandButton value="Ajouter Employé" action="#{clientMB.ajouter()}" /> -->
+<!-- 	</h:form> -->
+
+<!-- 	<h3>Supprimer un utilisateur :</h3> -->
+<!-- 	<h:form> -->
+<!-- 	id : <h:inputText id="id" value="#{clientMB.id}" /> -->
+<!-- 		<br /> -->
+<!-- 	Nom : <h:inputText id="nom" value="#{clientMB.nom}" /> -->
+<!-- 		<br /> -->
+<!-- 	Prénom : <h:inputText id="prenom" value="#{clientMB.prenom}" /> -->
+<!-- 		<br /> -->
+
+<!-- 		<h:commandButton value="Supprimer l'employé" -->
+<!-- 			action="#{clientMB.supprimer()}" />  -->
+<!-- 	</h:form> -->
+
+<!-- 	<h3>Modifier un utilisateur :</h3> -->
+<!-- 	<h:form> -->
+<!-- 	id : <h:inputText id="id" value="#{clientMB.id}" /> -->
+<!-- 		<br /> -->
+<!-- 	Nom : <h:inputText id="nom" value="#{clientMB.nom}" /> -->
+<!-- 		<br /> -->
+<!-- 	Prénom : <h:inputText id="prenom" value="#{clientMB.prenom}" /> -->
+<!-- 		<br /> -->
+
+<!-- 		<h:commandButton value="Modifier l'employé" action="#{clientMB.modifier}" /> -->
+<!-- 	</h:form> -->
+</h:body>
+</html>
