@@ -2,14 +2,9 @@ package fr.adaming.model;
 
 import java.io.Serializable;
 
-
-
-
-
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,24 +12,20 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-@Entity(name="ClientEntity")
-@Table(name="clients")
-
-public class Client extends Personne implements Serializable{
-
+@Entity(name = "ClientEntity")
+@Table(name = "clients")
+public class Client extends Personne implements Serializable {
+	
 	@Transient
 	private static final long serialVersionUID = 86L;
-	
+
 	@ManyToOne
-	@JoinColumn(name="client_id",referencedColumnName="id")
+	@JoinColumn(name = "client_id", referencedColumnName = "id")
 	private ConseillerClientele conseiller;
-	
-	@OneToMany(mappedBy="client",cascade=CascadeType.ALL)
-	private List<Compte> commandesList;
 
-	
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+	private List<Compte> comptesList;
 
-	
 	/**
 	 * empty constructor for class Client
 	 */
@@ -45,6 +36,7 @@ public class Client extends Personne implements Serializable{
 
 	/**
 	 * constructor for class Client using the following parameters
+	 * 
 	 * @param nom
 	 * @param prenom
 	 * @param adresse
@@ -56,9 +48,10 @@ public class Client extends Personne implements Serializable{
 		super(nom, prenom, adresse, codePostal, telephone);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	/**
 	 * constructor for class Client using the following parameters
+	 * 
 	 * @param nom
 	 * @param prenom
 	 * @param adresse
@@ -69,7 +62,7 @@ public class Client extends Personne implements Serializable{
 	public Client(String nom, String prenom, String adresse, int codePostal,
 			long telephone, ConseillerClientele conseiller) {
 		super(nom, prenom, adresse, codePostal, telephone);
-		this.conseiller=conseiller;
+		this.conseiller = conseiller;
 
 		// TODO Auto-generated constructor stub
 	}
@@ -82,12 +75,11 @@ public class Client extends Personne implements Serializable{
 	}
 
 	/**
-	 * @param conseiller the conseiller to set
+	 * @param conseiller
+	 *            the conseiller to set
 	 */
 	public void setConseiller(ConseillerClientele conseiller) {
 		this.conseiller = conseiller;
 	}
-
-
 
 }

@@ -14,7 +14,7 @@ import javax.persistence.Transient;
 
 import fr.adaming.model.*;
 
-@Entity(name="ConsEntity")
+@Entity(name="consEntity")
 @Table(name="conseillers")
 public class ConseillerClientele extends Personne implements Serializable{
 
@@ -22,7 +22,7 @@ public class ConseillerClientele extends Personne implements Serializable{
 	private static final long serialVersionUID = 86L;
 
 	@ManyToOne
-	@JoinColumn(name="agence_id",referencedColumnName="id")
+	@JoinColumn(name="agence_id",referencedColumnName="id_agence")
 	private Agence agence;
 	
 	@OneToMany(mappedBy="conseiller",cascade=CascadeType.ALL)

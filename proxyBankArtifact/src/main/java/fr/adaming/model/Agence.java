@@ -15,6 +15,7 @@ import javax.persistence.Table;
 @Table(name="agences")
 public class Agence {
 	@Id
+	@Column(name="id_agence")
 	private String numero;
 	@Column(name="date_creation")
 	private Date dateCreation;

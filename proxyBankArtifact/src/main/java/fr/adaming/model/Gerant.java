@@ -8,7 +8,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-@Entity(name = "GerantEntity")
+@Entity(name = "gerantEntity")
 @Table(name = "gerants")
 public class Gerant extends ConseillerClientele implements Serializable {
 	// Association

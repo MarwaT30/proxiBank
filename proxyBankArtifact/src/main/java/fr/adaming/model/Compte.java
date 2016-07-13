@@ -3,12 +3,10 @@ package fr.adaming.model;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Table;
 
 @MappedSuperclass
 public abstract class Compte {
@@ -20,9 +18,9 @@ public abstract class Compte {
 	private float solde;
 	@Column(name = "date_ouverture")
 	private Date dateOuverture;
-	
+
 	@ManyToOne
-	@JoinColumn(name="client_id_fk", referencedColumnName="id_client")
+	@JoinColumn(name = "client", referencedColumnName = "id")
 	private Client client;
 
 	/**
@@ -80,11 +78,12 @@ public abstract class Compte {
 		this.dateOuverture = dateOuverture;
 	}
 
-	public int retirer(double somme){
+	public int retirer(double somme) {
 		// TODO
 		return 1;
 	}
-	public int deposer(double somme){
+
+	public int deposer(double somme) {
 		// TODO
 		return 1;
 	}
