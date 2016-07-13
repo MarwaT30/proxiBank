@@ -1,6 +1,9 @@
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -33,15 +36,20 @@ public class TestCreerClasses {
 	
 	@Test
 	public void ajouterTest(){
-		
-		ConseillerClientele conseiller=new ConseillerClientele("MORMONT", "Lyanna", "ile aux ours", 666, 1234);
-		Client client1=new Client("CASSEL", "Jorris","pont d'avignon", 42100,01234567);
-		Client client2=new Client("SCHELTENS","Guillaume","chantier naval",42100,01224);
-		
-		CompteCourant comptec=new CompteCourant(100);
-		CompteEpargne comptee=new CompteEpargne((float)4.8);
-		
-		CarteElectron cartee=new CarteElectron();
+		try {
+			ClassPathXmlApplicationContext app=new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
+			assertTrue(true);
+			} catch (Exception e) {
+			assertTrue(e.getMessage(),false);
+			}
+//		ConseillerClientele conseiller=new ConseillerClientele("MORMONT", "Lyanna", "ile aux ours", 666, 1234);
+//		Client client1=new Client("CASSEL", "Jorris","pont d'avignon", 42100,01234567);
+//		Client client2=new Client("SCHELTENS","Guillaume","chantier naval",42100,01224);
+//		
+//		CompteCourant comptec=new CompteCourant(100);
+//		CompteEpargne comptee=new CompteEpargne((float)4.8);
+//		
+//		CarteElectron cartee=new CarteElectron();
 
 
 	}
