@@ -16,23 +16,19 @@ import javax.persistence.Transient;
 @Entity(name = "clientEntity")
 @Table(name = "clients")
 public class Client extends Personne implements Serializable {
-	
+
 	@Transient
 	private static final long serialVersionUID = 86L;
 
 	@ManyToOne
-	@JoinColumn(name = "conseiller_id", nullable=false)
+	@JoinColumn(name = "conseiller_id", nullable = false)
 	private ConseillerClientele conseiller;
 
-//	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-//	private List<Compte> comptes;
-	
-	@OneToOne(mappedBy="client", cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
+	@OneToOne(mappedBy = "client", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private CompteCourant compteCourant;
-	
-	@OneToOne(mappedBy="client", cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
+
+	@OneToOne(mappedBy = "client", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)	
 	private CompteEpargne compteEpargne;
-	
 
 	/**
 	 * empty constructor for class Client
@@ -52,9 +48,9 @@ public class Client extends Personne implements Serializable {
 	 * @param ville
 	 * @param telephone
 	 */
-	public Client(String nom, String prenom, String adresse, int codePostal,String ville,
-			long telephone) {
-		super(nom, prenom, adresse, codePostal,ville, telephone);
+	public Client(String nom, String prenom, String adresse, int codePostal,
+			String ville, long telephone) {
+		super(nom, prenom, adresse, codePostal, ville, telephone);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -69,9 +65,9 @@ public class Client extends Personne implements Serializable {
 	 * @param telephone
 	 * @param conseiller
 	 */
-	public Client(String nom, String prenom, String adresse, int codePostal,String ville,
-			long telephone, ConseillerClientele conseiller) {
-		super(nom, prenom, adresse, codePostal,ville, telephone);
+	public Client(String nom, String prenom, String adresse, int codePostal,
+			String ville, long telephone, ConseillerClientele conseiller) {
+		super(nom, prenom, adresse, codePostal, ville, telephone);
 		this.conseiller = conseiller;
 
 		// TODO Auto-generated constructor stub

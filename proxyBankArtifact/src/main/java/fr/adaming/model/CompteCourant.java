@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,7 +20,8 @@ public class CompteCourant extends Compte {
 //	@OneToOne(mappedBy="compteLie")
 //	private CarteBancaire carte;
 	
-	@OneToOne(mappedBy="compteCourant")
+	@OneToOne
+	@JoinColumn (name="id_client", nullable=false)
 	private Client client;
 
 	/**

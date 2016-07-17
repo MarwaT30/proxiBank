@@ -4,20 +4,20 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name = "compteEpargneEntity")
 @Table(name = "comptes_epargne")
 public class CompteEpargne extends Compte {
-	
+
 	@Column(name = "taux")
 	private float taux;
-	
-	@OneToOne(mappedBy="compteEpargne")
+
+	@OneToOne
+	@JoinColumn(name = "id_client", nullable = false)
 	private Client client;
-	
-	
 
 	/**
 	 * 
@@ -27,15 +27,13 @@ public class CompteEpargne extends Compte {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	
 	/**
 	 * @param numero
 	 * @param solde
 	 * @param dateOuverture
 	 */
 	public CompteEpargne(float solde, Date dateOuverture) {
-		super( solde, dateOuverture);
+		super(solde, dateOuverture);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -44,10 +42,11 @@ public class CompteEpargne extends Compte {
 	 * @param solde
 	 * @param dateOuverture
 	 */
-	public CompteEpargne(int numero, float solde, Date dateOuverture,Client client, float taux ) {
+	public CompteEpargne(int numero, float solde, Date dateOuverture,
+			Client client, float taux) {
 		super(numero, solde, dateOuverture);
-		this.client=client;
-		this.taux=taux;
+		this.client = client;
+		this.taux = taux;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -59,7 +58,8 @@ public class CompteEpargne extends Compte {
 	}
 
 	/**
-	 * @param client the client to set
+	 * @param client
+	 *            the client to set
 	 */
 	public void setClient(Client client) {
 		this.client = client;
