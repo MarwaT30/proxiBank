@@ -14,7 +14,7 @@ public class CompteEpargne extends Compte {
 	@Column(name = "taux")
 	private float taux;
 	
-	@OneToOne(mappedBy="compteCourant")
+	@OneToOne(mappedBy="compteEpargne")
 	private Client client;
 	
 	
