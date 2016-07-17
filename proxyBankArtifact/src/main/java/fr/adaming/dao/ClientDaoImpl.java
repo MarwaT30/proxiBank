@@ -21,7 +21,7 @@ public class ClientDaoImpl implements IClientDao{
 
 	@Override
 	public List<Client> getAllClients() {
-		//ouvrir une session
+			//ouvrir une session
 				Session session = sessionFactory.openSession();
 				
 				//declaration de la requete

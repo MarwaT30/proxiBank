@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import fr.adaming.model.Client;
+import fr.adaming.model.ConseillerClientele;
 import fr.adaming.service.ClientServiceImpl;
 import fr.adaming.service.IClientService;
 
@@ -34,6 +35,29 @@ public class ClientManagedBean implements Serializable {
 		clientService.ajouterClient(client);
 	}
 
+	public List<Client> getAllClients() {
+		return clientService.getAllClients();
+	}
+	
+	public List<Client> getClientsByConseiller(ConseillerClientele conseiller) {
+		return clientService.getClientsByConseiller(conseiller);
+	}
+	
+
+	public void modifier() {
+		clientService.modifierClient(client);
+	}
+
+
+	public void supprimerById() {
+		clientService.supprimerClient(client.getId());
+		// TODO supprimer comptes associes
+	}
+
+
+	public void supprimer() {
+		clientService.supprimerClient(client);
+	}
 	/**
 	 * ctor vide
 	 */
@@ -56,4 +80,6 @@ public class ClientManagedBean implements Serializable {
 	public void setListeClients(List<Client> listeClients) {
 		this.listeClients = listeClients;
 	}
+	
+	
 }

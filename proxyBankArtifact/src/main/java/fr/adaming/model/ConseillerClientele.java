@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -22,10 +23,10 @@ public class ConseillerClientele extends Personne implements Serializable{
 	private static final long serialVersionUID = 86L;
 
 	@ManyToOne
-	@JoinColumn(name="agence_id",referencedColumnName="id_agence")
+	@JoinColumn(name="agence_id",nullable=false)
 	private Agence agence;
 	
-	@OneToMany(mappedBy="conseiller",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="conseiller",cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
 	private List<Client> clients;//=new ArrayList<Client>();
 	/**
 	 * empty constructor for class ConseillerClientele
@@ -36,7 +37,7 @@ public class ConseillerClientele extends Personne implements Serializable{
 	}
 
 	/**
-	 * constructor for class ConseillerClientele using th following parameters:
+	 * constructor for class ConseillerClientele using the following parameters:
 	 * @param nom
 	 * @param prenom
 	 * @param adresse
@@ -51,7 +52,7 @@ public class ConseillerClientele extends Personne implements Serializable{
 	}
 
 	/**
-	 * constructor for class ConseillerClientele using th following parameters:
+	 * constructor for class ConseillerClientele using the following parameters:
 	 * @param nom
 	 * @param prenom
 	 * @param adresse
@@ -62,7 +63,7 @@ public class ConseillerClientele extends Personne implements Serializable{
 	public ConseillerClientele(String nom, String prenom, String adresse,
 			int codePostal,String ville, long telephone,Agence agence) {
 		super(nom, prenom, adresse, codePostal,ville, telephone);
-		// TODO Auto-generated constructor stub
+		this.agence=agence;
 	}
 
 	

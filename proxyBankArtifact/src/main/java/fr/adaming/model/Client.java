@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -20,16 +21,16 @@ public class Client extends Personne implements Serializable {
 	private static final long serialVersionUID = 86L;
 
 	@ManyToOne
-	@JoinColumn(name = "conseiller_id", referencedColumnName = "id")
+	@JoinColumn(name = "conseiller_id", nullable=false)
 	private ConseillerClientele conseiller;
 
 //	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
 //	private List<Compte> comptes;
 	
-	@OneToOne(mappedBy="client")
+	@OneToOne(mappedBy="client", cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
 	private CompteCourant compteCourant;
 	
-	@OneToOne(mappedBy="client")
+	@OneToOne(mappedBy="client", cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
 	private CompteEpargne compteEpargne;
 	
 

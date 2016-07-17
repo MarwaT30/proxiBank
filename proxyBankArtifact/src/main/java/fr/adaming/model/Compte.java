@@ -19,9 +19,9 @@ public abstract class Compte {
 	@Column(name = "date_ouverture")
 	private Date dateOuverture;
 
-	@OneToOne
-	@JoinColumn(name = "client", referencedColumnName = "id")
-	private Client client;
+//	@OneToOne
+//	@JoinColumn(name = "client", referencedColumnName = "id")
+//	private Client client;
 
 	/**
 	 * ctor vide
@@ -29,30 +29,57 @@ public abstract class Compte {
 	public Compte() {
 		super();
 	}
+	
+	
 
-	/**
-	 * ctor
-	 * 
-	 * @param client
-	 * @param numero
-	 * @param solde
-	 * @param dateOuverture
-	 */
-	public Compte(Client client, int numero, float solde, Date dateOuverture) {
-		super();
-		this.client = client;
-		this.numero = numero;
-		this.solde = solde;
-		this.dateOuverture = dateOuverture;
-	}
+/**
+ * @param numero
+ * @param solde
+ * @param dateOuverture
+ */
+public Compte(int numero, float solde, Date dateOuverture) {
+	super();
+	this.numero = numero;
+	this.solde = solde;
+	this.dateOuverture = dateOuverture;
+}
 
-	public Client getClient() {
-		return client;
-	}
+/**
+ * @param numero
+ * @param solde
+ * @param dateOuverture
+ */
+public Compte( float solde, Date dateOuverture) {
+	super();
+	
+	this.solde = solde;
+	this.dateOuverture = dateOuverture;
+}
 
-	public void setClient(Client client) {
-		this.client = client;
-	}
+
+//	/**
+//	 * ctor
+//	 * 
+//	 * @param client
+//	 * @param numero
+//	 * @param solde
+//	 * @param dateOuverture
+//	 */
+//	public Compte(Client client, int numero, float solde, Date dateOuverture) {
+//		super();
+//		this.client = client;
+//		this.numero = numero;
+//		this.solde = solde;
+//		this.dateOuverture = dateOuverture;
+//	}
+//
+//	public Client getClient() {
+//		return client;
+//	}
+//
+//	public void setClient(Client client) {
+//		this.client = client;
+//	}
 
 	public int getNumero() {
 		return numero;

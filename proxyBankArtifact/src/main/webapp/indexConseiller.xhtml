@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>page index</title>
+</h:head>
+<body>
+
+	
+
+
+	
+	<h3 style="color: red" align="center">Liste des clients</h3>
+	<p:dataTable var="client" value="#{clientMB.getAllClients}">
+		<p:column headerText="Id">
+			<h:outputText value="#{client.id}" />
+		</p:column>
+
+		<p:column headerText="Nom">
+			<h:outputText value="#{client.nom}" align="center"/>
+		</p:column>
+
+		<p:column headerText="Prenom">
+			<h:outputText value="#{client.prenom}" align="center"/>
+		</p:column>
+
+		<p:column headerText="Adresse">
+			<h:outputText value="#{client.adresse}" align="center"/>
+		</p:column>
+		<p:column headerText="Code postal">
+			<h:outputText value="#{client.codePostal}" />
+		</p:column>
+
+		<p:column headerText="Ville">
+			<h:outputText value="#{client.ville}" align="center"/>
+		</p:column>
+
+		<p:column headerText="Telephone">
+			<h:outputText value="#{client.telephone}" align="center"/>
+		</p:column>
+
+		
+		<p:column headerText=" ">
+		<h:form>
+		<p:commandButton  action="#{clientMB.supprimer}" icon="ui-icon-trash" title="supprimer" process="@this" update="@all">
+                <f:setPropertyActionListener value="#{client}" target="#{clientMB.client}" />
+            </p:commandButton>
+        
+		</h:form>
+		<h:form>
+		<p:commandButton  onclick="montrModifier()" icon="ui-icon-pencil" title="modifier" ><f:setPropertyActionListener value="#{employe}" target="#{empMB.employe}" /></p:commandButton>
+            <script>function montrModifier(){	
+						document.getElementById('handlead').style.display='flex';
+					}</script>
+		</h:form>
+		</p:column>
+		
+		<f:facet name="footer">
+		
+            <p:button  onclick="montrAjouter()" icon="ui-icon-plusthick" title="ajouter" />
+            <script>function montrAjouter(){	
+						document.getElementById('handleadd').style.display='flex';
+					}</script>
+        	<p:button  onclick="cacheAjouter()" icon="ui-icon-add" title="hide ajouter" />
+            <script>function cacheAjouter(){
+document.getElementById('handleadd').style.display='none';
+
+					}</script>
+        </f:facet>
+        
+
+	</p:dataTable>
+	
+	
+<!-- 	<p:panel id="handleadd" header="Ajouter" style="display:flex"> -->
+<!-- 		<h:form> -->
+<!-- 			<h:panelGrid columns="4" bgcolor="lightgrey" width="50%"> -->
+<!-- 			<h:inputHidden id="clientHid" value="clientMB.client"></h:inputHidden> -->
+<!-- 			Nom : -->
+<!-- 			<h:inputText id="nom" value="#{clientMB.client.nom}" required="true" /> -->
+<!-- 				<h:message for="nom" style="color:red" /> -->
+<!-- 				<p:watermark for="nom" value="Entrez un nom..."></p:watermark> -->
+<!-- 				<br /> -->
+<!-- 			Prenom : -->
+<!-- 			<h:inputText id="prenom" value="#{clientMB.client.prenom}" -->
+<!-- 					required="true" /> -->
+<!-- 				<h:message for="prenom" style="color:red" /> -->
+<!-- 				<p:watermark for="prenom" value="Entrez un prenom..."></p:watermark> -->
+<!-- 				<br /> -->
+<!-- 			Adresse : -->
+<!-- 			<h:inputText id="adresse" value="#{clientMB.client.adresse}" required="true" /> -->
+<!-- 				<h:message for="adresse" style="color:red" /> -->
+<!-- 				<p:watermark for="adresse" value="Entrez une adresse"></p:watermark> -->
+<!-- 				<br /> -->
+				
+<!-- 			Code postal : -->
+<!-- 			<h:inputText id="codePostal" value="#{clientMB.client.codePostal}" required="true" /> -->
+<!-- 				<h:message for="codePostal" style="color:red" /> -->
+<!-- 				<p:watermark for="codePostal" value="0"></p:watermark> -->
+<!-- 				<br /> -->
+<!-- 			Ville : -->
+<!-- 			<h:inputText id="ville" value="#{clientMB.client.ville}" -->
+<!-- 					required="true" /> -->
+<!-- 				<h:message for="ville" style="color:red" /> -->
+<!-- 				<p:watermark for="ville" value="Entrez une ville"></p:watermark> -->
+<!-- 				<br /> -->
+<!-- 			Telephone : -->
+<!-- 			<h:inputText id="telephone" value="#{clientMB.client.telephone}" required="true" /> -->
+<!-- 				<h:message for="telephone" style="color:red" /> -->
+<!-- 				<p:watermark for="telephone" value="0"></p:watermark> -->
+<!-- 				<br /> -->
+
+<!-- 				<h:outputLink value="index.xhtml" title="Ajouter client"> -->
+<!-- 					<h:commandButton value="Ajouter client" action="#{clientMB.ajouter}" update="@all"></h:commandButton> -->
+<!-- 				</h:outputLink> -->
+				
+				
+<!-- 			</h:panelGrid> -->
+<!-- 		</h:form> -->
+<!-- 	</p:panel> -->
+<!-- 	<p:draggable for="handleadd" handle=".ui-panel-titlebar" /> -->
+	
+	<p:panel id="handlead" header="Modifier" style="display:flex">
+		<h:form>
+			<h:panelGrid columns="4" bgcolor="lightgrey" width="50%">
+			Nom :
+			<h:inputText id="nom" value="#{clientMB.client.nom}" required="true" />
+				<h:message for="nom" style="color:red" />
+				<p:watermark for="nom" value="Entrez un nom..."></p:watermark>
+				<br />
+			Prenom :
+			<h:inputText id="prenom" value="#{clientMB.client.prenom}"
+					required="true" />
+				<h:message for="prenom" style="color:red" />
+				<p:watermark for="prenom" value="Entrez un prenom..."></p:watermark>
+				<br />
+			Adresse :
+			<h:inputText id="adresse" value="#{clientMB.client.adresse}" required="true" />
+				<h:message for="adresse" style="color:red" />
+				<p:watermark for="adresse" value="Entrez une adresse"></p:watermark>
+				<br />
+				
+			Code postal :
+			<h:inputText id="codePostal" value="#{clientMB.client.codePostal}" required="true" />
+				<h:message for="codePostal" style="color:red" />
+				<p:watermark for="codePostal" value="0"></p:watermark>
+				<br />
+			Ville :
+			<h:inputText id="ville" value="#{clientMB.client.ville}"
+					required="true" />
+				<h:message for="ville" style="color:red" />
+				<p:watermark for="ville" value="Entrez une ville"></p:watermark>
+				<br />
+			Telephone :
+			<h:inputText id="telephone" value="#{clientMB.client.telephone}" required="true" />
+				<h:message for="telephone" style="color:red" />
+				<p:watermark for="telephone" value="0"></p:watermark>
+				<br />
+
+				<h:outputLink value="index.xhtml" title="Modifier client">
+					
+					<h:commandButton value="Modifier client" action="#{clientMB.modifier}" update="@all" onclick="cacheAjouter()"></h:commandButton>
+				<script>function cacheModifier(){	
+						document.getElementById('handlead').style.display='none';
+				}</script>
+				</h:outputLink>
+				
+			</h:panelGrid>
+		</h:form>
+	</p:panel>
+	<p:draggable for="handlead" handle=".ui-panel-titlebar" />
+</body>
+</html>
