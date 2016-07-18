@@ -45,7 +45,7 @@ public class ConseillerDaoImpl implements IConseillerDao{
 	}
 
 	@Override
-	public List<Client> getConseillersByAgence(Agence agence) {
+	public List<ConseillerClientele> getConseillersByAgence(Agence agence) {
 		//ouvrir une session
 				Session session = sessionFactory.openSession();
 				
@@ -61,7 +61,7 @@ public class ConseillerDaoImpl implements IConseillerDao{
 				query.setFirstResult(0);//le 0 commence a partir de l'id 1
 				query.setMaxResults(50);//affiche 50 resultats
 				
-				List<Client> liste = query.list();
+				List<ConseillerClientele> liste = query.list();
 				
 				//fermer la session
 				session.close();
