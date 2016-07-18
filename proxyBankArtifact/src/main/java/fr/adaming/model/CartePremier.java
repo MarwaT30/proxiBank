@@ -1,5 +1,74 @@
 package fr.adaming.model;
 
-public class CartePremier extends CarteBancaire {
+import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity(name = "CartePremiumEntity")
+@Table(name = "cartes_premium")
+public class CartePremier extends CarteBancaire implements Serializable{
+	/**
+	 * 
+	 */
+	@Transient
+	private static final long serialVersionUID = 86L;
+
+	@OneToOne
+	@JoinColumn (name="num_compte")
+	private CompteCourant compte;
+	/**
+	 * 
+	 */
+	public CartePremier() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	/**
+	 * 
+	 * @param id
+	 * @param compte
+	 */
+	public CartePremier(int id, CompteCourant compte) {
+		super(id);
+		this.compte = compte;
+	}
+
+
+
+	/**
+	 * @return the compte
+	 */
+	public CompteCourant getCompte() {
+		return compte;
+	}
+
+
+
+	/**
+	 * @param compte the compte to set
+	 */
+	public void setCompte(CompteCourant compte) {
+		this.compte = compte;
+	}
+
+
+
+	/* (non-Javadoc)
+	 * @see fr.adaming.model.CarteBancaire#toString()
+	 */
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "CartePremium [id_carte=" + this.getId_carte()+ "]";
+	}
+
+	
+	
 }

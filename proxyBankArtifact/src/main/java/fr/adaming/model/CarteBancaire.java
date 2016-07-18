@@ -13,6 +13,45 @@ public abstract class CarteBancaire {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_carte;
 
+	/**
+	 * @return the id_carte
+	 */
+	public int getId_carte() {
+		return id_carte;
+	}
+
+	/**
+	 * @param id_carte the id_carte to set
+	 */
+	public void setId_carte(int id_carte) {
+		this.id_carte = id_carte;
+	}
+
+	/**
+	 * 
+	 */
+	public CarteBancaire() {
+		super();
+	}
+
+	/**
+	 * @param id_carte
+	 */
+	public CarteBancaire(int id_carte) {
+		super();
+		this.id_carte = id_carte;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "CarteBancaire [id_carte=" + id_carte + "]";
+	}
+	
+	
+
 	// Association
 //	@OneToOne
 //	@JoinColumn(name = "compte_id", referencedColumnName = "id_compte")

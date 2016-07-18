@@ -53,7 +53,7 @@ public class ClientDaoImpl implements IClientDao {
 		Session session = sessionFactory.getCurrentSession();
 
 		// declaration de la requete
-		String hqlReq = "from clientEntity e where id_conseiller=:id1 order by e.nom asc";
+		String hqlReq = "from clientEntity e where conseiller_id=:id1 order by e.nom asc";
 
 		Query query = session.createQuery(hqlReq);
 
@@ -82,7 +82,7 @@ public class ClientDaoImpl implements IClientDao {
 		Session session = sessionFactory.getCurrentSession();
 
 		// avec SQL natif
-		String sqlreq = "update clients set nom=:nom1, prenom=:prenom1, adresse=:adresse1, codePostal=:codePostal1,ville=:ville1, telephone=:telephone1 where id=:id1";
+		String sqlreq = "update clients set nom=:nom1, prenom=:prenom1, adresse=:adresse1, code_postal=:codePostal1, ville=:ville1, telephone=:telephone1 where id=:id1";
 		SQLQuery query = session.createSQLQuery(sqlreq);
 		// ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
 		query.addEntity(Client.class);
@@ -94,7 +94,7 @@ public class ClientDaoImpl implements IClientDao {
 		query.setParameter("ville1", client.getVille());
 		query.setParameter("telephone1", client.getTelephone());
 		query.setParameter("id1", client.getId());
-		// query.executeUpdate();
+		//query.executeUpdate();
 		// session.close();
 		return query.executeUpdate();
 	}
@@ -148,7 +148,7 @@ public class ClientDaoImpl implements IClientDao {
 		Session session = sessionFactory.openSession();
 
 		// declaration de la requete
-		String hqlReq = "from clientEntity c where id_conmpte=:id1";
+		String hqlReq = "from clientEntity c where id=:id1";
 
 		Query query = session.createQuery(hqlReq);
 		query.setParameter("id1", id);

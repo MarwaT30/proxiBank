@@ -16,7 +16,7 @@ public class CompteEpargne extends Compte {
 	private float taux;
 
 	@OneToOne
-	@JoinColumn(name = "id_client", nullable = false)
+	@JoinColumn(name = "id_client")
 	private Client client;
 
 	/**
@@ -71,5 +71,14 @@ public class CompteEpargne extends Compte {
 
 	public void setTaux(float taux) {
 		this.taux = taux;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Compte [numero=" + this.getNumero() + ", solde=" + this.getSolde()
+				+ ", dateOuverture=" + this.getDateOuverture() + ", taux=" + taux+", client="+client+" ]";
 	}
 }

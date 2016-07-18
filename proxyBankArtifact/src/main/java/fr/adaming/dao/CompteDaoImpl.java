@@ -15,7 +15,7 @@ import fr.adaming.model.Compte;
 import fr.adaming.model.CompteCourant;
 import fr.adaming.model.CompteEpargne;
 
-@Repository
+@Repository("compteDao")
 @Transactional
 public class CompteDaoImpl implements ICompteDao {
 	@Autowired

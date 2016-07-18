@@ -6,6 +6,8 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.springframework.stereotype.Component;
+
 import fr.adaming.model.Client;
 import fr.adaming.model.ConseillerClientele;
 import fr.adaming.service.ClientServiceImpl;
@@ -13,6 +15,7 @@ import fr.adaming.service.IClientService;
 
 @ManagedBean(name = "clientMB")
 @SessionScoped
+@Component
 public class ClientManagedBean implements Serializable {
 	private static final long serialVersionUID = 615713187L;
 

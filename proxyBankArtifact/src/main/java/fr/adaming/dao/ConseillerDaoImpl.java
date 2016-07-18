@@ -93,7 +93,7 @@ public class ConseillerDaoImpl implements IConseillerDao{
 		//Session session=sessionFactory.openSession();
 		Session session = sessionFactory.getCurrentSession();
 		//avec SQL natif
-		String sqlreq="update conseillers set nom=:nom1, prenom=:prenom1, adresse=:adresse1, codePostal=:codePostal1,ville=:ville1, telephone=:telephone1 where id=:id1";
+		String sqlreq="update conseillers set nom=:nom1, prenom=:prenom1, adresse=:adresse1, code_Postal=:codePostal1,ville=:ville1, telephone=:telephone1 where id=:id1";
 		SQLQuery query=session.createSQLQuery(sqlreq);
 		query.addEntity(ConseillerClientele.class);//ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
 		query.setParameter("nom1", conseiller.getNom());
@@ -167,7 +167,7 @@ public class ConseillerDaoImpl implements IConseillerDao{
 				Session session = sessionFactory.openSession();
 
 				// declaration de la requete
-				String hqlReq = "from consEntity c where id_conmpte=:id1";
+				String hqlReq = "from consEntity c where id=:id1";
 
 				Query query = session.createQuery(hqlReq);
 				query.setParameter("id1", id);
