@@ -13,6 +13,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 
 
 
@@ -31,13 +34,14 @@ public class Gerant extends Personne implements Serializable {
 	private static final long serialVersionUID = 86L;
 	
 	@OneToMany(mappedBy="conseiller", fetch=FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Client> clients;//=new ArrayList<Client>();
 	/**
 	 * empty constructor for class ConseillerClientele
 	 */
 	@OneToOne
-	@JoinColumn(name="agence_id",nullable=false)
-	private Agence agence;
+	@JoinColumn(name="agence_id",referencedColumnName="id_agence")
+	private Agence agence_gerant;
 	
 
 	public Gerant() {
@@ -72,7 +76,7 @@ public class Gerant extends Personne implements Serializable {
 	public Gerant(String nom, String prenom, String adresse,
 			int codePostal,String ville, long telephone,Agence agence) {
 		super(nom, prenom, adresse, codePostal,ville, telephone);
-		this.agence=agence;
+		this.agence_gerant=agence;
 	}
 
 	/**
@@ -90,18 +94,20 @@ public class Gerant extends Personne implements Serializable {
 	}
 
 	/**
-	 * @return the agence
+	 * @return the agence_gerant
 	 */
-	public Agence getAgence() {
-		return agence;
+	public Agence getAgence_gerant() {
+		return agence_gerant;
 	}
 
 	/**
-	 * @param agence the agence to set
+	 * @param agence_gerant the agence_gerant to set
 	 */
-	public void setAgence(Agence agence) {
-		this.agence = agence;
+	public void setAgence_gerant(Agence agence_gerant) {
+		this.agence_gerant = agence_gerant;
 	}
+
+	
 	
 	
 
