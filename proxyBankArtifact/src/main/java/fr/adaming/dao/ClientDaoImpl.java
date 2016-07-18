@@ -25,7 +25,7 @@ public class ClientDaoImpl implements IClientDao{
 				Session session = sessionFactory.openSession();
 				
 				//declaration de la requete
-				String hqlReq = "from EmpEntity e order by e.nom asc";
+				String hqlReq = "from clientEntity e order by e.nom asc";
 				
 				//envoyer la requete
 				Query query = session.createQuery(hqlReq);
@@ -49,7 +49,7 @@ public class ClientDaoImpl implements IClientDao{
 		Session session = sessionFactory.openSession();
 		
 		//declaration de la requete
-		String hqlReq = "from EmpEntity e where id_conseiller=:id1 order by e.nom asc";
+		String hqlReq = "from clientEntity e where id_conseiller=:id1 order by e.nom asc";
 		
 
 		Query query = session.createQuery(hqlReq);
@@ -83,7 +83,7 @@ public class ClientDaoImpl implements IClientDao{
 		Session session=sessionFactory.openSession();
 		
 		//avec SQL natif
-		String sqlreq="update employes set nom=:nom1, prenom=:prenom1, adresse=:adresse1, codePostal=:codePostal1,ville=:ville1, telephone=:telephone1 where id=:id1";
+		String sqlreq="update clients set nom=:nom1, prenom=:prenom1, adresse=:adresse1, codePostal=:codePostal1,ville=:ville1, telephone=:telephone1 where id=:id1";
 		SQLQuery query=session.createSQLQuery(sqlreq);
 		query.addEntity(Client.class);//ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
 		query.setParameter("nom1", client.getNom());
@@ -105,7 +105,7 @@ public class ClientDaoImpl implements IClientDao{
 
 	
 	//declaration de la requete
-	String hqlReq = "delete from EmpEntity where id=:id1";
+	String hqlReq = "delete from clientEntity where id=:id1";
 			
 	//creer la requete
 	Query query = session.createQuery(hqlReq);
@@ -128,7 +128,7 @@ public class ClientDaoImpl implements IClientDao{
 
 		
 		//declaration de la requete
-		String hqlReq = "delete from EmpEntity where nom=:nom1 and prenom=:prenom1 and adresse=:adresse1 and codePostal=:codePostal1 and ville=:ville1 and telephone=:telephone1";
+		String hqlReq = "delete from clientEntity where nom=:nom1 and prenom=:prenom1 and adresse=:adresse1 and codePostal=:codePostal1 and ville=:ville1 and telephone=:telephone1";
 				
 		//creer la requete
 		Query query = session.createQuery(hqlReq);
