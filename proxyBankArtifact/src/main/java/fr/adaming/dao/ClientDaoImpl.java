@@ -12,65 +12,64 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.model.Client;
 import fr.adaming.model.ConseillerClientele;
+
 @Repository("clientDao")
 @Transactional
-
-public class ClientDaoImpl implements IClientDao{
-	@Autowired //injection d'une sessionFactory
+public class ClientDaoImpl implements IClientDao {
+	@Autowired
+	// injection d'une sessionFactory
 	private SessionFactory sessionFactory;
 
 	@Override
 	public List<Client> getAllClients() {
-			//ouvrir une session
-				Session session = sessionFactory.openSession();
-				
-				//declaration de la requete
-				String hqlReq = "from clientEntity e order by e.nom asc";
-				
-				//envoyer la requete
-				Query query = session.createQuery(hqlReq);
-				
-				//pagination 
-				query.setFirstResult(0);//le 0 commence a partir de l'id 1
-				query.setMaxResults(50);//affiche 50 resultats
-				
-				List<Client> liste = query.list();
-				
-				//fermer la session
-				session.close();
-				
-				return liste;
+		// ouvrir une session
+		Session session = sessionFactory.openSession();
 
+		// declaration de la requete
+		String hqlReq = "from clientEntity e order by e.nom asc";
+
+		// envoyer la requete
+		Query query = session.createQuery(hqlReq);
+
+		// pagination
+		query.setFirstResult(0);// le 0 commence a partir de l'id 1
+		query.setMaxResults(50);// affiche 50 resultats
+
+		List<Client> liste = query.list();
+
+		// fermer la session
+		session.close();
+
+		return liste;
 	}
 
 	@Override
 	public List<Client> getClientsByConseiller(ConseillerClientele conseiller) {
-		//ouvrir une session
+		// ouvrir une session
 		Session session = sessionFactory.openSession();
-		
-		//declaration de la requete
+
+		// declaration de la requete
 		String hqlReq = "from clientEntity e where id_conseiller=:id1 order by e.nom asc";
-		
 
 		Query query = session.createQuery(hqlReq);
-		
+
 		query.setParameter("id1", conseiller.getId());
-		
-		//pagination 
-		query.setFirstResult(0);//le 0 commence a partir de l'id 1
-		query.setMaxResults(50);//affiche 50 resultats
-		
+
+		// pagination
+		query.setFirstResult(0);// le 0 commence a partir de l'id 1
+		query.setMaxResults(50);// affiche 50 resultats
+
 		List<Client> liste = query.list();
-		
-		//fermer la session
+
+		// fermer la session
 		session.close();
-		
+
 		return liste;
 	}
 
 	@Override
 	public int ajouterClient(Client client) {
-		
+
 		Session session = sessionFactory.openSession();
 		session.save(client);
 		session.close();
@@ -80,12 +79,14 @@ public class ClientDaoImpl implements IClientDao{
 
 	@Override
 	public int modifierClient(Client client) {
-		Session session=sessionFactory.openSession();
-		
-		//avec SQL natif
-		String sqlreq="update clients set nom=:nom1, prenom=:prenom1, adresse=:adresse1, codePostal=:codePostal1,ville=:ville1, telephone=:telephone1 where id=:id1";
-		SQLQuery query=session.createSQLQuery(sqlreq);
-		query.addEntity(Client.class);//ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
+		Session session = sessionFactory.openSession();
+
+		// avec SQL natif
+		String sqlreq = "update clients set nom=:nom1, prenom=:prenom1, adresse=:adresse1, codePostal=:codePostal1,ville=:ville1, telephone=:telephone1 where id=:id1";
+		SQLQuery query = session.createSQLQuery(sqlreq);
+		query.addEntity(Client.class);// ajouter l'entité : SQL natif, par
+										// default, ne travaille pas avec les
+										// classes
 		query.setParameter("nom1", client.getNom());
 		query.setParameter("prenom1", client.getPrenom());
 		query.setParameter("adresse1", client.getAdresse());
@@ -101,23 +102,21 @@ public class ClientDaoImpl implements IClientDao{
 
 	@Override
 	public int supprimerClient(int id) {
-	Session session = sessionFactory.openSession();
+		Session session = sessionFactory.openSession();
 
-	
-	//declaration de la requete
-	String hqlReq = "delete from clientEntity where id=:id1";
-			
-	//creer la requete
-	Query query = session.createQuery(hqlReq);
+		// declaration de la requete
+		String hqlReq = "delete from clientEntity where id=:id1";
 
-	//parametres de requete
-    query.setParameter("id1",id);
+		// creer la requete
+		Query query = session.createQuery(hqlReq);
 
-    
-    //envoyer la requete
-    query.executeUpdate();
-	
-	session.close();	
+		// parametres de requete
+		query.setParameter("id1", id);
+
+		// envoyer la requete
+		query.executeUpdate();
+
+		session.close();
 
 		return 1;
 	}
@@ -126,14 +125,13 @@ public class ClientDaoImpl implements IClientDao{
 	public int supprimerClient(Client client) {
 		Session session = sessionFactory.openSession();
 
-		
-		//declaration de la requete
+		// declaration de la requete
 		String hqlReq = "delete from clientEntity where nom=:nom1 and prenom=:prenom1 and adresse=:adresse1 and codePostal=:codePostal1 and ville=:ville1 and telephone=:telephone1";
-				
-		//creer la requete
+
+		// creer la requete
 		Query query = session.createQuery(hqlReq);
 
-		//parametres de requete
+		// parametres de requete
 		query.setParameter("nom1", client.getNom());
 		query.setParameter("prenom1", client.getPrenom());
 		query.setParameter("adresse1", client.getAdresse());
@@ -141,17 +139,12 @@ public class ClientDaoImpl implements IClientDao{
 		query.setParameter("ville1", client.getVille());
 		query.setParameter("telephone1", client.getTelephone());
 
+		// envoyer la requete
+		query.executeUpdate();
 
-	    
-	    //envoyer la requete
-	    query.executeUpdate();
-		
-		session.close();	
+		session.close();
 
-			return 1;
-
+		return 1;
 	}
 
-	
-	
 }
