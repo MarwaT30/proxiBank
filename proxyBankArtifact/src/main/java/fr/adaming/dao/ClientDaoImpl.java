@@ -13,12 +13,21 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.adaming.model.Client;
 import fr.adaming.model.ConseillerClientele;
 
-@Repository("clientDao")
+
+@Repository
 @Transactional
 public class ClientDaoImpl implements IClientDao {
 	@Autowired
 	// injection d'une sessionFactory
 	private SessionFactory sessionFactory;
+
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	@Override
 	public List<Client> getAllClients() {
@@ -32,8 +41,8 @@ public class ClientDaoImpl implements IClientDao {
 		Query query = session.createQuery(hqlReq);
 
 		// pagination
-		query.setFirstResult(0);// le 0 commence a partir de l'id 1
-		query.setMaxResults(50);// affiche 50 resultats
+//		query.setFirstResult(0);// le 0 commence a partir de l'id 1
+//		query.setMaxResults(50);// affiche 50 resultats
 
 		List<Client> liste = query.list();
 
@@ -56,8 +65,8 @@ public class ClientDaoImpl implements IClientDao {
 		query.setParameter("id1", conseiller.getId());
 
 		// pagination
-		query.setFirstResult(0);// le 0 commence a partir de l'id 1
-		query.setMaxResults(50);// affiche 50 resultats
+//		query.setFirstResult(0);// le 0 commence a partir de l'id 1
+//		query.setMaxResults(50);// affiche 50 resultats
 
 		List<Client> liste = query.list();
 
