@@ -125,8 +125,9 @@ public class CompteDaoImpl implements ICompteDao {
 		SQLQuery query = session.createSQLQuery(sqlreq);
 		// ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
 		query.addEntity(CompteCourant.class);
-
-		
+		query.setParameter("date1", compteC.getDateOuverture());
+		query.setParameter("solde1", compteC.getSolde());
+		query.setParameter("dec1", compteC.getAutDecouvert());
 		query.setParameter("id1", compteC.getNumero());
 		// query.executeUpdate();
 		// session.close();
@@ -135,8 +136,9 @@ public class CompteDaoImpl implements ICompteDao {
 
 	@Override
 	public int supprimerCompteC(CompteCourant compteC) {
-		// TODO Auto-generated method stub
-		return 0;
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(compteC);
+		return 1;
 	}
 
 	@Override
@@ -151,12 +153,13 @@ public class CompteDaoImpl implements ICompteDao {
 		Session session = sessionFactory.getCurrentSession();
 
 		// avec SQL natif
-		String sqlreq = "update comptes_epargnes set date_ouverture=:date1 , solde=:solde1, aut_decouvert:=dec1 where id=:id1";
+		String sqlreq = "update comptes_epargnes set date_ouverture=:date1 , solde=:solde1, taux:=dec1 where id=:id1";
 		SQLQuery query = session.createSQLQuery(sqlreq);
 		// ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
 		query.addEntity(CompteEpargne.class);
-
-		
+		query.setParameter("date1", compteE.getDateOuverture());
+		query.setParameter("solde1", compteE.getSolde());
+		query.setParameter("dec1", compteE.getTaux());
 		query.setParameter("id1", compteE.getNumero());
 		// query.executeUpdate();
 		// session.close();
@@ -165,8 +168,9 @@ public class CompteDaoImpl implements ICompteDao {
 
 	@Override
 	public int supprimerCompteE(CompteEpargne compteE) {
-		// TODO Auto-generated method stub
-		return 0;
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(compteE);
+		return 1;
 	}
 
 }
