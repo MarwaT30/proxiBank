@@ -12,14 +12,14 @@ public interface IConseillerDao {
 	 * 
 	 * @return
 	 */
-	public List<Client> getAllConseillers();
+	public List<ConseillerClientele> getAllConseillers();
 
 /**
  * 
  * @param agence
  * @return liste des conseillers clientèle de l'agence
  */
-	public List<Client> getConseillersByAgence(Agence agence);
+	public List<ConseillerClientele> getConseillersByAgence(Agence agence);
 
 	/**
 	 * ajouter un conseiller dans la BD

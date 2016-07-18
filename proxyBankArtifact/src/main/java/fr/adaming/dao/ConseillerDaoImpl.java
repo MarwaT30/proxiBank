@@ -21,8 +21,8 @@ public class ConseillerDaoImpl implements IConseillerDao{
 	@Autowired //injection d'une sessionFactory
 	private SessionFactory sessionFactory;
 	
-	@Override
-	public List<Client> getAllConseillers() {
+
+	public List<ConseillerClientele> getAllConseillers() {
 		//ouvrir une session
 		Session session = sessionFactory.openSession();
 		
