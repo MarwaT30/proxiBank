@@ -2,6 +2,7 @@ package fr.adaming.model;
 
 import java.io.Serializable;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -10,7 +11,7 @@ import javax.persistence.Transient;
 
 @Entity(name = "gerantEntity")
 @Table(name = "gerants")
-//@DiscriminatorValue(value="cad")
+@DiscriminatorValue(value="cad")
 
 public class Gerant extends ConseillerClientele implements Serializable {
 
