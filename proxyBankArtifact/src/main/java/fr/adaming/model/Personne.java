@@ -164,5 +164,4 @@ public abstract class Personne {
 				+ ", adresse=" + adresse + ", codePostal=" + codePostal
 				+ ", ville=" + ville + ", telephone=" + telephone;
 	}
-
 }

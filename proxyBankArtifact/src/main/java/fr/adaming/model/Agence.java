@@ -12,20 +12,20 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity(name="agenceEntity")
-@Table(name="agences")
+@Entity(name = "agenceEntity")
+@Table(name = "agences")
 public class Agence {
 	@Id
-	@Column(name="id_agence")
+	@Column(name = "id_agence")
 	private int numero;
-	@Column(name="date_creation")
+	@Column(name = "date_creation")
 	private Date dateCreation;
 
-	 //Association
+	// Association
 	@OneToOne(mappedBy = "agence_gerant")
 	private Gerant gerant;
 
-	@OneToMany(mappedBy ="agence", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "agence", fetch = FetchType.EAGER)
 	private List<ConseillerClientele> conseillers;
 
 	public Agence() {
@@ -39,23 +39,23 @@ public class Agence {
 	 * @param gerant
 	 * @param conseillers
 	 */
-	public Agence(int numero, Date dateCreation, 
+	public Agence(int numero, Date dateCreation,
 			List<ConseillerClientele> conseillers) {
 		super();
 		this.numero = numero;
 		this.dateCreation = dateCreation;
 		this.conseillers = conseillers;
 	}
-	
+
 	/**
 	 * 
 	 * @param dateCreation
 	 */
-	public Agence( Date dateCreation) {
+	public Agence(Date dateCreation) {
 		super();
 
 		this.dateCreation = dateCreation;
-		
+
 	}
 
 	public int getNumero() {
@@ -74,7 +74,6 @@ public class Agence {
 		this.dateCreation = dateCreation;
 	}
 
-
 	public List<ConseillerClientele> getConseillers() {
 		return conseillers;
 	}
@@ -83,14 +82,14 @@ public class Agence {
 		this.conseillers = conseillers;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "Agence [numero=" + numero + ", dateCreation=" + dateCreation
-				+  ", conseillers=" + conseillers + "]";
+				+ "]";
 	}
-	
-	
 }

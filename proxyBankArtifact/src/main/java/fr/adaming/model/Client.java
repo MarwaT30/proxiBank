@@ -89,8 +89,9 @@ public class Client extends Personne implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Client" + super.toString() + " ; conseiller=" + conseiller + ", compteCourant="
-				+ compteCourant + ", compteEpargne=" + compteEpargne + "]";
+		return "Client [id = " + this.getId() + ", nom=" + this.getNom() + ", prenom=" + this.getPrenom()
+				+ ", adresse=" + this.getAdresse() + ", codePostal=" + this.getCodePostal()
+				+ ", ville=" + this.getVille() + ", telephone=" + this.getTelephone() + " ; conseiller=" + conseiller + ", compteCourant="
+				+ compteCourant + ", compteEpargne=" + compteEpargne + "]\n";
 	}
-
 }
