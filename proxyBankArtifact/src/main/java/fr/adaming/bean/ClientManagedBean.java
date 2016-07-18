@@ -17,12 +17,12 @@ public class ClientManagedBean implements Serializable {
 	private static final long serialVersionUID = 615713187L;
 
 	private Client client = new Client();
-	
+
 	IClientService clientService = new ClientServiceImpl();
-	
+
 	private List<Client> listeClients;
-	
-	public void reload(){
+
+	public void reload() {
 		setListeClients(clientService.getAllClients());
 	}
 
@@ -31,33 +31,31 @@ public class ClientManagedBean implements Serializable {
 	 */
 	public void ajouter() {
 		System.out.println(client.getNom());
-		
+
 		clientService.ajouterClient(client);
 	}
 
 	public List<Client> getAllClients() {
 		return clientService.getAllClients();
 	}
-	
+
 	public List<Client> getClientsByConseiller(ConseillerClientele conseiller) {
 		return clientService.getClientsByConseiller(conseiller);
 	}
-	
 
 	public void modifier() {
 		clientService.modifierClient(client);
 	}
-
 
 	public void supprimerById() {
 		clientService.supprimerClient(client.getId());
 		// TODO supprimer comptes associes
 	}
 
-
 	public void supprimer() {
 		clientService.supprimerClient(client);
 	}
+
 	/**
 	 * ctor vide
 	 */
@@ -80,6 +78,5 @@ public class ClientManagedBean implements Serializable {
 	public void setListeClients(List<Client> listeClients) {
 		this.listeClients = listeClients;
 	}
-	
-	
+
 }

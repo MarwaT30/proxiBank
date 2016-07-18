@@ -42,6 +42,7 @@ public class classTestDao {
 				conseiller1.setAgence(agence);
 				conseiller1.setId(1);
 				conseillerDao.ajouterConseiller(conseiller1);
+<<<<<<< HEAD
 				ConseillerClientele conseiller2=new ConseillerClientele("Duboit", "Jean","rue cul de sac" , 41000, "Cachan", 012540);
 				conseiller2.setAgence(agence3);
 				conseiller2.setId(2);
@@ -66,6 +67,11 @@ public class classTestDao {
 				
 				
 				
+=======
+//				
+//				
+//				
+>>>>>>> refs/remotes/origin/master
 				Client cl1=new Client("BOULMERDJ","Nomane","VilleJuif", 94800, "VilleJuif", 00000000);
 				cl1.setConseiller(conseiller2);
 				cl1.setId(1);

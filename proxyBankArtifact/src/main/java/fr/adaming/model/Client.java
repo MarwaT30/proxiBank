@@ -16,7 +16,6 @@ import javax.persistence.Transient;
 @Entity(name = "clientEntity")
 @Table(name = "clients")
 public class Client extends Personne implements Serializable {
-
 	@Transient
 	private static final long serialVersionUID = 86L;
 
@@ -86,6 +85,12 @@ public class Client extends Personne implements Serializable {
 	 */
 	public void setConseiller(ConseillerClientele conseiller) {
 		this.conseiller = conseiller;
+	}
+
+	@Override
+	public String toString() {
+		return "Client" + super.toString() + " ; conseiller=" + conseiller + ", compteCourant="
+				+ compteCourant + ", compteEpargne=" + compteEpargne + "]";
 	}
 
 }
