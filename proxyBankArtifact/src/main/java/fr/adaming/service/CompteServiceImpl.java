@@ -8,8 +8,12 @@ public class CompteServiceImpl implements ICompteService {
 	ICompteDao compteDao = new CompteDaoImpl();
 
 	@Override
-	public Compte getCompteByNumero(int numero) {
-		return compteDao.getCompteByNumero(numero);
+	public Compte getCompteCourantByNumero(int numero) {
+		return compteDao.getCompteCourantByNumero(numero);
+	}
+	@Override
+	public Compte getCompteEpargneByNumero(int numero) {
+		return compteDao.getCompteEpargneByNumero(numero);
 	}
 
 	@Override

@@ -58,10 +58,10 @@ public class AgenceDaoImpl implements IAgenceDao{
 Session session=sessionFactory.openSession();
 		
 		//avec SQL natif
-		String sqlreq="update agences set gerant=:gerant1 where id_agence=:id1";
+		String sqlreq="update agences set date_creation=:date1 where id_agence=:id1";
 		SQLQuery query=session.createSQLQuery(sqlreq);
 		query.addEntity(Client.class);//ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
-		query.setParameter("gerant1", agence.getGerant());
+		query.setParameter("date1", agence.getDateCreation());
 		query.setParameter("id1", agence.getNumero());
 
 		query.executeUpdate();

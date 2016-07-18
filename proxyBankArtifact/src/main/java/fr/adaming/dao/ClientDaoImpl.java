@@ -14,7 +14,7 @@ import fr.adaming.model.Client;
 import fr.adaming.model.ConseillerClientele;
 
 
-@Repository
+@Repository("clientDao")
 @Transactional
 public class ClientDaoImpl implements IClientDao {
 	@Autowired

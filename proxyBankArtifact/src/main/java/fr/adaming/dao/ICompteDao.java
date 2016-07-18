@@ -9,7 +9,10 @@ public interface ICompteDao {
 	 *            le numéro de compte
 	 * @return le compte correspondant
 	 */
-	public Compte getCompteByNumero(int numero);
+	public Compte getCompteCourantByNumero(int numero);
+	
+	public Compte getCompteEpargneByNumero(int numero);
+
 
 	/**
 	 * 
