@@ -48,4 +48,11 @@ public interface IConseillerDao {
 	 * @return 1 si OK
 	 */
 	public int supprimerConseiller(ConseillerClientele conseiller);
+	
+	/**
+	 * find object type ConseillerClientele with object id
+	 * @param id
+	 * @return object type ConseillerClientele
+	 */
+	public ConseillerClientele getConseillerById(int id);
 }

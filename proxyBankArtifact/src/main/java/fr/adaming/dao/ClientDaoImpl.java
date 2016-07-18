@@ -79,9 +79,10 @@ public class ClientDaoImpl implements IClientDao {
 	@Override
 	public int ajouterClient(Client client) {
 
-		Session session = sessionFactory.openSession();
+		//Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		session.save(client);
-		session.close();
+		//session.close();
 
 		return 1;
 	}
@@ -154,6 +155,25 @@ public class ClientDaoImpl implements IClientDao {
 		session.close();
 
 		return 1;
+	}
+
+	@Override
+	public Client getClientById(int id) {
+		// ouvrir une session
+		Session session = sessionFactory.openSession();
+
+		// declaration de la requete
+		String hqlReq = "from clientEntity c where id_conmpte=:id1";
+
+		Query query = session.createQuery(hqlReq);
+		query.setParameter("id1", id);
+
+		Client client = (Client) query.uniqueResult();
+
+		// fermer la session
+		session.close();
+
+		return client;
 	}
 
 }

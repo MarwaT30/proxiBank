@@ -52,4 +52,11 @@ public interface IClientDao {
 	 * @return
 	 */
 	public int supprimerClient(Client client);
+	
+	/**
+	 * find object type Client with object id
+	 * @param id
+	 * @return object type Client
+	 */
+	public Client getClientById(int id);
 }

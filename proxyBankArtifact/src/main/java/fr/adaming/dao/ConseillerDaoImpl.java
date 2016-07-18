@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.model.Agence;
 import fr.adaming.model.Client;
+import fr.adaming.model.Compte;
 import fr.adaming.model.ConseillerClientele;
 
 @Repository("conseillerDao")
@@ -158,6 +159,25 @@ public class ConseillerDaoImpl implements IConseillerDao{
 		//session.close();	
 
 			return 1;
+	}
+
+	@Override
+	public ConseillerClientele getConseillerById(int id) {
+		// ouvrir une session
+				Session session = sessionFactory.openSession();
+
+				// declaration de la requete
+				String hqlReq = "from consEntity c where id_conmpte=:id1";
+
+				Query query = session.createQuery(hqlReq);
+				query.setParameter("id1", id);
+
+				ConseillerClientele conseiller = (ConseillerClientele) query.uniqueResult();
+
+				// fermer la session
+				session.close();
+
+				return conseiller;
 	}
 
 	
