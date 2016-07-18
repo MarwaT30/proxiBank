@@ -36,7 +36,7 @@ public class classTestDao {
 	//			ConseillerClientele conseiller1=new ConseillerClientele("Duboit", "Jean","rue cul de sac" , 41000, "Cachan", 012540, agence);
 				conseiller1.setAgence(agence2);
 				conseiller1.setId(1);
-				//conseillerDao.ajouterConseiller(conseiller1);
+				conseillerDao.ajouterConseiller(conseiller1);
 //				
 //				
 //				

@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.adaming.model.Client;
 import fr.adaming.model.ConseillerClientele;
 
-
 @Repository("clientDao")
 @Transactional
 public class ClientDaoImpl implements IClientDao {
@@ -32,7 +31,7 @@ public class ClientDaoImpl implements IClientDao {
 	@Override
 	public List<Client> getAllClients() {
 		// ouvrir une session
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 
 		// declaration de la requete
 		String hqlReq = "from clientEntity e order by e.nom asc";
@@ -40,14 +39,10 @@ public class ClientDaoImpl implements IClientDao {
 		// envoyer la requete
 		Query query = session.createQuery(hqlReq);
 
-		// pagination
-//		query.setFirstResult(0);// le 0 commence a partir de l'id 1
-//		query.setMaxResults(50);// affiche 50 resultats
-
 		List<Client> liste = query.list();
 
 		// fermer la session
-		session.close();
+		// session.close();
 
 		return liste;
 	}
@@ -55,7 +50,7 @@ public class ClientDaoImpl implements IClientDao {
 	@Override
 	public List<Client> getClientsByConseiller(ConseillerClientele conseiller) {
 		// ouvrir une session
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 
 		// declaration de la requete
 		String hqlReq = "from clientEntity e where id_conseiller=:id1 order by e.nom asc";
@@ -64,14 +59,10 @@ public class ClientDaoImpl implements IClientDao {
 
 		query.setParameter("id1", conseiller.getId());
 
-		// pagination
-//		query.setFirstResult(0);// le 0 commence a partir de l'id 1
-//		query.setMaxResults(50);// affiche 50 resultats
-
 		List<Client> liste = query.list();
 
 		// fermer la session
-		session.close();
+		// session.close();
 
 		return liste;
 	}
@@ -79,23 +70,22 @@ public class ClientDaoImpl implements IClientDao {
 	@Override
 	public int ajouterClient(Client client) {
 
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		session.save(client);
-		session.close();
-
+		// session.close();
 		return 1;
 	}
 
 	@Override
 	public int modifierClient(Client client) {
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 
 		// avec SQL natif
 		String sqlreq = "update clients set nom=:nom1, prenom=:prenom1, adresse=:adresse1, codePostal=:codePostal1,ville=:ville1, telephone=:telephone1 where id=:id1";
 		SQLQuery query = session.createSQLQuery(sqlreq);
-		query.addEntity(Client.class);// ajouter l'entité : SQL natif, par
-										// default, ne travaille pas avec les
-										// classes
+		// ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
+		query.addEntity(Client.class);
+
 		query.setParameter("nom1", client.getNom());
 		query.setParameter("prenom1", client.getPrenom());
 		query.setParameter("adresse1", client.getAdresse());
@@ -103,15 +93,14 @@ public class ClientDaoImpl implements IClientDao {
 		query.setParameter("ville1", client.getVille());
 		query.setParameter("telephone1", client.getTelephone());
 		query.setParameter("id1", client.getId());
-		query.executeUpdate();
-		session.close();
-
-		return 1;
+		// query.executeUpdate();
+		// session.close();
+		return query.executeUpdate();
 	}
 
 	@Override
 	public int supprimerClient(int id) {
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 
 		// declaration de la requete
 		String hqlReq = "delete from clientEntity where id=:id1";
@@ -123,16 +112,14 @@ public class ClientDaoImpl implements IClientDao {
 		query.setParameter("id1", id);
 
 		// envoyer la requete
-		query.executeUpdate();
-
-		session.close();
-
-		return 1;
+		
+		// session.close();
+		return query.executeUpdate();
 	}
 
 	@Override
 	public int supprimerClient(Client client) {
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 
 		// declaration de la requete
 		String hqlReq = "delete from clientEntity where nom=:nom1 and prenom=:prenom1 and adresse=:adresse1 and codePostal=:codePostal1 and ville=:ville1 and telephone=:telephone1";
@@ -149,11 +136,9 @@ public class ClientDaoImpl implements IClientDao {
 		query.setParameter("telephone1", client.getTelephone());
 
 		// envoyer la requete
-		query.executeUpdate();
-
-		session.close();
-
-		return 1;
+		
+		// session.close();
+		return query.executeUpdate();
 	}
 
 }

@@ -20,7 +20,6 @@ import javax.persistence.Transient;
 //@DiscriminatorValue(value="emp")
 
 public class ConseillerClientele extends Personne implements Serializable{
-
 	@Transient
 	private static final long serialVersionUID = 86L;
 
@@ -95,8 +94,10 @@ public class ConseillerClientele extends Personne implements Serializable{
 	public void setClients(List<Client> clients) {
 		this.clients = clients;
 	}
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "ConseillerClientele " + super.toString() + "agence=" + agence + ", clients=" + clients
+				+ "]";
+	}
 }
