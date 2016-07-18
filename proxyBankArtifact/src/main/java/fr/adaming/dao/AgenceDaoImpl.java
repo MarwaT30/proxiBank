@@ -17,7 +17,7 @@ import fr.adaming.model.ConseillerClientele;
 
 @Repository("agenceDao")
 @Transactional
-public enum AgenceDaoImpl implements IAgenceDao{
+public class AgenceDaoImpl implements IAgenceDao{
 	
 	@Autowired //injection d'une sessionFactory
 	private SessionFactory sessionFactory;
