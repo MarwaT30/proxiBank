@@ -1,5 +1,4 @@
 package fr.adaming.test;
-import java.sql.Date;
 import java.util.*;
 
 import fr.adaming.dao.*;
@@ -18,13 +17,14 @@ public class classTestDao {
 				IAgenceDao agenceDao = (IAgenceDao) ctx.getBean("agenceDao");
 				IClientDao clientDao = (IClientDao) ctx.getBean("clientDao");
 				IConseillerDao conseillerDao=(IConseillerDao) ctx.getBean("conseillerDao");
-					ICompteDao	
+				ICompteDao	compteDao = (ICompteDao) ctx.getBean("compteDao");
 
 
-				Date date = new Date(2011,11,11);
-				Agence agence=new Agence(date);	
-				agence.setNumero(1);
-				agenceDao.ajouterAgence(agence);
+					
+					Date date = new Date(2011,11,11);
+					Agence agence=new Agence(date);	
+					agence.setNumero(1);
+					agenceDao.ajouterAgence(agence);
 				
 				Date date2 = new Date(2011,11,11);
 				Agence agence2=new Agence(date2);	
@@ -42,7 +42,7 @@ public class classTestDao {
 				conseiller1.setAgence(agence);
 				conseiller1.setId(1);
 				conseillerDao.ajouterConseiller(conseiller1);
-<<<<<<< HEAD
+
 				ConseillerClientele conseiller2=new ConseillerClientele("Duboit", "Jean","rue cul de sac" , 41000, "Cachan", 012540);
 				conseiller2.setAgence(agence3);
 				conseiller2.setId(2);
@@ -65,13 +65,6 @@ public class classTestDao {
 					System.out.println(cons);
 				}
 				
-				
-				
-=======
-//				
-//				
-//				
->>>>>>> refs/remotes/origin/master
 				Client cl1=new Client("BOULMERDJ","Nomane","VilleJuif", 94800, "VilleJuif", 00000000);
 				cl1.setConseiller(conseiller2);
 				cl1.setId(1);
@@ -98,7 +91,7 @@ public class classTestDao {
 				}
 				
 				
-				CompteCourant cc1=new CompteCourant(200, date);
+				CompteCourant cc1=new CompteCourant(200, date2);
 				cc1.setNumero(1);
 				
 		

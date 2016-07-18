@@ -94,7 +94,7 @@ public class GerantDaoImpl implements IGerantDao{
 		//avec SQL natif
 		String sqlreq="update conseillers set nom=:nom1, prenom=:prenom1, adresse=:adresse1, codePostal=:codePostal1,ville=:ville1, telephone=:telephone1 where id=:id1";
 		SQLQuery query=session.createSQLQuery(sqlreq);
-		query.addEntity(Client.class);//ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
+		query.addEntity(Gerant.class);//ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
 		query.setParameter("nom1", gerant.getNom());
 		query.setParameter("prenom1", gerant.getPrenom());
 		query.setParameter("adresse1", gerant.getAdresse());

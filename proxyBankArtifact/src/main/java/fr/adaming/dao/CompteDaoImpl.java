@@ -3,6 +3,7 @@ package fr.adaming.dao;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.model.Client;
 import fr.adaming.model.Compte;
+import fr.adaming.model.CompteCourant;
+import fr.adaming.model.CompteEpargne;
 
 @Repository
 @Transactional
@@ -27,26 +30,7 @@ public class CompteDaoImpl implements ICompteDao {
 		this.sessionFactory = sessionFactory;
 	}
 	
-	@Override
-	public int ajouterCompte(Compte compte) {
-		Session session = sessionFactory.openSession();
-		session.save(compte);
-		session.close();
-
-		return 1;
-	}
-
-	@Override
-	public int modifierCompte(Compte compte) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int supprimerCompte(Compte compte) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	@Override
 	public Compte getCompteCourantByNumero(int numero) {
@@ -59,7 +43,7 @@ public class CompteDaoImpl implements ICompteDao {
 		Query query = session.createQuery(hqlReq);
 		query.setParameter("id1", numero);
 
-		Compte compte = (Compte) query.uniqueResult();
+		CompteCourant compte = (CompteCourant) query.uniqueResult();
 
 		// fermer la session
 		session.close();
@@ -78,12 +62,111 @@ public class CompteDaoImpl implements ICompteDao {
 		Query query = session.createQuery(hqlReq);
 		query.setParameter("id1", numero);
 
-		Compte compte = (Compte) query.uniqueResult();
+		CompteEpargne compte = (CompteEpargne) query.uniqueResult();
 
 		// fermer la session
 		session.close();
 
 		return compte;
+	}
+
+	@Override
+	public List<CompteCourant> getCompteCourantByClient(Client client) {
+		// ouvrir une session
+				Session session = sessionFactory.openSession();
+
+				// declaration de la requete
+				String hqlReq = "from compteCourantEntity c where id_client=:id1";
+
+				Query query = session.createQuery(hqlReq);
+				query.setParameter("id1", client.getId());
+
+				List<CompteCourant> liste= (List<CompteCourant>)query.list();
+
+				// fermer la session
+				session.close();
+
+				return liste;
+	}
+
+	@Override
+	public List<CompteEpargne> getEpargneByClient(Client client) {
+		Session session = sessionFactory.openSession();
+
+		// declaration de la requete
+		String hqlReq = "from compteEpargneEntity c where id_client=:id1";
+
+		Query query = session.createQuery(hqlReq);
+		query.setParameter("id1", client.getId());
+
+		List<CompteEpargne> liste= (List<CompteEpargne>)query.list();
+
+		// fermer la session
+		session.close();
+
+		return liste;
+	}
+
+	@Override
+	public int ajouterCompteC(CompteCourant compteC) {
+		Session session = sessionFactory.getCurrentSession();
+		session.save(compteC);
+		//session.close();
+
+		return 1;
+	}
+
+	@Override
+	public int modifierCompteC(CompteCourant compteC) {
+		Session session = sessionFactory.getCurrentSession();
+
+		// avec SQL natif
+		String sqlreq = "update comptes_courants set date_ouverture=:date1 , solde=:solde1, aut_decouvert:=dec1 where id=:id1";
+		SQLQuery query = session.createSQLQuery(sqlreq);
+		// ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
+		query.addEntity(CompteCourant.class);
+
+		
+		query.setParameter("id1", compteC.getNumero());
+		// query.executeUpdate();
+		// session.close();
+		return query.executeUpdate();
+	}
+
+	@Override
+	public int supprimerCompteC(CompteCourant compteC) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int ajouterCompteE(CompteEpargne compteE) {
+		Session session = sessionFactory.getCurrentSession();
+		session.save(compteE);
+		return 1;
+	}
+
+	@Override
+	public int modifierCompteE(CompteEpargne compteE) {
+		Session session = sessionFactory.getCurrentSession();
+
+		// avec SQL natif
+		String sqlreq = "update comptes_epargnes set date_ouverture=:date1 , solde=:solde1, aut_decouvert:=dec1 where id=:id1";
+		SQLQuery query = session.createSQLQuery(sqlreq);
+		// ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
+		query.addEntity(CompteEpargne.class);
+
+		
+		query.setParameter("id1", compteE.getNumero());
+		// query.executeUpdate();
+		// session.close();
+		return query.executeUpdate();
+	}
+
+	@Override
+	public int supprimerCompteE(CompteEpargne compteE) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

@@ -95,7 +95,7 @@ public class ConseillerDaoImpl implements IConseillerDao{
 		//avec SQL natif
 		String sqlreq="update conseillers set nom=:nom1, prenom=:prenom1, adresse=:adresse1, codePostal=:codePostal1,ville=:ville1, telephone=:telephone1 where id=:id1";
 		SQLQuery query=session.createSQLQuery(sqlreq);
-		query.addEntity(Client.class);//ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
+		query.addEntity(ConseillerClientele.class);//ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
 		query.setParameter("nom1", conseiller.getNom());
 		query.setParameter("prenom1", conseiller.getPrenom());
 		query.setParameter("adresse1", conseiller.getAdresse());

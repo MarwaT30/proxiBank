@@ -1,6 +1,11 @@
 package fr.adaming.dao;
 
+import java.util.List;
+
+import fr.adaming.model.Client;
 import fr.adaming.model.Compte;
+import fr.adaming.model.CompteCourant;
+import fr.adaming.model.CompteEpargne;
 
 public interface ICompteDao {
 	/**
@@ -11,27 +16,70 @@ public interface ICompteDao {
 	 */
 	public Compte getCompteCourantByNumero(int numero);
 	
+	/**
+	 * 
+	 * @param numero
+	 * @return
+	 */
 	public Compte getCompteEpargneByNumero(int numero);
 
+	/**
+	 * 
+	 * @param client
+	 * @return
+	 */
+	public List<CompteCourant> getCompteCourantByClient(Client client);
+	
+	
+	/**
+	 * 
+	 * @param client
+	 * @return
+	 */
+	public List<CompteEpargne> getEpargneByClient(Client client);
+	
+	/**
+	 * 
+	 * @param compteC
+	 * @return
+	 */
+	public int ajouterCompteC(CompteCourant compteC);
 
 	/**
 	 * 
-	 * @param compte
-	 * @return 1 si OK
+	 * @param compteC
+	 * @return
 	 */
-	public int ajouterCompte(Compte compte);
+	public int modifierCompteC(CompteCourant compteC);
 
 	/**
 	 * 
 	 * @param compte
 	 * @return
 	 */
-	public int modifierCompte(Compte compte);
+	public int supprimerCompteC(CompteCourant compteC);
+	
+	
+
+
+	/**
+	 * 
+	 * @param compteC
+	 * @return
+	 */
+	public int ajouterCompteE(CompteEpargne compteE);
+
+	/**
+	 * 
+	 * @param compteC
+	 * @return
+	 */
+	public int modifierCompteE(CompteEpargne compteE);
 
 	/**
 	 * 
 	 * @param compte
 	 * @return
 	 */
-	public int supprimerCompte(Compte compte);
+	public int supprimerCompteE(CompteEpargne compteE);
 }
