@@ -1,12 +1,11 @@
-package fr.adaming.dao;
+package fr.adaming.service;
 
 import java.util.List;
 
 import fr.adaming.model.Agence;
-import fr.adaming.model.ConseillerClientele;
 import fr.adaming.model.Gerant;
 
-public interface IGerantDao {
+public interface IGerantService {
 	/**
 	 * 
 	 * @return
