@@ -15,6 +15,14 @@ public class CarteDaoImpl implements ICarteDao {
 	@Autowired //injection d'une sessionFactory
 	private SessionFactory sessionFactory;
 	
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	
 	@Override
 	public Compte getCarteById(int id) {
 		// TODO Auto-generated method stub
@@ -23,9 +31,10 @@ public class CarteDaoImpl implements ICarteDao {
 
 	@Override
 	public int ajouterCarte(CarteBancaire carte) {
-		Session session = sessionFactory.openSession();
+		//Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		session.save(carte);
-		session.close();
+		//session.close();
 
 		return 1;
 	}

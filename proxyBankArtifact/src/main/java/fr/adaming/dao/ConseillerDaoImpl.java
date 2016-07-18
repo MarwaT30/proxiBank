@@ -21,11 +21,19 @@ public class ConseillerDaoImpl implements IConseillerDao{
 	@Autowired //injection d'une sessionFactory
 	private SessionFactory sessionFactory;
 	
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
 
 	public List<ConseillerClientele> getAllConseillers() {
 		//ouvrir une session
-		Session session = sessionFactory.openSession();
-		
+		//Session session = sessionFactory.openSession();
+		Session session=sessionFactory.getCurrentSession();
 		//declaration de la requete
 		String hqlReq = "from consEntity e order by e.nom asc";
 		
@@ -39,7 +47,7 @@ public class ConseillerDaoImpl implements IConseillerDao{
 		List<ConseillerClientele> liste = query.list();
 		
 		//fermer la session
-		session.close();
+		//session.close();
 		
 		return liste;
 	}
@@ -47,8 +55,8 @@ public class ConseillerDaoImpl implements IConseillerDao{
 	@Override
 	public List<ConseillerClientele> getConseillersByAgence(Agence agence) {
 		//ouvrir une session
-				Session session = sessionFactory.openSession();
-				
+				//Session session = sessionFactory.openSession();
+				Session session = sessionFactory.getCurrentSession();
 				//declaration de la requete
 				String hqlReq = "from consEntity e where agence_id=:id1 order by e.nom asc";
 				
@@ -64,7 +72,7 @@ public class ConseillerDaoImpl implements IConseillerDao{
 				List<ConseillerClientele> liste = query.list();
 				
 				//fermer la session
-				session.close();
+				//session.close();
 				
 				return liste;
 	}
@@ -72,6 +80,7 @@ public class ConseillerDaoImpl implements IConseillerDao{
 	@Override
 	public int ajouterConseiller(ConseillerClientele conseiller) {
 		Session session = sessionFactory.openSession();
+		//Session session = sessionFactory.getCurrentSession();
 		session.save(conseiller);
 		session.close();
 
@@ -80,8 +89,8 @@ public class ConseillerDaoImpl implements IConseillerDao{
 
 	@Override
 	public int modifierConseiller(ConseillerClientele conseiller) {
-Session session=sessionFactory.openSession();
-		
+		//Session session=sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		//avec SQL natif
 		String sqlreq="update conseillers set nom=:nom1, prenom=:prenom1, adresse=:adresse1, codePostal=:codePostal1,ville=:ville1, telephone=:telephone1 where id=:id1";
 		SQLQuery query=session.createSQLQuery(sqlreq);
@@ -94,15 +103,15 @@ Session session=sessionFactory.openSession();
 		query.setParameter("telephone1", conseiller.getTelephone());
 		query.setParameter("id1", conseiller.getId());
 		query.executeUpdate();
-		session.close();
+		//session.close();
 
 		return 1;
 	}
 
 	@Override
 	public int supprimerConseiller(int id) {
-		Session session = sessionFactory.openSession();
-
+		//Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		
 		//declaration de la requete
 		String hqlReq = "delete from consEntity where id=:id1";
@@ -117,15 +126,15 @@ Session session=sessionFactory.openSession();
 	    //envoyer la requete
 	    query.executeUpdate();
 		
-		session.close();	
+		//session.close();	
 
 			return 1;
 	}
 
 	@Override
 	public int supprimerConseiller(ConseillerClientele conseiller) {
-Session session = sessionFactory.openSession();
-
+//Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		
 		//declaration de la requete
 		String hqlReq = "delete from clientEntity where nom=:nom1 and prenom=:prenom1 and adresse=:adresse1 and codePostal=:codePostal1 and ville=:ville1 and telephone=:telephone1";
@@ -146,7 +155,7 @@ Session session = sessionFactory.openSession();
 	    //envoyer la requete
 	    query.executeUpdate();
 		
-		session.close();	
+		//session.close();	
 
 			return 1;
 	}

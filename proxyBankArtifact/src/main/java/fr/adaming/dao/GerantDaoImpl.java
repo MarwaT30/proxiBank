@@ -20,11 +20,20 @@ import fr.adaming.model.Gerant;
 public class GerantDaoImpl implements IGerantDao{
 	@Autowired //injection d'une sessionFactory
 	private SessionFactory sessionFactory;
+	
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	
 	@Override
 	public List<Gerant> getAllGerants() {
 		//ouvrir une session
-				Session session = sessionFactory.openSession();
-				
+				//Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 				//declaration de la requete
 				String hqlReq = "from gerantEntity e order by e.nom asc";
 				
@@ -38,7 +47,7 @@ public class GerantDaoImpl implements IGerantDao{
 				List<Gerant> liste = query.list();
 				
 				//fermer la session
-				session.close();
+				//session.close();
 				
 				return liste;
 	}
@@ -46,8 +55,8 @@ public class GerantDaoImpl implements IGerantDao{
 	@Override
 	public List<Gerant> getGerantsByAgence(Agence agence) {
 		//ouvrir une session
-		Session session = sessionFactory.openSession();
-		
+		//Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		//declaration de la requete
 		String hqlReq = "from gerantEntity e where agence_id=:id1 order by e.nom asc";
 		
@@ -63,24 +72,25 @@ public class GerantDaoImpl implements IGerantDao{
 		List<Gerant> liste = query.list();
 		
 		//fermer la session
-		session.close();
+		//session.close();
 		
 		return liste;
 	}
 
 	@Override
 	public int ajouterGerant(Gerant gerant) {
-		Session session = sessionFactory.openSession();
+		//Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		session.save(gerant);
-		session.close();
+		//session.close();
 
 		return 1;
 	}
 
 	@Override
 	public int modifierGerant(Gerant gerant) {
-Session session=sessionFactory.openSession();
-		
+//Session session=sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		//avec SQL natif
 		String sqlreq="update conseillers set nom=:nom1, prenom=:prenom1, adresse=:adresse1, codePostal=:codePostal1,ville=:ville1, telephone=:telephone1 where id=:id1";
 		SQLQuery query=session.createSQLQuery(sqlreq);
@@ -93,15 +103,15 @@ Session session=sessionFactory.openSession();
 		query.setParameter("telephone1", gerant.getTelephone());
 		query.setParameter("id1",gerant.getId());
 		query.executeUpdate();
-		session.close();
+		//session.close();
 		
 		return 1;
 	}
 
 	@Override
 	public int supprimerGerant(int id) {
-Session session = sessionFactory.openSession();
-
+//Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		
 		//declaration de la requete
 		String hqlReq = "delete from consEntity where id=:id1";
@@ -116,15 +126,15 @@ Session session = sessionFactory.openSession();
 	    //envoyer la requete
 	    query.executeUpdate();
 		
-		session.close();	
+		//session.close();	
 
 			return 1;
 	}
 
 	@Override
 	public int supprimerGerant(Gerant gerant) {
-Session session = sessionFactory.openSession();
-
+//Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		
 		//declaration de la requete
 		String hqlReq = "delete from clientEntity where nom=:nom1 and prenom=:prenom1 and adresse=:adresse1 and codePostal=:codePostal1 and ville=:ville1 and telephone=:telephone1";
@@ -145,7 +155,7 @@ Session session = sessionFactory.openSession();
 	    //envoyer la requete
 	    query.executeUpdate();
 		
-		session.close();	
+		//session.close();	
 
 			return 1;
 	}

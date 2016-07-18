@@ -22,6 +22,14 @@ public class AgenceDaoImpl implements IAgenceDao{
 	@Autowired //injection d'une sessionFactory
 	private SessionFactory sessionFactory;
 
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	
 	@Override
 	public Agence getAgenceByNumero(int num) {
 		//ouvrir une session
@@ -48,9 +56,11 @@ public class AgenceDaoImpl implements IAgenceDao{
 
 	@Override
 	public int ajouterAgence(Agence agence) {
-		Session session = sessionFactory.openSession();
+		
+		//Session session = sessionFactory.openSession();
+		Session session =sessionFactory.getCurrentSession();
 		session.save(agence);
-		session.close();
+		//session.close();
 
 		return 1;
 	}
