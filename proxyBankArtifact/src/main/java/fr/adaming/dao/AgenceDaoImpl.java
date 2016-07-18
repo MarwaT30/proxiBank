@@ -107,4 +107,24 @@ public class AgenceDaoImpl implements IAgenceDao{
 					return 1;
 	}
 
+	@Override
+	public List<Agence> getAllAgences() {
+		// ouvrir une session
+				Session session = sessionFactory.getCurrentSession();
+
+				// declaration de la requete
+				String hqlReq = "from agenceEntity e ";
+
+				// envoyer la requete
+				Query query = session.createQuery(hqlReq);
+
+				List<Agence> liste = query.list();
+
+				// fermer la session
+				// session.close();
+
+				return liste;		// TODO Auto-generated method stub
+
+	}
+
 }

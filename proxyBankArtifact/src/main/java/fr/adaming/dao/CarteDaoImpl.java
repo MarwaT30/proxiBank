@@ -7,7 +7,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.model.CarteBancaire;
+import fr.adaming.model.CarteElectron;
+import fr.adaming.model.CartePremier;
 import fr.adaming.model.Compte;
+import fr.adaming.model.CompteCourant;
 @Repository
 @Transactional
 public class CarteDaoImpl implements ICarteDao {
@@ -22,25 +25,45 @@ public class CarteDaoImpl implements ICarteDao {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	@Override
-	public Compte getCarteById(int id) {
+	public CarteBancaire getCarteElectronByCompte(CompteCourant compte) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int ajouterCarte(CarteBancaire carte) {
-		//Session session = sessionFactory.openSession();
-		Session session = sessionFactory.getCurrentSession();
-		session.save(carte);
-		//session.close();
-
-		return 1;
+	public CarteBancaire getCartePremiumByCompte(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public int modifierCarte(Compte compte) {
+	public Compte getCompteByCarteElectron(CarteBancaire carte) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Compte getCompteByCartePremium(CarteBancaire carte) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int ajouterCarteElectron(CarteElectron carte) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int ajouterCartePremium(CartePremier carte) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int modifierCarte(CarteBancaire carte) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -50,5 +73,7 @@ public class CarteDaoImpl implements ICarteDao {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	
 
 }
