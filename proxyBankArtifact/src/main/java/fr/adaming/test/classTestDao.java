@@ -19,13 +19,20 @@ public class classTestDao {
 				IConseillerDao conseillerDao=(IConseillerDao) ctx.getBean("conseillerDao");
 		
 				
-////				Agence agence=agenceDao.getAgenceByNumero(1);
-////				System.out.println(agence);
-//				Date date = new Date(2011,11,11);
-//				Agence agence=new Agence(date);
-//				//agenceDao.ajouterAgence(agence);
+//				Agence agence=agenceDao.getAgenceByNumero(1);
+//				System.out.println(agence);
+				Date date = new Date(2011,11,11);
+				Agence agence=new Agence(date);
+				
+				agence.setNumero(1);
+				System.out.println(agence);
+				agenceDao.ajouterAgence(agence);
+
 //				
-//				ConseillerClientele conseiller1=new ConseillerClientele("Duboit", "Jean","rue cul de sac" , 41000, "Cachan", 012540, agence);
+//				
+//				ConseillerClientele conseiller1=new ConseillerClientele("Duboit", "Jean","rue cul de sac" , 41000, "Cachan", 012540);
+//				//ConseillerClientele conseiller1=new ConseillerClientele("Duboit", "Jean","rue cul de sac" , 41000, "Cachan", 012540, agence);
+//				conseiller1.setAgence(agence);
 //				conseillerDao.ajouterConseiller(conseiller1);
 //				
 //				

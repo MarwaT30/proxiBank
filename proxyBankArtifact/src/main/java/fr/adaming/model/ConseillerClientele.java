@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -17,6 +18,7 @@ import fr.adaming.model.*;
 
 @Entity(name="consEntity")
 @Table(name="conseillers")
+@MappedSuperclass
 public class ConseillerClientele extends Personne implements Serializable{
 
 	@Transient
@@ -66,5 +68,35 @@ public class ConseillerClientele extends Personne implements Serializable{
 		this.agence=agence;
 	}
 
+	/**
+	 * @return the agence
+	 */
+	public Agence getAgence() {
+		return agence;
+	}
+
+	/**
+	 * @param agence the agence to set
+	 */
+	public void setAgence(Agence agence) {
+		this.agence = agence;
+	}
+
+	/**
+	 * @return the clients
+	 */
+	public List<Client> getClients() {
+		return clients;
+	}
+
+	/**
+	 * @param clients the clients to set
+	 */
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+	
+	
+	
 	
 }

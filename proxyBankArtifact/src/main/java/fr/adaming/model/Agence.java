@@ -16,13 +16,13 @@ import javax.persistence.Table;
 public class Agence {
 	@Id
 	@Column(name="id_agence")
-	private String numero;
+	private int numero;
 	@Column(name="date_creation")
 	private Date dateCreation;
 
 	// Association
 //	@OneToOne(mappedBy = "agence_gerant")
-	private Gerant gerant;
+	//private Gerant gerant;
 
 	@OneToMany(mappedBy ="agence")
 	private List<ConseillerClientele> conseillers;
@@ -38,21 +38,17 @@ public class Agence {
 	 * @param gerant
 	 * @param conseillers
 	 */
-	public Agence(String numero, Date dateCreation, Gerant gerant,
+	public Agence(int numero, Date dateCreation, 
 			List<ConseillerClientele> conseillers) {
 		super();
 		this.numero = numero;
 		this.dateCreation = dateCreation;
-		this.gerant = gerant;
 		this.conseillers = conseillers;
 	}
 	
 	/**
 	 * 
-	 * @param numero
 	 * @param dateCreation
-	 * @param gerant
-	 * @param conseillers
 	 */
 	public Agence( Date dateCreation) {
 		super();
@@ -61,11 +57,11 @@ public class Agence {
 		
 	}
 
-	public String getNumero() {
+	public int getNumero() {
 		return numero;
 	}
 
-	public void setNumero(String numero) {
+	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 
@@ -77,13 +73,6 @@ public class Agence {
 		this.dateCreation = dateCreation;
 	}
 
-	public Gerant getGerant() {
-		return gerant;
-	}
-
-	public void setGerant(Gerant gerant) {
-		this.gerant = gerant;
-	}
 
 	public List<ConseillerClientele> getConseillers() {
 		return conseillers;
@@ -92,4 +81,15 @@ public class Agence {
 	public void setConseillers(List<ConseillerClientele> conseillers) {
 		this.conseillers = conseillers;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Agence [numero=" + numero + ", dateCreation=" + dateCreation
+				+  ", conseillers=" + conseillers + "]";
+	}
+	
+	
 }
