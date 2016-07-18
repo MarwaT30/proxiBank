@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -20,11 +21,11 @@ public class Agence {
 	@Column(name="date_creation")
 	private Date dateCreation;
 
-	// Association
-//	@OneToOne(mappedBy = "agence_gerant")
-	//private Gerant gerant;
+	 //Association
+	@OneToOne(mappedBy = "agence_gerant")
+	private Gerant gerant;
 
-	@OneToMany(mappedBy ="agence")
+	@OneToMany(mappedBy ="agence", fetch=FetchType.EAGER)
 	private List<ConseillerClientele> conseillers;
 
 	public Agence() {

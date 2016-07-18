@@ -25,10 +25,12 @@ public class AgenceDaoImpl implements IAgenceDao{
 	@Override
 	public Agence getAgenceByNumero(int num) {
 		//ouvrir une session
-		Session session = sessionFactory.openSession();
+		
+		//Session session = sessionFactory.openSession();
+		Session session=sessionFactory.getCurrentSession();
 		
 		//declaration de la requete
-		String hqlReq = "from agenceEntity e where numero=:id1 order by e.nom asc";
+		String hqlReq = "from agenceEntity e where numero=:id1 ";
 		
 
 		Query query = session.createQuery(hqlReq);
@@ -39,7 +41,7 @@ public class AgenceDaoImpl implements IAgenceDao{
 		Agence agence=(Agence)query.uniqueResult();
 		
 		//fermer la session
-		session.close();
+		//session.close();
 		
 		return agence;
 	}
@@ -55,8 +57,8 @@ public class AgenceDaoImpl implements IAgenceDao{
 
 	@Override
 	public int modifierAgence(Agence agence) {
-Session session=sessionFactory.openSession();
-		
+//Session session=sessionFactory.openSession();
+		Session session=sessionFactory.getCurrentSession();
 		//avec SQL natif
 		String sqlreq="update agences set date_creation=:date1 where id_agence=:id1";
 		SQLQuery query=session.createSQLQuery(sqlreq);
@@ -65,14 +67,15 @@ Session session=sessionFactory.openSession();
 		query.setParameter("id1", agence.getNumero());
 
 		query.executeUpdate();
-		session.close();
+		//session.close();
 
 		return 1;
 	}
 
 	@Override
 	public int supprimerAgence(Agence agence) {
-		Session session = sessionFactory.openSession();
+		//Session session = sessionFactory.openSession();
+		Session session=sessionFactory.getCurrentSession();
 		//declaration de la requete
 				String hqlReq = "delete from agenceEntity where numero=:id1 ";
 						
@@ -89,7 +92,7 @@ Session session=sessionFactory.openSession();
 			    //envoyer la requete
 			    query.executeUpdate();
 				
-				session.close();	
+				//session.close();	
 
 					return 1;
 	}

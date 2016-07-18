@@ -13,7 +13,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 public class classTestDao {
 	public static void main(String[] args) {
 				ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/webapp/WEB-INF/applicationContext.xml");
-				
+				IGerantDao gerantDao = (IGerantDao) ctx.getBean("gerantDao");
 				IAgenceDao agenceDao = (IAgenceDao) ctx.getBean("agenceDao");
 				IClientDao clientDao = (IClientDao) ctx.getBean("clientDao");
 				IConseillerDao conseillerDao=(IConseillerDao) ctx.getBean("conseillerDao");
@@ -23,10 +23,13 @@ public class classTestDao {
 //				System.out.println(agence);
 				Date date = new Date(2011,11,11);
 				Agence agence=new Agence(date);
+			
 				
-				agence.setNumero(1);
+				agence.setNumero(2);
 				System.out.println(agence);
 				agenceDao.ajouterAgence(agence);
+				Agence agence2=agenceDao.getAgenceByNumero(1);
+				System.out.println(agence2);
 
 //				
 //				

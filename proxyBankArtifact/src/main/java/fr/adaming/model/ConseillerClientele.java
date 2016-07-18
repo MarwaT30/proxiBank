@@ -22,9 +22,9 @@ import fr.adaming.model.*;
 
 @Entity(name="consEntity")
 @Table(name="conseillers")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type")
-@DiscriminatorValue(value="emp")
+//@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(name="type")
+//@DiscriminatorValue(value="emp")
 
 public class ConseillerClientele extends Personne implements Serializable{
 
@@ -35,7 +35,7 @@ public class ConseillerClientele extends Personne implements Serializable{
 	@JoinColumn(name="agence_id",nullable=false)
 	private Agence agence;
 	
-	@OneToMany(mappedBy="conseiller",cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="conseiller", fetch=FetchType.EAGER)
 	private List<Client> clients;//=new ArrayList<Client>();
 	/**
 	 * empty constructor for class ConseillerClientele
