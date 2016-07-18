@@ -15,7 +15,7 @@ import fr.adaming.model.Client;
 import fr.adaming.model.ConseillerClientele;
 
 
-@Repository("conseillerDao")
+@Repository("agenceDao")
 @Transactional
 public enum AgenceDaoImpl implements IAgenceDao{
 	

@@ -14,6 +14,7 @@ public class classTestDao {
 				IClientDao clientDao = (ClientDaoImpl) ctx.getBean("clientDao");
 				IConseillerDao conseillerDao=(IConseillerDao) ctx.getBean("conseillerDao");
 		
+				
 				Agence agence=new Agence();
 				
 				ConseillerClientele conseiller1=new ConseillerClientele("Duboit", "Jean","rue cul de sac" , 41000, "Cachan", 012540, agence);
