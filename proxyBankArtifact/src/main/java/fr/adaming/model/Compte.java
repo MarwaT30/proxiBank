@@ -24,7 +24,7 @@ public abstract class Compte {
 //	private Client client;
 
 	/**
-	 * ctor vide
+	 * empty constructor for class Compte
 	 */
 	public Compte() {
 		super();
@@ -33,6 +33,7 @@ public abstract class Compte {
 	
 
 /**
+ * constructor for class Compte 
  * @param numero
  * @param solde
  * @param dateOuverture
@@ -45,7 +46,7 @@ public Compte(int numero, float solde, Date dateOuverture) {
 }
 
 /**
- * @param numero
+ * constructor for class Compte
  * @param solde
  * @param dateOuverture
  */

@@ -12,7 +12,7 @@ import fr.adaming.model.Agence;
 import fr.adaming.model.Client;
 import fr.adaming.model.ConseillerClientele;
 
-@Repository
+@Repository("conseillerDao")
 @Transactional
 public class ConseillerDaoImpl implements IConseillerDao{
 

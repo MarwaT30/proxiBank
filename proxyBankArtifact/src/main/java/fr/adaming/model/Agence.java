@@ -46,6 +46,20 @@ public class Agence {
 		this.gerant = gerant;
 		this.conseillers = conseillers;
 	}
+	
+	/**
+	 * 
+	 * @param numero
+	 * @param dateCreation
+	 * @param gerant
+	 * @param conseillers
+	 */
+	public Agence( Date dateCreation) {
+		super();
+
+		this.dateCreation = dateCreation;
+		
+	}
 
 	public String getNumero() {
 		return numero;
