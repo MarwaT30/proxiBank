@@ -16,7 +16,7 @@ import fr.adaming.service.IClientService;
 public class ClientManagedBean implements Serializable {
 	private static final long serialVersionUID = 615713187L;
 
-	private Client client;
+	private Client client = new Client();
 	
 	IClientService clientService = new ClientServiceImpl();
 	
