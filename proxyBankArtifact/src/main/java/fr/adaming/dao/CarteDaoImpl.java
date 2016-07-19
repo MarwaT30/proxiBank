@@ -27,31 +27,32 @@ public class CarteDaoImpl implements ICarteDao {
 
 	@Override
 	public CarteBancaire getCarteByCompte(CompteCourant compte) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		
+		return compte.getCarte();
 	}
 
 	@Override
 	public Compte getCompteByCarte(CarteBancaire carte) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		return carte.getCompte();
 	}
 
 	@Override
 	public int ajouterCarte(CarteBancaire carte) {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
 		return 0;
 	}
 
 	@Override
 	public int modifierCarte(CarteBancaire carte) {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
 		return 0;
 	}
 
 	@Override
 	public int supprimerCarte(CarteBancaire carte) {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
 		return 0;
 	}
 
