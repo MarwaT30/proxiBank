@@ -7,6 +7,7 @@ import fr.adaming.model.Client;
 import fr.adaming.model.CompteCourant;
 import fr.adaming.model.CompteEpargne;
 import fr.adaming.model.ConseillerClientele;
+import fr.adaming.model.Gerant;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -94,6 +95,10 @@ public class classTestDao {
 				for(Client cls:listeCls2){
 					System.out.println(cls);
 				}
+				
+				Gerant gerant=new Gerant("ger", "ant", "bureau", 1044, "rdc", 25789);
+				gerant.setAgence_gerant(agence2);
+				gerantDao.ajouterGerant(gerant);
 				
 				
 				CompteCourant cc1=new CompteCourant(200, date);

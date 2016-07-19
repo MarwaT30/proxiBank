@@ -17,7 +17,7 @@ public interface IClientService {
 
 	/**
 	 * 
-	 * @param conseiller
+	 * @param i
 	 * @return les clients gérés par ce conseiller
 	 */
 	public List<Client> getClientsByConseiller(ConseillerClientele conseiller);

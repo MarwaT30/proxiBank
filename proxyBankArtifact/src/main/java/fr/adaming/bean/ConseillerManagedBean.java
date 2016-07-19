@@ -56,22 +56,22 @@ public class ConseillerManagedBean {
 	
 	//*****************methodes****************************
 	public void addConseiller(){
-		conseillerService.
+		conseillerService.ajouterConseiller(conseiller);
 		conseiller = new ConseillerClientele();
 		
 	}
 	
 	public void deleteConseiller(){
-		conseillerService.delete(conseiller);
-		conseiller=new Conseiller();
+		conseillerService.supprimerConseiller(conseiller);
+		conseiller=new ConseillerClientele();
 	}
 	
 	public void updateConseiller(){
-		conseillerService.update(conseiller);
+		conseillerService.modifierConseiller(conseiller);
 			}
 	
-	public List<Conseiller> getConseillerList(){
-		return conseillerService.getAll();
+	public List<ConseillerClientele> getConseillerList(){
+		return conseillerService.getAllConseillers();
 			}
 	
 	

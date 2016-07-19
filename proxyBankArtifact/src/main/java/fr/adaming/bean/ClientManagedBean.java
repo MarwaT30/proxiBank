@@ -13,9 +13,13 @@ import java.util.List;
 
 
 
+
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+
+
 
 
 
@@ -25,6 +29,8 @@ import org.springframework.stereotype.Component;
 
 import fr.adaming.exception.ExceptionNombreClient;
 import fr.adaming.model.Client;
+import fr.adaming.model.CompteCourant;
+import fr.adaming.model.CompteEpargne;
 import fr.adaming.model.ConseillerClientele;
 import fr.adaming.service.ClientServiceImpl;
 import fr.adaming.service.IClientService;
@@ -37,8 +43,14 @@ public class ClientManagedBean implements Serializable {
 	
 	
 	private Client client;
+	private boolean editMode=false;
+	private boolean addCompteEpargne;
+	private boolean addCompteCourant;
+	private CompteCourant compteCourant;
+	private ConseillerClientele conseiller;
+	private CompteEpargne compteEpargne;
+	private List<Client> list =null;
 
-	
 	@ManagedProperty(value="#{clientServiceBean}")
 	//@Autowired
 	IClientService clientService;
@@ -63,9 +75,27 @@ public class ClientManagedBean implements Serializable {
 	 * Pour créer le client à partir du formulaire
 	 */
 	public void ajouter() throws ExceptionNombreClient{
-		System.out.println(client.getNom());
+		if (editMode == false) {
+			if (addCompteCourant != true) {
+				compteCourant = null;
+			}
 
-		clientService.ajouterClient(client);
+			if (addCompteEpargne != true) {
+				compteEpargne = null;
+			}
+
+			clientService.ajouterClient(conseiller.getId(), client, compteCourant,compteEpargne);
+			list = clientService.getClientsByConseiller(conseiller);
+			client = new Client();
+			compteCourant = new CompteCourant();
+			compteEpargne = new CompteEpargne();
+			conseiller = new ConseillerClientele();
+		} else {
+			clientService.modifierClient(client);
+			list = clientService.getClientsByConseiller(conseiller);
+			editMode = false;
+			client = new Client();
+		}
 	}
 	
 	
@@ -126,5 +156,133 @@ public class ClientManagedBean implements Serializable {
 	public void setListeClients(List<Client> listeClients) {
 		this.listeClients = listeClients;
 	}
+
+
+
+	/**
+	 * @return the editMode
+	 */
+	public boolean isEditMode() {
+		return editMode;
+	}
+
+
+
+	/**
+	 * @param editMode the editMode to set
+	 */
+	public void setEditMode(boolean editMode) {
+		this.editMode = editMode;
+	}
+
+
+
+	/**
+	 * @return the addCompteEpargne
+	 */
+	public boolean isAddCompteEpargne() {
+		return addCompteEpargne;
+	}
+
+
+
+	/**
+	 * @param addCompteEpargne the addCompteEpargne to set
+	 */
+	public void setAddCompteEpargne(boolean addCompteEpargne) {
+		this.addCompteEpargne = addCompteEpargne;
+	}
+
+
+
+	/**
+	 * @return the addCompteCourant
+	 */
+	public boolean isAddCompteCourant() {
+		return addCompteCourant;
+	}
+
+
+
+	/**
+	 * @param addCompteCourant the addCompteCourant to set
+	 */
+	public void setAddCompteCourant(boolean addCompteCourant) {
+		this.addCompteCourant = addCompteCourant;
+	}
+
+
+
+	/**
+	 * @return the compteCourant
+	 */
+	public CompteCourant getCompteCourant() {
+		return compteCourant;
+	}
+
+
+
+	/**
+	 * @param compteCourant the compteCourant to set
+	 */
+	public void setCompteCourant(CompteCourant compteCourant) {
+		this.compteCourant = compteCourant;
+	}
+
+
+
+	/**
+	 * @return the conseiller
+	 */
+	public ConseillerClientele getConseiller() {
+		return conseiller;
+	}
+
+
+
+	/**
+	 * @param conseiller the conseiller to set
+	 */
+	public void setConseiller(ConseillerClientele conseiller) {
+		this.conseiller = conseiller;
+	}
+
+
+
+	/**
+	 * @return the compteEpargne
+	 */
+	public CompteEpargne getCompteEpargne() {
+		return compteEpargne;
+	}
+
+
+
+	/**
+	 * @param compteEpargne the compteEpargne to set
+	 */
+	public void setCompteEpargne(CompteEpargne compteEpargne) {
+		this.compteEpargne = compteEpargne;
+	}
+
+
+
+	/**
+	 * @return the list
+	 */
+	public List<Client> getList() {
+		return list;
+	}
+
+
+
+	/**
+	 * @param list the list to set
+	 */
+	public void setList(List<Client> list) {
+		this.list = list;
+	}
+	
+	
 
 }
