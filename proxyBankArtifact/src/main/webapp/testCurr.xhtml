@@ -8,12 +8,11 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Index</title>
+	<title>Taux de change</title>
 </h:head>
 <h:body>
 	<h:form>
-	Taux de change : <h:inputText id="id" value="#{changeMB.getChangeEuro()}" />
-		<br />
+	Taux de change : <h:outputText id="id" value="#{changeMB.getChangeEuro()}" />
 	</h:form>
 </h:body>
 </html>

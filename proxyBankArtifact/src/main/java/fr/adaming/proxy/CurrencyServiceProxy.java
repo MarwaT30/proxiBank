@@ -45,7 +45,7 @@ public class CurrencyServiceProxy {
 
 	// sendLiveRequest() function is created to request and retrieve the data
 	public static String sendLiveRequest(String currency) {
-		String retour="";
+		String retour = "";
 		// The following line initializes the HttpGet Object with the URL in
 		// order to send a request
 		HttpGet get = new HttpGet(BASE_URL + ENDPOINT + "?access_key="
@@ -92,17 +92,10 @@ public class CurrencyServiceProxy {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		try {
-			httpClient.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return retour;
 	}
 
-	public void close() {
+	public static void close() {
 		try {
 			httpClient.close();
 		} catch (IOException e) {

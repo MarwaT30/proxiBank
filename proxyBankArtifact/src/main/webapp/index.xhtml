@@ -8,96 +8,106 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Index</title>
+	<title>Tout sur les clients</title>
 </h:head>
 <h:body>
-	<h3>Liste des utilisateurs :</h3>
-	<h:form>
-		<h:commandButton value="Rafraichir" action="#{clientMB.reload()}" />
-	</h:form>
-	<p:dataTable var="users" value="#{clientMB.listeClients}">
-		<p:column headerText="Id">
-			<h:outputText value="#{users.id}" />
-		</p:column>
-		<p:column headerText="Nom">
-			<h:outputText value="#{users.nom}" />
-		</p:column>
-		<p:column headerText="Prenom">
-			<h:outputText value="#{users.prenom}" />
-		</p:column>
-		<p:column headerText="Téléphone">
-			<h:outputText value="#{users.telephone}" />
-		</p:column>
-		<p:column headerText="Adresse">
-			<h:outputText value="#{users.adresse}" />
-		</p:column>
-		<p:column headerText="Code Postal">
-			<h:outputText value="#{users.code_postal}" />
-		</p:column>
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="content">
+			<h3>Liste des utilisateurs :</h3>
+			<h:form>
+				<h:commandButton value="Rafraichir" action="#{clientMB.reload()}" />
+			</h:form>
+			<p:dataTable var="users" value="#{clientMB.listeClients}">
+				<p:column headerText="Id">
+					<h:outputText value="#{users.id}" />
+				</p:column>
+				<p:column headerText="Nom">
+					<h:outputText value="#{users.nom}" />
+				</p:column>
+				<p:column headerText="Prenom">
+					<h:outputText value="#{users.prenom}" />
+				</p:column>
+				<p:column headerText="Téléphone">
+					<h:outputText value="#{users.telephone}" />
+				</p:column>
+				<p:column headerText="Adresse">
+					<h:outputText value="#{users.adresse}" />
+				</p:column>
+				<p:column headerText="Code Postal">
+					<h:outputText value="#{users.code_postal}" />
+				</p:column>
 
-		<p:column headerText="Ville">
-			<h:outputText value="#{users.ville}" />
-		</p:column>
+				<p:column headerText="Ville">
+					<h:outputText value="#{users.ville}" />
+				</p:column>
 
-	</p:dataTable>
+			</p:dataTable>
 
-	<h3>Ajouter un utilisateur :</h3>
-	<h:form>
+			<h3>Ajouter un utilisateur :</h3>
+			<h:form>
 	Nom : <h:inputText id="nom" value="#{clientMB.client.nom}" />
-		<br />
+				<br />
 	Prénom : <h:inputText id="prenom" value="#{clientMB.client.prenom}" />
-		<br />
-	Téléphone : <h:inputText id="telephone" value="#{clientMB.client.telephone}" />
-		<br />
+				<br />
+	Téléphone : <h:inputText id="telephone"
+					value="#{clientMB.client.telephone}" />
+				<br />
 	Adresse : <h:inputText id="adresse" value="#{clientMB.client.adresse}" />
-		<br />
-	Code Postal : <h:inputText id="codePostal" value="#{clientMB.client.codePostal}" />
-		<br />
+				<br />
+	Code Postal : <h:inputText id="codePostal"
+					value="#{clientMB.client.codePostal}" />
+				<br />
 	Ville : <h:inputText id="ville" value="#{clientMB.client.ville}" />
-		<br />
+				<br />
 
-		<h:commandButton value="Ajouter le client"
-			action="#{clientMB.ajouter()}" />
-	</h:form>
+				<h:commandButton value="Ajouter le client"
+					action="#{clientMB.ajouter()}" />
+			</h:form>
 
-	<h3>Supprimer un utilisateur :</h3>
-	<h:form>
+			<h3>Supprimer un utilisateur :</h3>
+			<h:form>
 	id : <h:inputText id="id" value="#{clientMB.client.id}" />
-		<br />
+				<br />
 	Nom : <h:inputText id="nom" value="#{clientMB.client.nom}" />
-		<br />
+				<br />
 	Prénom : <h:inputText id="prenom" value="#{clientMB.client.prenom}" />
-		<br />
-	Téléphone : <h:inputText id="telephone" value="#{clientMB.client.telephone}" />
-		<br />
+				<br />
+	Téléphone : <h:inputText id="telephone"
+					value="#{clientMB.client.telephone}" />
+				<br />
 	Adresse : <h:inputText id="adresse" value="#{clientMB.client.adresse}" />
-		<br />
-	Code Postal : <h:inputText id="codePostal" value="#{clientMB.client.codePostal}" />
-		<br />
+				<br />
+	Code Postal : <h:inputText id="codePostal"
+					value="#{clientMB.client.codePostal}" />
+				<br />
 	Ville : <h:inputText id="ville" value="#{clientMB.client.ville}" />
-		<br />
-		<h:commandButton value="Supprimer le client"
-			action="#{clientMB.supprimer()}" />
-	</h:form>
+				<br />
+				<h:commandButton value="Supprimer le client"
+					action="#{clientMB.supprimer()}" />
+			</h:form>
 
-	<h3>Modifier un utilisateur :</h3>
-	<h:form>
+			<h3>Modifier un utilisateur :</h3>
+			<h:form>
 	id : <h:inputText id="id" value="#{clientMB.client.id}" />
-		<br />
+				<br />
 	Nom : <h:inputText id="nom" value="#{clientMB.client.nom}" />
-		<br />
+				<br />
 	Prénom : <h:inputText id="prenom" value="#{clientMB.client.prenom}" />
-		<br />
-	Téléphone : <h:inputText id="telephone" value="#{clientMB.client.telephone}" />
-		<br />
+				<br />
+	Téléphone : <h:inputText id="telephone"
+					value="#{clientMB.client.telephone}" />
+				<br />
 	Adresse : <h:inputText id="adresse" value="#{clientMB.client.adresse}" />
-		<br />
-	Code Postal : <h:inputText id="codePostal" value="#{clientMB.client.codePostal}" />
-		<br />
+				<br />
+	Code Postal : <h:inputText id="codePostal"
+					value="#{clientMB.client.codePostal}" />
+				<br />
 	Ville : <h:inputText id="ville" value="#{clientMB.client.ville}" />
-		<br />
-		<h:commandButton value="Modifier le client"
-			action="#{clientMB.modifier()}" />
-	</h:form>
+				<br />
+				<h:commandButton value="Modifier le client"
+					action="#{clientMB.modifier()}" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>
