@@ -1,23 +1,52 @@
 package fr.adaming.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-@MappedSuperclass
+
+
+@Entity(name="carteEntity")
+@Table(name="cartes")
 public abstract class CarteBancaire {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_carte;
 
+	@Column(name="type")
+	private String type;
+	
 	@OneToOne
 	@JoinColumn (name="num_compte")
 	private CompteCourant compte;
 	
 	
+	
+	
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+
 	/**
 	 * @return the compte
 	 */
@@ -55,36 +84,32 @@ public abstract class CarteBancaire {
 		super();
 	}
 
+
+
+	/**
+	 * @param type
+	 */
+	public CarteBancaire(String type) {
+		super();
+		this.type = type;
+	}
+
+
+
 	/**
 	 * @param id_carte
+	 * @param type
+	 * @param compte
 	 */
-	public CarteBancaire(int id_carte,CompteCourant compte) {
+	public CarteBancaire(int id_carte, String type, CompteCourant compte) {
 		super();
 		this.id_carte = id_carte;
+		this.type = type;
 		this.compte = compte;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "CarteBancaire [id_carte=" + id_carte + "]";
-	}
-	
 	
 
-	// Association
-//	@OneToOne
-//	@JoinColumn(name = "compte_id", referencedColumnName = "id_compte")
-//	private CompteCourant compteLie;
-
-//	public CompteCourant getCompteLie() {
-//		return compteLie;
-//	}
-//
-//	public void setCompteLie(CompteCourant compte) {
-//		this.compteLie = compte;
-//	}
-
+	
+	
 }

@@ -1,8 +1,6 @@
 package fr.adaming.dao;
 
 import fr.adaming.model.CarteBancaire;
-import fr.adaming.model.CarteElectron;
-import fr.adaming.model.CartePremier;
 import fr.adaming.model.Compte;
 import fr.adaming.model.CompteCourant;
 
@@ -12,7 +10,12 @@ public interface ICarteDao {
 	 * @param id
 	 * @return
 	 */
-	public CarteBancaire getCarteElectronByCompte(CompteCourant compte);
+	public CarteBancaire getCarteByCompte(CompteCourant compte);
+
+	
+	
+
+	
 
 	
 	/**
@@ -20,37 +23,18 @@ public interface ICarteDao {
 	 * @param id
 	 * @return
 	 */
-	public CarteBancaire getCartePremiumByCompte(int id);
-
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public Compte getCompteByCarteElectron(CarteBancaire carte);
-
+	public Compte getCompteByCarte(CarteBancaire carte);
 	
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public Compte getCompteByCartePremium(CarteBancaire carte);
+	
 	
 	/**
 	 * 
 	 * @param carte
 	 * @return
 	 */
-	public int ajouterCarteElectron(CarteElectron carte);
+	public int ajouterCarte(CarteBancaire carte);
 
 	
-	/**
-	 * 
-	 * @param carte
-	 * @return
-	 */
-	public int ajouterCartePremium(CartePremier carte);
 	/**
 	 * 
 	 * @param compte
