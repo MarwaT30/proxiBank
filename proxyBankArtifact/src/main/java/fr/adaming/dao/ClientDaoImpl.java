@@ -53,7 +53,7 @@ public class ClientDaoImpl implements IClientDao {
 		Session session = sessionFactory.getCurrentSession();
 
 		// declaration de la requete
-		String hqlReq = "from clientEntity e where conseiller_id=:id1 order by e.nom asc";
+		String hqlReq = "from clientEntity e where Id_Conseiller=:id1 order by e.nom asc";
 
 		Query query = session.createQuery(hqlReq);
 
@@ -80,23 +80,25 @@ public class ClientDaoImpl implements IClientDao {
 	@Override
 	public int modifierClient(Client client) {
 		Session session = sessionFactory.getCurrentSession();
-
+		session.update(client);
 		// avec SQL natif
-		String sqlreq = "update clients set nom=:nom1, prenom=:prenom1, adresse=:adresse1, code_postal=:codePostal1, ville=:ville1, telephone=:telephone1 where id=:id1";
-		SQLQuery query = session.createSQLQuery(sqlreq);
-		// ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
-		query.addEntity(Client.class);
-
-		query.setParameter("nom1", client.getNom());
-		query.setParameter("prenom1", client.getPrenom());
-		query.setParameter("adresse1", client.getAdresse());
-		query.setParameter("codePostal1", client.getCodePostal());
-		query.setParameter("ville1", client.getVille());
-		query.setParameter("telephone1", client.getTelephone());
-		query.setParameter("id1", client.getId());
+//		String sqlreq = "update clients set nom=:nom1, prenom=:prenom1, adresse=:adresse1, code_postal=:codePostal1, ville=:ville1, telephone=:telephone1  where id=:id1";
+//		SQLQuery query = session.createSQLQuery(sqlreq);
+//		// ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
+//		query.addEntity(Client.class);
+//
+//		query.setParameter("nom1", client.getNom());
+//		query.setParameter("prenom1", client.getPrenom());
+//		query.setParameter("adresse1", client.getAdresse());
+//		query.setParameter("codePostal1", client.getCodePostal());
+//		query.setParameter("ville1", client.getVille());
+//		query.setParameter("telephone1", client.getTelephone());
+//		query.setParameter("id2", client.getConseiller().getId());
+//		query.setParameter("id1", client.getId());
 		//query.executeUpdate();
 		// session.close();
-		return query.executeUpdate();
+		//return query.executeUpdate();
+		return 1;
 	}
 
 	@Override

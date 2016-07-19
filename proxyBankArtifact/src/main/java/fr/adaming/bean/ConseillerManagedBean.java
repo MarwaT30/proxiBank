@@ -6,89 +6,73 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import fr.adaming.model.Client;
 import fr.adaming.model.ConseillerClientele;
 import fr.adaming.service.IConseillerService;
 
-@ManagedBean(name = "conseillerMB")
+@ManagedBean(name="conseillerBean")
 @SessionScoped
-public class ConseillerManagedBean implements Serializable {
-	private static final long serialVersionUID = 6531335421273622698L;
+@Component
+public class ConseillerManagedBean {
 
-	IConseillerService conseillerService;
+	@Autowired
+	private IConseillerService conseillerService;
 	
 	private ConseillerClientele conseiller;
 	
-	private List<ConseillerClientele> listeConseiller;
-	
-	private List<Client> listeClientsConseiller;
+	//********************constructeurs***************
 
-	/**
-	 * 
-	 */
-	public ConseillerManagedBean() {
-		super();
-	}
-
-	/**
-	 * @return the conseiller
-	 */
-	public ConseillerClientele getConseiller() {
-		return conseiller;
-	}
-
-	/**
-	 * @param conseiller the conseiller to set
-	 */
-	public void setConseiller(ConseillerClientele conseiller) {
+	public ConseillerManagedBean(IConseillerService conseillerService,
+			ConseillerClientele conseiller) {
+		this.conseillerService = conseillerService;
 		this.conseiller = conseiller;
 	}
 
-	/**
-	 * @return the listeConseiller
-	 */
-	public List<ConseillerClientele> getListeConseiller() {
-		return listeConseiller;
-	}
+	public ConseillerManagedBean() {
+		conseiller=new ConseillerClientele();
+		}
+	//*************getter setter*****************
 
-	/**
-	 * @param listeConseiller the listeConseiller to set
-	 */
-	public void setListeConseiller(List<ConseillerClientele> listeConseiller) {
-		this.listeConseiller = listeConseiller;
-	}
-
-	/**
-	 * @return the listeClientsConseiller
-	 */
-	public List<Client> getListeClientsConseiller() {
-		return listeClientsConseiller;
-	}
-
-	/**
-	 * @param listeClientsConseiller the listeClientsConseiller to set
-	 */
-	public void setListeClientsConseiller(List<Client> listeClientsConseiller) {
-		this.listeClientsConseiller = listeClientsConseiller;
-	}
-	
-	
-	/**
-	 * @return the conseillerService
-	 */
 	public IConseillerService getConseillerService() {
 		return conseillerService;
 	}
 
-	/**
-	 * @param conseillerService the conseillerService to set
-	 */
 	public void setConseillerService(IConseillerService conseillerService) {
 		this.conseillerService = conseillerService;
 	}
 
-//	public void ajouter(){
-//		conseillerService.
-//	}
+	public ConseillerClientele getConseiller() {
+		return conseiller;
+	}
+
+	public void setConseiller(ConseillerClientele conseiller) {
+		this.conseiller = conseiller;
+	}
+	
+	//*****************methodes****************************
+	public void addConseiller(){
+		conseillerService.
+		conseiller = new ConseillerClientele();
+		
+	}
+	
+	public void deleteConseiller(){
+		conseillerService.delete(conseiller);
+		conseiller=new Conseiller();
+	}
+	
+	public void updateConseiller(){
+		conseillerService.update(conseiller);
+			}
+	
+	public List<Conseiller> getConseillerList(){
+		return conseillerService.getAll();
+			}
+	
 	
 }

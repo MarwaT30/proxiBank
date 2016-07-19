@@ -3,9 +3,24 @@ package fr.adaming.bean;
 import java.io.Serializable;
 import java.util.List;
 
+
+
+
+
+
+
+
+
+
+
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
+
+
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import fr.adaming.exception.ExceptionNombreClient;
@@ -18,14 +33,28 @@ import fr.adaming.service.IClientService;
 @SessionScoped
 @Component
 public class ClientManagedBean implements Serializable {
-	private static final long serialVersionUID = 615713187L;
+	private static final long serialVersionUID = 86L;
+	
+	
+	private Client client;
 
-	private Client client = new Client();
-
-	IClientService clientService = new ClientServiceImpl();
-
+	
+	@ManagedProperty(value="#{clientServiceBean}")
+	//@Autowired
+	IClientService clientService;
+	
+	
 	private List<Client> listeClients;
 
+	/**
+	 * ctor vide
+	 */
+	public ClientManagedBean() {
+		client=new Client();
+	}
+	
+	
+	
 	public void reload() {
 		setListeClients(clientService.getAllClients());
 	}
@@ -38,9 +67,29 @@ public class ClientManagedBean implements Serializable {
 
 		clientService.ajouterClient(client);
 	}
+	
+	
 
-	public List<Client> getAllClients() {
-		return clientService.getAllClients();
+	/**
+	 * @return the clientService
+	 */
+	public IClientService getClientService() {
+		return clientService;
+	}
+
+
+
+	/**
+	 * @param clientService the clientService to set
+	 */
+	public void setClientService(IClientService clientService) {
+		this.clientService = clientService;
+	}
+
+
+
+	public void getAllClients() {
+		this.listeClients=clientService.getAllClients();
 	}
 
 	public List<Client> getClientsByConseiller(ConseillerClientele conseiller) {
@@ -60,12 +109,7 @@ public class ClientManagedBean implements Serializable {
 		clientService.supprimerClient(client);
 	}
 
-	/**
-	 * ctor vide
-	 */
-	public ClientManagedBean() {
-		super();
-	}
+	
 
 	public Client getClient() {
 		return client;

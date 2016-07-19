@@ -3,6 +3,8 @@ package fr.adaming.model;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
@@ -12,6 +14,7 @@ import javax.persistence.OneToOne;
 public abstract class Compte {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_compte")
 	private int numero;
 	@Column(name = "solde")

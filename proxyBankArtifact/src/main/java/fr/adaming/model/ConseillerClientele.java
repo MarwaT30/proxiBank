@@ -1,7 +1,9 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,8 +26,8 @@ public class ConseillerClientele extends Personne implements Serializable {
 	@JoinColumn(name = "agence_id", nullable = false)
 	private Agence agence;
 
-	@OneToMany(mappedBy = "conseiller", fetch = FetchType.EAGER)
-	private List<Client> clients;// =new ArrayList<Client>();
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="conseiller")
+	private List<Client> clients;
 
 	/**
 	 * empty constructor for class ConseillerClientele

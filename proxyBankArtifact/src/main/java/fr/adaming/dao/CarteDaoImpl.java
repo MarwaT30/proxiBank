@@ -27,8 +27,7 @@ public class CarteDaoImpl implements ICarteDao {
 
 	@Override
 	public CarteBancaire getCarteByCompte(CompteCourant compte) {
-		Session session = sessionFactory.getCurrentSession();
-		
+		Session session = sessionFactory.getCurrentSession();	
 		return compte.getCarte();
 	}
 
@@ -41,23 +40,22 @@ public class CarteDaoImpl implements ICarteDao {
 	@Override
 	public int ajouterCarte(CarteBancaire carte) {
 		Session session = sessionFactory.getCurrentSession();
-		return 0;
+		session.save(carte);
+		return 1;
 	}
 
 	@Override
 	public int modifierCarte(CarteBancaire carte) {
 		Session session = sessionFactory.getCurrentSession();
-		return 0;
+		session.update(carte);
+		return 1;
 	}
 
 	@Override
 	public int supprimerCarte(CarteBancaire carte) {
 		Session session = sessionFactory.getCurrentSession();
+		session.delete(carte);
 		return 0;
-	}
-
-	
-	
-	
+	}	
 
 }

@@ -119,19 +119,20 @@ public class CompteDaoImpl implements ICompteDao {
 	@Override
 	public int modifierCompteC(CompteCourant compteC) {
 		Session session = sessionFactory.getCurrentSession();
-
-		// avec SQL natif
-		String sqlreq = "update comptes_courants set date_ouverture=:date1 , solde=:solde1, aut_decouvert:=dec1 where id=:id1";
-		SQLQuery query = session.createSQLQuery(sqlreq);
-		// ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
-		query.addEntity(CompteCourant.class);
-		query.setParameter("date1", compteC.getDateOuverture());
-		query.setParameter("solde1", compteC.getSolde());
-		query.setParameter("dec1", compteC.getAutDecouvert());
-		query.setParameter("id1", compteC.getNumero());
+			session.update(compteC);
+//		// avec SQL natif
+//		String sqlreq = "update comptes_courants set date_ouverture=:date1 , solde=:solde1, aut_decouvert:=dec1 where id=:id1";
+//		SQLQuery query = session.createSQLQuery(sqlreq);
+//		// ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
+//		query.addEntity(CompteCourant.class);
+//		query.setParameter("date1", compteC.getDateOuverture());
+//		query.setParameter("solde1", compteC.getSolde());
+//		query.setParameter("dec1", compteC.getAutDecouvert());
+//		query.setParameter("id1", compteC.getNumero());
 		// query.executeUpdate();
 		// session.close();
-		return query.executeUpdate();
+		//return query.executeUpdate();
+			return 1;
 	}
 
 	@Override

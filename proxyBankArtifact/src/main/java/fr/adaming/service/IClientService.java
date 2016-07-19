@@ -4,6 +4,8 @@ import java.util.List;
 
 import fr.adaming.exception.ExceptionNombreClient;
 import fr.adaming.model.Client;
+import fr.adaming.model.CompteCourant;
+import fr.adaming.model.CompteEpargne;
 import fr.adaming.model.ConseillerClientele;
 
 public interface IClientService {
@@ -26,8 +28,8 @@ public interface IClientService {
 	 * @param client
 	 * @return 1 si OK
 	 */
-	public void ajouterClient(Client client)throws ExceptionNombreClient;
-
+	//public void ajouterClient(Client client)throws ExceptionNombreClient;
+	public void ajouterClient(int idConseiller,Client client,CompteCourant compteCourant, CompteEpargne compteEpargne) throws ExceptionNombreClient;
 	/**
 	 * 
 	 * @param client

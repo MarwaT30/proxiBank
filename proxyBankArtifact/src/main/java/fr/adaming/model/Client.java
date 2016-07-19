@@ -20,7 +20,7 @@ public class Client extends Personne implements Serializable {
 	private static final long serialVersionUID = 86L;
 
 	@ManyToOne
-	@JoinColumn(name = "conseiller_id", nullable = false)
+	@JoinColumn (name="Id_Conseiller", nullable=false)
 	private ConseillerClientele conseiller;
 
 	@OneToOne(mappedBy = "client", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
@@ -85,6 +85,34 @@ public class Client extends Personne implements Serializable {
 	 */
 	public void setConseiller(ConseillerClientele conseiller) {
 		this.conseiller = conseiller;
+	}
+
+	/**
+	 * @return the compteCourant
+	 */
+	public CompteCourant getCompteCourant() {
+		return compteCourant;
+	}
+
+	/**
+	 * @param compteCourant the compteCourant to set
+	 */
+	public void setCompteCourant(CompteCourant compteCourant) {
+		this.compteCourant = compteCourant;
+	}
+
+	/**
+	 * @return the compteEpargne
+	 */
+	public CompteEpargne getCompteEpargne() {
+		return compteEpargne;
+	}
+
+	/**
+	 * @param compteEpargne the compteEpargne to set
+	 */
+	public void setCompteEpargne(CompteEpargne compteEpargne) {
+		this.compteEpargne = compteEpargne;
 	}
 
 	@Override
