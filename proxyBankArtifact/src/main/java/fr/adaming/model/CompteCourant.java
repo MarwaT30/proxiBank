@@ -109,6 +109,6 @@ public class CompteCourant extends Compte {
 	@Override
 	public String toString() {
 		return "Compte [numero=" + this.getNumero() + ", solde=" + this.getSolde()
-				+ ", dateOuverture=" + this.getDateOuverture() + ", autorisation decouvert=" + autDecouvert+", client="+client+" ]";
+				+ ", dateOuverture=" + this.getDateOuverture()+ ", autorisation decouvert=" + this.autDecouvert+"";// ", client="+this.client+" ]";
 	}
 }
