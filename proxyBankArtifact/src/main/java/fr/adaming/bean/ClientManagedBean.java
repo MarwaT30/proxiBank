@@ -83,7 +83,7 @@ public class ClientManagedBean implements Serializable {
 			if (addCompteEpargne != true) {
 				compteEpargne = null;
 			}
-//conseiller.getId()
+
 			clientService.ajouterClient(1, client, compteCourant,compteEpargne);
 			list = clientService.getClientsByConseiller(conseiller);
 			client = new Client();
