@@ -1,13 +1,34 @@
 package fr.adaming.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import fr.adaming.dao.CarteDaoImpl;
 import fr.adaming.dao.ICarteDao;
 import fr.adaming.model.CarteBancaire;
 import fr.adaming.model.Compte;
 import fr.adaming.model.CompteCourant;
 
+@Service
 public class CarteServiceImpl implements ICarteService {
+	@Autowired
 	ICarteDao carteDao = new CarteDaoImpl();
+
+	
+	
+	/**
+	 * @return the carteDao
+	 */
+	public ICarteDao getCarteDao() {
+		return carteDao;
+	}
+
+	/**
+	 * @param carteDao the carteDao to set
+	 */
+	public void setCarteDao(ICarteDao carteDao) {
+		this.carteDao = carteDao;
+	}
 
 	@Override
 	public CarteBancaire getCarteByCompte(CompteCourant compte) {
