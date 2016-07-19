@@ -28,17 +28,16 @@
 			<version>4.0</version>
 		</dependency>
 
-		<!-- JSF -->
-	<dependency>
-		<groupId>com.sun.faces</groupId>
-		<artifactId>jsf-api</artifactId>
-		<version>2.2.10</version>
-	</dependency>
-	<dependency>
-		<groupId>com.sun.faces</groupId>
-		<artifactId>jsf-impl</artifactId>
-		<version>2.2.10</version>
-	</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.2.10</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>2.2.10</version>
+		</dependency>
 
 
 
@@ -204,16 +203,15 @@
 			<artifactId>commons-pool</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
-		
-		
-<!-- *****************ajoutées***************** -->
+
+
+		<!-- *****************ajoutées***************** -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>4.1.5.RELEASE</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.ws.rs</groupId>
 			<artifactId>javax.ws.rs-api</artifactId>
@@ -229,15 +227,15 @@
 			<artifactId>jersey-common</artifactId>
 			<version>2.22</version>
 		</dependency>
-<!-- Pour le bazar du webservice -->
-<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
-	<dependency>
-		<groupId>org.apache.httpcomponents</groupId>
-		<artifactId>httpclient</artifactId>
-		<version>4.4.1</version>
-	</dependency>
-</dependencies>
-
+		
+		<!-- Pour le bazar du webservice -->
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.4.1</version>
+		</dependency>
+	</dependencies>
 
 
 	<build>
@@ -255,7 +253,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 
 </project>
