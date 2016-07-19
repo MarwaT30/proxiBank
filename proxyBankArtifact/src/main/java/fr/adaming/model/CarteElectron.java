@@ -44,21 +44,21 @@ public class CarteElectron extends CarteBancaire implements Serializable{
 
 
 
-	/**
-	 * @return the compte
-	 */
-	public CompteCourant getCompte() {
-		return compte;
-	}
-
-
-
-	/**
-	 * @param compte the compte to set
-	 */
-	public void setCompte(CompteCourant compte) {
-		this.compte = compte;
-	}
+//	/**
+//	 * @return the compte
+//	 */
+//	public CompteCourant getCompte() {
+//		return compte;
+//	}
+//
+//
+//
+//	/**
+//	 * @param compte the compte to set
+//	 */
+//	public void setCompte(CompteCourant compte) {
+//		this.compte = compte;
+//	}
 
 
 

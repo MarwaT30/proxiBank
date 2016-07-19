@@ -1,20 +1,20 @@
 package fr.adaming.test;
 
-import java.util.Date;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-
-import java.util.List;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import fr.adaming.dao.IAgenceDao;
-import fr.adaming.model.Agence;
+//import java.util.Date;
+//
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertSame;
+//
+//import java.util.List;
+//
+//import org.junit.Test;
+//import org.junit.runner.RunWith;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.test.context.ContextConfiguration;
+//import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+//
+//import fr.adaming.dao.IAgenceDao;
+//import fr.adaming.model.Agence;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/applicationContext.xml"})

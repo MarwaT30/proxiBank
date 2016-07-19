@@ -2,6 +2,7 @@ package fr.adaming.service;
 
 import java.util.List;
 
+import fr.adaming.exception.ExceptionNombreClient;
 import fr.adaming.model.Client;
 import fr.adaming.model.ConseillerClientele;
 
@@ -25,7 +26,7 @@ public interface IClientService {
 	 * @param client
 	 * @return 1 si OK
 	 */
-	public int ajouterClient(Client client);
+	public void ajouterClient(Client client)throws ExceptionNombreClient;
 
 	/**
 	 * 
@@ -33,7 +34,7 @@ public interface IClientService {
 	 *            le client modifié
 	 * @return
 	 */
-	public int modifierClient(Client client);
+	public void modifierClient(Client client);
 
 	/**
 	 * supprime par ID
@@ -42,7 +43,7 @@ public interface IClientService {
 	 *            l'id du client à supprimer
 	 * @return
 	 */
-	public int supprimerClient(int id);
+	public void supprimerClient(int id);
 
 	/**
 	 * supprimer par Client
@@ -51,5 +52,5 @@ public interface IClientService {
 	 *            le client avec l'ID à suppriemr
 	 * @return
 	 */
-	public int supprimerClient(Client client);
+	public void supprimerClient(Client client);
 }

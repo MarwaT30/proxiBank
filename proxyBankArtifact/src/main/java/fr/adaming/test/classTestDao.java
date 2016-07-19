@@ -25,16 +25,16 @@ public class classTestDao {
 					Date date = new Date(2011,11,11);
 					Agence agence=new Agence(date);	
 					agence.setNumero(1);
-//					agenceDao.ajouterAgence(agence);
+					agenceDao.ajouterAgence(agence);
 				
 				Date date2 = new Date(2011,11,11);
 				Agence agence2=new Agence(date2);	
 				agence2.setNumero(2);
-//				agenceDao.ajouterAgence(agence2);
+				agenceDao.ajouterAgence(agence2);
 				Date date3 = new Date(2002/02/02);
 				agence2.setDateCreation(date3);
-//				agenceDao.modifierAgence(agence);
-//				agenceDao.supprimerAgence(agence2);
+				agenceDao.modifierAgence(agence);
+				agenceDao.supprimerAgence(agence2);
 				
 				Agence agence3=agenceDao.getAgenceByNumero(2);
 				System.out.println(agence3);
@@ -42,18 +42,18 @@ public class classTestDao {
 				ConseillerClientele conseiller1=new ConseillerClientele("Duboit", "Jean","rue cul de sac" , 41000, "Cachan", 012540);
 				conseiller1.setAgence(agence);
 				conseiller1.setId(1);
-//				conseillerDao.ajouterConseiller(conseiller1);
+				conseillerDao.ajouterConseiller(conseiller1);
 
 				ConseillerClientele conseiller2=new ConseillerClientele("Duboit", "Jean","rue cul de sac" , 41000, "Cachan", 012540);
 				conseiller2.setAgence(agence);
 				conseiller2.setId(2);
-//				conseillerDao.ajouterConseiller(conseiller2);				
+				conseillerDao.ajouterConseiller(conseiller2);				
 				
 				conseiller2.setAdresse("nowhere");
 				conseiller2.setCodePostal(10440);
 				conseiller2.setNom("nom");
 				conseiller2.setPrenom("prenom");
-//				conseillerDao.modifierConseiller(conseiller2);
+				conseillerDao.modifierConseiller(conseiller2);
 
 				
 				
@@ -64,7 +64,7 @@ public class classTestDao {
 					System.out.println(cons);
 				}
 				
-//				conseillerDao.supprimerConseiller(2);
+				conseillerDao.supprimerConseiller(2);
 				
 				List<ConseillerClientele> listeCons2=conseillerDao.getConseillersByAgence(agence);
 				for(ConseillerClientele cons:listeCons2){
@@ -74,14 +74,14 @@ public class classTestDao {
 				Client cl1=new Client("BOULMERDJ","Nomane","VilleJuif", 94800, "VilleJuif", 00000000);
 				cl1.setConseiller(conseiller3);
 				cl1.setId(4);
-//				clientDao.ajouterClient(cl1);
+				clientDao.ajouterClient(cl1);
 				Client cl2=new Client("BOULMERDJ","Nomane","VilleJuif", 94800, "VilleJuif", 00000000);
 				cl2.setConseiller(conseiller3);
 				cl2.setId(5);
-//				clientDao.ajouterClient(cl2);
+				clientDao.ajouterClient(cl2);
 				cl2.setNom("nomClient");
 				cl2.setPrenom("jack");
-//				clientDao.modifierClient(cl2);
+				clientDao.modifierClient(cl2);
 				
 				List<Client> listeCls1=clientDao.getAllClients();
 				for(Client cls:listeCls1){
@@ -90,7 +90,7 @@ public class classTestDao {
 				
 				Client cl3=clientDao.getClientById(5);
 				System.out.println(cl3);
-//				clientDao.supprimerClient(cl3);
+				clientDao.supprimerClient(cl3);
 				
 				List<Client> listeCls2=clientDao.getClientsByConseiller(conseiller3);
 				for(Client cls:listeCls2){
@@ -98,11 +98,12 @@ public class classTestDao {
 				}
 //				
 //				
-				CompteCourant cc1=new CompteCourant(1, 200, date2, cl2, 200);
-				//cc1.setNumero(1);
-				//cc1.setClient(cl2);
-				System.out.println(cc1);
-				compteDao.ajouterCompteC(cc1);
+//				CompteCourant cc1=new CompteCourant(200, date);
+//				cc1.setNumero(1);
+//				cc1.setClient(cl2);
+//				cc1.setAutDecouvert(100);
+//				System.out.println(cc1);
+//				compteDao.ajouterCompteC(cc1);
 //				cc1.setSolde(300);
 //				cc1.setAutDecouvert(200);
 //				compteDao.modifierCompteC(cc1);

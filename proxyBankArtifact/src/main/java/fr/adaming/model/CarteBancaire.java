@@ -13,6 +13,27 @@ public abstract class CarteBancaire {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_carte;
 
+	@OneToOne
+	@JoinColumn (name="num_compte")
+	private CompteCourant compte;
+	
+	
+	/**
+	 * @return the compte
+	 */
+	public CompteCourant getCompte() {
+		return compte;
+	}
+
+
+
+	/**
+	 * @param compte the compte to set
+	 */
+	public void setCompte(CompteCourant compte) {
+		this.compte = compte;
+	}
+	
 	/**
 	 * @return the id_carte
 	 */
@@ -37,9 +58,10 @@ public abstract class CarteBancaire {
 	/**
 	 * @param id_carte
 	 */
-	public CarteBancaire(int id_carte) {
+	public CarteBancaire(int id_carte,CompteCourant compte) {
 		super();
 		this.id_carte = id_carte;
+		this.compte = compte;
 	}
 
 	/* (non-Javadoc)

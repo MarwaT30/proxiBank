@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.adaming.dao.ClientDaoImpl;
 import fr.adaming.dao.IClientDao;
+import fr.adaming.exception.ExceptionNombreClient;
 import fr.adaming.model.Client;
 import fr.adaming.model.ConseillerClientele;
 
@@ -20,25 +21,33 @@ public class ClientServiceImpl implements IClientService {
 		return clientDao.getClientsByConseiller(conseiller);
 	}
 
-	@Override
-	public int ajouterClient(Client client) {
-		return clientDao.ajouterClient(client);
+	
+	public void ajouterClient(Client client) throws ExceptionNombreClient{
+		
+		ConseillerClientele conseiller= client.getConseiller();
+		List<Client> clients=conseiller.getClients();
+		if(	clients.size()>9) {
+		throw new ExceptionNombreClient("le Nombre de Clients est superieur à 10");
+		}else{
+		
+		clientDao.ajouterClient(client);
+		}
 	}
 
 	@Override
-	public int modifierClient(Client client) {
-		return clientDao.modifierClient(client);
+	public void modifierClient(Client client) {
+		clientDao.modifierClient(client);
 	}
 
 	@Override
-	public int supprimerClient(int id) {
-		return clientDao.supprimerClient(id);
-		// TODO supprimer comptes associes
+	public void supprimerClient(int id) {
+		clientDao.supprimerClient(id);
+		
 	}
 
 	@Override
-	public int supprimerClient(Client client) {
-		return clientDao.supprimerClient(client);
+	public void supprimerClient(Client client) {
+		clientDao.supprimerClient(client);
 	}
 
 }

@@ -8,6 +8,7 @@ import javax.faces.bean.SessionScoped;
 
 import org.springframework.stereotype.Component;
 
+import fr.adaming.exception.ExceptionNombreClient;
 import fr.adaming.model.Client;
 import fr.adaming.model.ConseillerClientele;
 import fr.adaming.service.ClientServiceImpl;
@@ -32,7 +33,7 @@ public class ClientManagedBean implements Serializable {
 	/**
 	 * Pour créer le client à partir du formulaire
 	 */
-	public void ajouter() {
+	public void ajouter() throws ExceptionNombreClient{
 		System.out.println(client.getNom());
 
 		clientService.ajouterClient(client);

@@ -17,9 +17,9 @@ public class CartePremier extends CarteBancaire implements Serializable{
 	@Transient
 	private static final long serialVersionUID = 86L;
 
-	@OneToOne
-	@JoinColumn (name="num_compte")
-	private CompteCourant compte;
+//	@OneToOne
+//	@JoinColumn (name="num_compte")
+//	private CompteCourant compte;
 	/**
 	 * 
 	 */
