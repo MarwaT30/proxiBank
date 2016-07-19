@@ -10,7 +10,7 @@ import fr.adaming.model.CarteBancaire;
 
 import fr.adaming.model.Compte;
 import fr.adaming.model.CompteCourant;
-@Repository
+@Repository("carteDao")
 @Transactional
 public class CarteDaoImpl implements ICarteDao {
 

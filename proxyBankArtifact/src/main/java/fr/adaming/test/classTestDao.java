@@ -3,6 +3,7 @@ import java.util.*;
 
 import fr.adaming.dao.*;
 import fr.adaming.model.Agence;
+import fr.adaming.model.CarteBancaire;
 import fr.adaming.model.Client;
 import fr.adaming.model.CompteCourant;
 import fr.adaming.model.CompteEpargne;
@@ -20,7 +21,7 @@ public class classTestDao {
 				IClientDao clientDao = (IClientDao) ctx.getBean("clientDao");
 				IConseillerDao conseillerDao=(IConseillerDao) ctx.getBean("conseillerDao");
 				ICompteDao	compteDao = (ICompteDao) ctx.getBean("compteDao");
-
+				ICarteDao carteDao = (ICarteDao) ctx.getBean("carteDao");
 
 					
 					Date date = new Date(2011,11,11);
@@ -106,17 +107,22 @@ public class classTestDao {
 				cc1.setAutDecouvert(100);
 				System.out.println(cc1);
 				compteDao.ajouterCompteC(cc1);
-//				cc1.setSolde(300);
-//				cc1.setAutDecouvert(200);
-//				compteDao.modifierCompteC(cc1);
-//				
-//				CompteEpargne ce1=new CompteEpargne(400, date2);
-//				ce1.setClient(cl2);
-//				compteDao.ajouterCompteE(ce1);
-//				ce1.setSolde(500);
-//				ce1.setTaux(5);
-//				compteDao.modifierCompteE(ce1);
+				cc1.setSolde(300);
+				cc1.setAutDecouvert(200);
+				compteDao.modifierCompteC(cc1);
 				
+				CompteEpargne ce1=new CompteEpargne(400, date2);
+				ce1.setClient(cl2);
+				compteDao.ajouterCompteE(ce1);
+				ce1.setSolde(500);
+				ce1.setTaux(5);
+				compteDao.modifierCompteE(ce1);
 				
+				CarteBancaire carteB=new CarteBancaire("normale"); 
+				carteB.setCompte(cc1);
+				carteDao.ajouterCarte(carteB);
+				carteB.setType("premium");
+				carteDao.modifierCarte(carteB);
+				carteDao.supprimerCarte(carteB);
 			}
 }

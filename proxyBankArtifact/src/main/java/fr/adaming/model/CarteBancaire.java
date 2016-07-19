@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity(name="carteEntity")
 @Table(name="cartes")
-public abstract class CarteBancaire {
+public class CarteBancaire {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_carte;

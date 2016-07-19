@@ -12,10 +12,6 @@ public interface ICarteDao {
 	 */
 	public CarteBancaire getCarteByCompte(CompteCourant compte);
 
-	
-	
-
-	
 
 	
 	/**

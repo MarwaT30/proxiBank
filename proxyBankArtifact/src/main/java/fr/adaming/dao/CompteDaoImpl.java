@@ -152,19 +152,20 @@ public class CompteDaoImpl implements ICompteDao {
 	@Override
 	public int modifierCompteE(CompteEpargne compteE) {
 		Session session = sessionFactory.getCurrentSession();
-
+		session.update(compteE);
 		// avec SQL natif
-		String sqlreq = "update comptes_epargnes set date_ouverture=:date1 , solde=:solde1, taux:=dec1 where id=:id1";
-		SQLQuery query = session.createSQLQuery(sqlreq);
-		// ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
-		query.addEntity(CompteEpargne.class);
-		query.setParameter("date1", compteE.getDateOuverture());
-		query.setParameter("solde1", compteE.getSolde());
-		query.setParameter("dec1", compteE.getTaux());
-		query.setParameter("id1", compteE.getNumero());
+//		String sqlreq = "update comptes_epargnes set date_ouverture=:date1 , solde=:solde1, taux:=dec1 where id=:id1";
+//		SQLQuery query = session.createSQLQuery(sqlreq);
+//		// ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
+//		query.addEntity(CompteEpargne.class);
+//		query.setParameter("date1", compteE.getDateOuverture());
+//		query.setParameter("solde1", compteE.getSolde());
+//		query.setParameter("dec1", compteE.getTaux());
+//		query.setParameter("id1", compteE.getNumero());
 		// query.executeUpdate();
 		// session.close();
-		return query.executeUpdate();
+		//return query.executeUpdate();
+		return 1;
 	}
 
 	@Override
