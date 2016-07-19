@@ -11,103 +11,120 @@
 	<title>Tout sur les clients</title>
 </h:head>
 <h:body>
-	<ui:composition template="/templates/layout.xhtml">
-		<ui:define name="content">
-			<h3>Liste des utilisateurs :</h3>
-			<h:form>
-				<h:commandButton value="Rafraichir" action="#{clientMB.reload()}" />
-			</h:form>
-			<p:dataTable var="users" value="#{clientMB.listeClients}">
-				<p:column headerText="Id">
-					<h:outputText value="#{users.id}" />
-				</p:column>
-				<p:column headerText="Nom">
-					<h:outputText value="#{users.nom}" />
-				</p:column>
-				<p:column headerText="Prenom">
-					<h:outputText value="#{users.prenom}" />
-				</p:column>
-				<p:column headerText="Téléphone">
-					<h:outputText value="#{users.telephone}" />
-				</p:column>
-				<p:column headerText="Adresse">
-					<h:outputText value="#{users.adresse}" />
-				</p:column>
-				<p:column headerText="Code Postal">
-					<h:outputText value="#{users.codePostal}" />
-				</p:column>
+	<!-- 	<ui:composition template="/templates/layout.xhtml"> -->
+	<!-- 		<ui:define name="content"> -->
 
-				<p:column headerText="Ville">
-					<h:outputText value="#{users.ville}" />
-				</p:column>
+	<h3>Liste des clients :</h3>
+	<h:form>
+		<h:commandButton value="Rafraichir" action="#{clientMB.reload()}" />
+	</h:form>
+	<p:dataTable var="users" value="#{clientMB.listeClients}">
+		<p:column headerText="Id">
+			<h:outputText value="#{users.id}" />
+		</p:column>
+		<p:column headerText="Nom">
+			<h:outputText value="#{users.nom}" />
+		</p:column>
+		<p:column headerText="Prenom">
+			<h:outputText value="#{users.prenom}" />
+		</p:column>
+		<p:column headerText="Téléphone">
+			<h:outputText value="#{users.telephone}" />
+		</p:column>
+		<p:column headerText="Adresse">
+			<h:outputText value="#{users.adresse}" />
+		</p:column>
+		<p:column headerText="Code Postal">
+			<h:outputText value="#{users.codePostal}" />
+		</p:column>
 
-			</p:dataTable>
+		<p:column headerText="Ville">
+			<h:outputText value="#{users.ville}" />
+		</p:column>
 
-			<h3>Ajouter un utilisateur :</h3>
-			<h:form>
+	</p:dataTable>
+<div style="width: 25em; display: block" >
+	<h3>Ajouter un client :</h3>
+	<h:form>
+		<h:panelGrid columns="2">
 	Nom : <h:inputText id="nom" value="#{clientMB.client.nom}" />
-				<br />
+			<br />
 	Prénom : <h:inputText id="prenom" value="#{clientMB.client.prenom}" />
-				<br />
+			<br />
 	Téléphone : <h:inputText id="telephone"
-					value="#{clientMB.client.telephone}" />
-				<br />
+				value="#{clientMB.client.telephone}" />
+			<br />
 	Adresse : <h:inputText id="adresse" value="#{clientMB.client.adresse}" />
-				<br />
+			<br />
 	Code Postal : <h:inputText id="codePostal"
-					value="#{clientMB.client.codePostal}" />
-				<br />
+				value="#{clientMB.client.codePostal}" />
+			<br />
 	Ville : <h:inputText id="ville" value="#{clientMB.client.ville}" />
-				<br />
-
-				<h:commandButton value="Ajouter le client"
-					action="#{clientMB.ajouter()}" />
-			</h:form>
-
-			<h3>Supprimer un utilisateur :</h3>
-			<h:form>
+			<br />
+			<h:commandButton value="Ajouter le client"
+				action="#{clientMB.ajouter()}" />
+		</h:panelGrid>
+	</h:form>
+</div><div style="width: 25em; display: block" >
+	<h3>Supprimer un client :</h3>
+	<h:form>
+		<h:panelGrid columns="2">
+	Nom : <h:inputText id="nom" value="#{clientMB.client.nom}" />
+			<br />
+	Prénom : <h:inputText id="prenom" value="#{clientMB.client.prenom}" />
+			<br />
+	Téléphone : <h:inputText id="telephone"
+				value="#{clientMB.client.telephone}" />
+			<br />
+	Adresse : <h:inputText id="adresse" value="#{clientMB.client.adresse}" />
+			<br />
+	Code Postal : <h:inputText id="codePostal"
+				value="#{clientMB.client.codePostal}" />
+			<br />
+	Ville : <h:inputText id="ville" value="#{clientMB.client.ville}" />
+			<br />
+			<h:commandButton value="Supprimer le client"
+				action="#{clientMB.supprimer()}" />
+		</h:panelGrid>
+	</h:form>
+</div><div style="width: 25em; display: block" >
+	<h3>Supprimer un client par son id dans la base</h3>
+	<h:form>
+		id : <h:inputText id="id" value="#{clientMB.client.id}" />
+		<br />
+		<h:commandButton value="Supprimer le client"
+			action="#{clientMB.supprimerById()}" />
+	</h:form>
+</div><div style="width: 25em; display: block" >
+	<h3>Modifier un client :</h3>
+	<h:form>
+		<h:panelGrid columns="2">
 	id : <h:inputText id="id" value="#{clientMB.client.id}" />
-				<br />
+			<br />
 	Nom : <h:inputText id="nom" value="#{clientMB.client.nom}" />
-				<br />
+			<br />
 	Prénom : <h:inputText id="prenom" value="#{clientMB.client.prenom}" />
-				<br />
+			<br />
 	Téléphone : <h:inputText id="telephone"
-					value="#{clientMB.client.telephone}" />
-				<br />
+				value="#{clientMB.client.telephone}" />
+			<br />
 	Adresse : <h:inputText id="adresse" value="#{clientMB.client.adresse}" />
-				<br />
+			<br />
 	Code Postal : <h:inputText id="codePostal"
-					value="#{clientMB.client.codePostal}" />
-				<br />
+				value="#{clientMB.client.codePostal}" />
+			<br />
 	Ville : <h:inputText id="ville" value="#{clientMB.client.ville}" />
-				<br />
-				<h:commandButton value="Supprimer le client"
-					action="#{clientMB.supprimer()}" />
-			</h:form>
-
-			<h3>Modifier un utilisateur :</h3>
-			<h:form>
-	id : <h:inputText id="id" value="#{clientMB.client.id}" />
-				<br />
-	Nom : <h:inputText id="nom" value="#{clientMB.client.nom}" />
-				<br />
-	Prénom : <h:inputText id="prenom" value="#{clientMB.client.prenom}" />
-				<br />
-	Téléphone : <h:inputText id="telephone"
-					value="#{clientMB.client.telephone}" />
-				<br />
-	Adresse : <h:inputText id="adresse" value="#{clientMB.client.adresse}" />
-				<br />
-	Code Postal : <h:inputText id="codePostal"
-					value="#{clientMB.client.codePostal}" />
-				<br />
-	Ville : <h:inputText id="ville" value="#{clientMB.client.ville}" />
-				<br />
-				<h:commandButton value="Modifier le client"
-					action="#{clientMB.modifier()}" />
-			</h:form>
-		</ui:define>
-	</ui:composition>
+			<br />
+			<h:commandButton value="Modifier le client"
+				action="#{clientMB.modifier()}" />
+		</h:panelGrid>
+	</h:form>
+</div>
+	<h4>Taux de change :</h4>
+	<h:form>
+		<h:outputText id="id" value="#{changeMB.getChangeEuro()}" />
+	</h:form>
+	<!-- 		</ui:define> -->
+	<!-- 	</ui:composition> -->
 </h:body>
 </html>
