@@ -9,6 +9,7 @@
 	<description>projet fin formation java JEE</description>
 
 	<properties>
+		<javaee.version>6.0</javaee.version>
 		<spring.version>4.1.5.RELEASE</spring.version>
 		<hibernate.version>4.3.8.Final</hibernate.version>
 		<mysql.driver.version>5.1.38</mysql.driver.version>
@@ -28,16 +29,15 @@
 			<version>4.0</version>
 		</dependency>
 
-		<!-- JSF -->
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
-			<version>2.1.11</version>
+			<version>2.2.10</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-impl</artifactId>
-			<version>2.1.11</version>
+			<version>2.2.10</version>
 		</dependency>
 
 
@@ -204,16 +204,16 @@
 			<artifactId>commons-pool</artifactId>
 			<version>1.2</version>
 		</dependency>
-
-
-
-		<!-- *****************ajoutées***************** -->
+		
+		
+		
+<!-- *****************ajoutées***************** -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>4.1.5.RELEASE</version>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>javax.ws.rs</groupId>
 			<artifactId>javax.ws.rs-api</artifactId>
@@ -229,8 +229,7 @@
 			<artifactId>jersey-common</artifactId>
 			<version>2.22</version>
 		</dependency>
-	</dependencies>
-
+</dependencies>
 
 
 
