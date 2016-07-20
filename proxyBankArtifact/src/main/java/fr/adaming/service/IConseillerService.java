@@ -61,5 +61,5 @@ public interface IConseillerService {
 	 * @param prenom
 	 * @return
 	 */
-	public int isExist(String nom,String prenom);
+	public Long isExist(String nom,String prenom);
 }

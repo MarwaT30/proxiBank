@@ -69,6 +69,7 @@ public class classTestDao {
 					System.out.println(cons);
 				}
 				
+				
 				Client cl1=new Client("BOULMERDJ","Nomane","VilleJuif", 94800, "VilleJuif", 00000000);
 				cl1.setConseiller(conseiller1);
 				System.out.println(cl1);
@@ -124,5 +125,8 @@ public class classTestDao {
 				carteB.setType("premium");
 				carteDao.modifierCarte(carteB);
 				carteDao.supprimerCarte(carteB);
+				
+				Long cb=(long) conseillerDao.isExist("Duboit", "Jean");
+				System.out.println("il y a "+cb+" Jean Duboit");
 			}
 }

@@ -48,7 +48,7 @@
 
 		<p:column headerText=" ">
 			<h:form>
-				<p:commandButton action="#{clientMB.supprimer}" icon="ui-icon-trash"
+				<p:commandButton action="#{clientMB.supprimer()}" icon="ui-icon-trash"
 					title="supprimer" process="@this" update="@all">
 					<f:setPropertyActionListener value="#{client}"
 						target="#{clientMB.client}" />
@@ -129,7 +129,7 @@
 					<br />
 
 					<h:outputLink value="index.xhtml" title="Ajouter client">
-						<h:commandButton value="Ajouter client" action="#{clientMB.ajouter}" update="@all"></h:commandButton>
+						<h:commandButton value="Ajouter client" action="#{clientMB.ajouter()}" update="@all"></h:commandButton>
 					</h:outputLink>
 
 
@@ -177,7 +177,7 @@
 
 					<h:outputLink value="index.xhtml" title="Modifier client">
 
-						<h:commandButton value="Modifier client" action="#{clientMB.modifier}" update="@all" onclick="cacheModifier()"></h:commandButton>
+						<h:commandButton value="Modifier client" action="#{clientMB.modifier()}" update="@all" onclick="cacheModifier()"></h:commandButton>
 					<script>function cacheModifier(){	
   						document.getElementById('handlead').style.display='none';
   				}</script>

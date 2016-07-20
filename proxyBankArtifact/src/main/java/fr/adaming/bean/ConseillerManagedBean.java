@@ -74,5 +74,8 @@ public class ConseillerManagedBean {
 		return conseillerService.getAllConseillers();
 			}
 	
+	public List<Client> getClientsConseiller(){
+		return this.conseiller.getClients();
+	}
 	
 }

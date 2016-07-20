@@ -138,14 +138,14 @@ public class ClientManagedBean implements Serializable {
 		clientService.virementInterne(solde, client,sens);
 	}
 
-	// public void virement() throws ExceptionSolde{
-	// clientService.virement(solde, idComptecourant1, idCompteEpargne1,
-	// idComptecourant2, idComptecourant2);}
+	 public void virement() throws ExceptionSolde{
+	 clientService.virement(solde, idComptecourant1, idCompteEpargne1,
+	 idComptecourant2, idComptecourant2);}
 
-	// public void getAllClients() {
-	// this.listeClients=clientService.getAllClients();
-	// }
-
+	
+	public List<Client> getClientsConseiller(){
+		return conseiller.getClients();
+	}
 	public List<Client> getAllClients() {
 		return clientService.getAllClients();
 	}
@@ -168,7 +168,7 @@ public class ClientManagedBean implements Serializable {
 	}
 
 	public String isConseillerExistMB() {
-		int verif = conseillerService.isExist(this.nom, this.prenom);
+		Long verif = conseillerService.isExist(this.nom, this.prenom);
 		if (verif == 1 && this.password.equals(this.passwordConseiller)) {
 			return "succes";
 		} else {
