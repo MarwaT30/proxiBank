@@ -37,89 +37,96 @@
 		<p:column headerText="Code Postal">
 			<h:outputText value="#{users.codePostal}" />
 		</p:column>
-
 		<p:column headerText="Ville">
 			<h:outputText value="#{users.ville}" />
 		</p:column>
-
+		<p:column>
+			<h:commandButton value="Voir les comptes de ce client"
+				action="#{clientMB.affComptes(users)}" />
+		</p:column>
 	</p:dataTable>
-<div style="width: 25em; display: block" >
-	<h3>Ajouter un client :</h3>
-	<h:form>
-		<h:panelGrid columns="2">
+
+
+	<div style="width: 25em; display: block">
+		<h3>Ajouter un client :</h3>
+		<h:form>
+			<h:panelGrid columns="2">
 	Nom : <h:inputText id="nom" value="#{clientMB.client.nom}" />
-			<br />
+				<br />
 	Prénom : <h:inputText id="prenom" value="#{clientMB.client.prenom}" />
-			<br />
+				<br />
 	Téléphone : <h:inputText id="telephone"
-				value="#{clientMB.client.telephone}" />
-			<br />
+					value="#{clientMB.client.telephone}" />
+				<br />
 	Adresse : <h:inputText id="adresse" value="#{clientMB.client.adresse}" />
-			<br />
+				<br />
 	Code Postal : <h:inputText id="codePostal"
-				value="#{clientMB.client.codePostal}" />
-			<br />
+					value="#{clientMB.client.codePostal}" />
+				<br />
 	Ville : <h:inputText id="ville" value="#{clientMB.client.ville}" />
-			<br />
-			<h:commandButton value="Ajouter le client"
-				action="#{clientMB.ajouter()}" />
-		</h:panelGrid>
-	</h:form>
-</div><div style="width: 25em; display: block" >
-	<h3>Supprimer un client :</h3>
-	<h:form>
-		<h:panelGrid columns="2">
+				<br />
+				<h:commandButton value="Ajouter le client"
+					action="#{clientMB.ajouter()}" />
+			</h:panelGrid>
+		</h:form>
+	</div>
+	<div style="width: 25em; display: block">
+		<h3>Supprimer un client :</h3>
+		<h:form>
+			<h:panelGrid columns="2">
 	Nom : <h:inputText id="nom" value="#{clientMB.client.nom}" />
-			<br />
+				<br />
 	Prénom : <h:inputText id="prenom" value="#{clientMB.client.prenom}" />
-			<br />
+				<br />
 	Téléphone : <h:inputText id="telephone"
-				value="#{clientMB.client.telephone}" />
-			<br />
+					value="#{clientMB.client.telephone}" />
+				<br />
 	Adresse : <h:inputText id="adresse" value="#{clientMB.client.adresse}" />
-			<br />
+				<br />
 	Code Postal : <h:inputText id="codePostal"
-				value="#{clientMB.client.codePostal}" />
-			<br />
+					value="#{clientMB.client.codePostal}" />
+				<br />
 	Ville : <h:inputText id="ville" value="#{clientMB.client.ville}" />
+				<br />
+				<h:commandButton value="Supprimer le client"
+					action="#{clientMB.supprimer()}" />
+			</h:panelGrid>
+		</h:form>
+	</div>
+	<div style="width: 25em; display: block">
+		<h3>Supprimer un client par son id dans la base</h3>
+		<h:form>
+		id : <h:inputText id="id" value="#{clientMB.client.id}" />
 			<br />
 			<h:commandButton value="Supprimer le client"
-				action="#{clientMB.supprimer()}" />
-		</h:panelGrid>
-	</h:form>
-</div><div style="width: 25em; display: block" >
-	<h3>Supprimer un client par son id dans la base</h3>
-	<h:form>
-		id : <h:inputText id="id" value="#{clientMB.client.id}" />
-		<br />
-		<h:commandButton value="Supprimer le client"
-			action="#{clientMB.supprimerById()}" />
-	</h:form>
-</div><div style="width: 25em; display: block" >
-	<h3>Modifier un client :</h3>
-	<h:form>
-		<h:panelGrid columns="2">
+				action="#{clientMB.supprimerById()}" />
+		</h:form>
+	</div>
+	<div style="width: 25em; display: block">
+		<h3>Modifier un client :</h3>
+		<h:form>
+			<h:panelGrid columns="2">
 	id : <h:inputText id="id" value="#{clientMB.client.id}" />
-			<br />
+				<br />
 	Nom : <h:inputText id="nom" value="#{clientMB.client.nom}" />
-			<br />
+				<br />
 	Prénom : <h:inputText id="prenom" value="#{clientMB.client.prenom}" />
-			<br />
+				<br />
 	Téléphone : <h:inputText id="telephone"
-				value="#{clientMB.client.telephone}" />
-			<br />
+					value="#{clientMB.client.telephone}" />
+				<br />
 	Adresse : <h:inputText id="adresse" value="#{clientMB.client.adresse}" />
-			<br />
+				<br />
 	Code Postal : <h:inputText id="codePostal"
-				value="#{clientMB.client.codePostal}" />
-			<br />
+					value="#{clientMB.client.codePostal}" />
+				<br />
 	Ville : <h:inputText id="ville" value="#{clientMB.client.ville}" />
-			<br />
-			<h:commandButton value="Modifier le client"
-				action="#{clientMB.modifier()}" />
-		</h:panelGrid>
-	</h:form>
-</div>
+				<br />
+				<h:commandButton value="Modifier le client"
+					action="#{clientMB.modifier()}" />
+			</h:panelGrid>
+		</h:form>
+	</div>
 	<h4>Taux de change :</h4>
 	<h:form>
 		<h:outputText id="id" value="#{changeMB.getChangeEuro()}" />
