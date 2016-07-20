@@ -54,4 +54,12 @@ public interface IConseillerService {
 	 * @return object type ConseillerClientele
 	 */
 	public ConseillerClientele getConseillerById(int id);
+	
+	/**
+	 * 
+	 * @param nom
+	 * @param prenom
+	 * @return
+	 */
+	public int isExist(String nom,String prenom);
 }

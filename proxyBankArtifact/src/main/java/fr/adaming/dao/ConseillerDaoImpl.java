@@ -181,5 +181,20 @@ public class ConseillerDaoImpl implements IConseillerDao{
 	}
 
 	
-	
+	public int isExist(String nom, String prenom) {
+		Session session = sessionFactory.getCurrentSession();
+		//declaration de la requete
+		String hqlReq = "select count(e) from consEntity e where e.nom=:nom1 and e.prenom=:prenom1";
+		
+
+		Query query = session.createQuery(hqlReq);
+		
+		query.setParameter("nom1", nom);
+		query.setParameter("prenom1", prenom);
+		
+		
+		return (int) query.uniqueResult();
+		//return query.executeUpdate();
+	}
+
 }

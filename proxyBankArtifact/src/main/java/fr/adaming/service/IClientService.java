@@ -3,6 +3,7 @@ package fr.adaming.service;
 import java.util.List;
 
 import fr.adaming.exception.ExceptionNombreClient;
+import fr.adaming.exception.ExceptionSolde;
 import fr.adaming.model.Client;
 import fr.adaming.model.CompteCourant;
 import fr.adaming.model.CompteEpargne;
@@ -55,4 +56,9 @@ public interface IClientService {
 	 * @return
 	 */
 	public void supprimerClient(Client client);
+	
+	
+	public void virement(float solde, int idComptecourant1,int idCompteEpargne1, int idComptecourant2, int idCompteEpargne2)throws ExceptionSolde;
+	
+	public void virementInterne(float solde, Client client);
 }

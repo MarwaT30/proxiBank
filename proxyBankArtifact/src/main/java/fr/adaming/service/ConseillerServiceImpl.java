@@ -63,4 +63,9 @@ public class ConseillerServiceImpl implements IConseillerService{
 		return consDao.getConseillerById(id);
 	}
 
+	public int isExist(String mail, String mdp) {
+		// TODO Auto-generated method stub
+		return consDao.isExist(mail,mdp);
+	}
+
 }
