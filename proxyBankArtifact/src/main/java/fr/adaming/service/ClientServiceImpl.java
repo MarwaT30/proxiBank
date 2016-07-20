@@ -168,8 +168,19 @@ public class ClientServiceImpl implements IClientService {
 					}
 
 	@Override
-	public void virementInterne(float solde, Client client, boolean sens) {
-		// TODO Auto-generated method stub
+	public void virementInterne(float solde, Client client, boolean sens)throws ExceptionSolde {
+		if(sens==true){
+			client.getCompteCourant().setSolde(client.getCompteCourant().getSolde()-solde);
+			compteService.modifierCompteC(client.getCompteCourant());
+			client.getCompteEpargne().setSolde(client.getCompteEpargne().getSolde()+solde);
+			compteService.modifierCompteE(client.getCompteEpargne());
+		}
+		else{
+			client.getCompteEpargne().setSolde(client.getCompteEpargne().getSolde()-solde);
+			compteService.modifierCompteE(client.getCompteEpargne());
+			client.getCompteCourant().setSolde(client.getCompteCourant().getSolde()+solde);
+			compteService.modifierCompteC(client.getCompteCourant());
+		}
 		
 	}
 

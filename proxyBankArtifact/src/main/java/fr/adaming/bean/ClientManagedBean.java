@@ -169,7 +169,7 @@ public class ClientManagedBean implements Serializable {
 
 	public String isConseillerExistMB() {
 		Long verif = conseillerService.isExist(this.nom, this.prenom);
-		if (verif == 1 && this.password.equals(this.passwordConseiller)) {
+		if (verif >= 1 && this.password.equals(this.passwordConseiller)) {
 			return "succes";
 		} else {
 			return "echec";

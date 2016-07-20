@@ -62,5 +62,5 @@ public interface IClientService {
 	
 	public void virement(float solde, int idComptecourant1,int idCompteEpargne1, int idComptecourant2, int idCompteEpargne2)throws ExceptionSolde;
 	
-	public void virementInterne(float solde, Client client, boolean sens);
+	public void virementInterne(float solde, Client client, boolean sens)throws ExceptionSolde;
 }
