@@ -18,7 +18,7 @@
 	<h:form>
 		<h:commandButton value="Rafraichir" action="#{clientMB.reload()}" />
 	</h:form>
-	<p:dataTable var="users" value="#{clientMB.listeClients}">
+	<p:dataTable var="users" value="#{clientMB.allClients}">
 		<p:column headerText="Id">
 			<h:outputText value="#{users.id}" />
 		</p:column>

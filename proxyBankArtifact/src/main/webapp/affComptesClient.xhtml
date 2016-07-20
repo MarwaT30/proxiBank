@@ -6,67 +6,90 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<head>
-<title>Comptes de client</title>
-</head>
-<body>
-	<div style="width: 25em; display: block">
+<h:head>
+	<title>Comptes de client</title>
+</h:head>
+<h:body>
+	<p:panel style="display:flex">
 		<h3>Informations du client :</h3>
-		<h:form>
+		<h:panelGrid columns="4" bgcolor="lightgrey">
+
+			<h:form>
 			Numéro : <h:inputText id="id" value="#{clientMB.client.id}" />
-		<h:commandButton value="Charger le client" action="#{clientMB.loadComptes}" />
-	</h:form>
-		<h:form>
-			<h:panelGrid columns="2">
+				<h:commandButton value="Charger le client"
+					action="#{clientMB.loadComptes}" />
+			</h:form>
+			<h:form>
+				<h:panelGrid columns="2">
 				Nom : <h:outputText value="#{clientMB.client.nom}" />
-				<br />
+					<br />
 				Prénom : <h:outputText value="#{clientMB.client.prenom}" />
-				<br />
+					<br />
 				Téléphone : <h:outputText value="#{clientMB.client.telephone}" />
-				<br />
+					<br />
 				Adresse : <h:outputText value="#{clientMB.client.adresse}" />
-				<br />
+					<br />
 				Code Postal : <h:outputText value="#{clientMB.client.codePostal}" />
-				<br />
+					<br />
 				Ville : <h:outputText value="#{clientMB.client.ville}" />
-				<br />
-			</h:panelGrid>
-		</h:form>
-	</div>
-
-	<div style="width: 25em; display: block">
-		<h3>Compte courant :</h3>
-		<h:form>
-			<h:panelGrid columns="2">
+					<br />
+				</h:panelGrid>
+			</h:form>
+		</h:panelGrid>
+	</p:panel>
+	<div style="display: flex">
+		<p:panel header="Compte courant"
+			style="display:flex; width:50%; display:block">
+			<h:form>
+				<h:panelGrid columns="2">
 		Numéro : <h:outputText value="#{clientMB.compteCourant.numero}" />
-				<br />
+					<br />
 		Date d'ouverture : <h:outputText
-					value="#{clientMB.compteCourant.dateOuverture}" />
-				<br />
+						value="#{clientMB.compteCourant.dateOuverture}" />
+					<br />
 		Solde : <h:outputText value="#{clientMB.compteCourant.solde}" />
-				<br />
+					<br />
 		Découvert autorisé : <h:outputText
-					value="#{clientMB.compteCourant.autDecouvert}" />
-				<br />
-			</h:panelGrid>
-		</h:form>
-	</div>
+						value="#{clientMB.compteCourant.autDecouvert}" />
+					<br />
+				</h:panelGrid>
+			</h:form>
+		</p:panel>
 
-	<div style="width: 25em; display: block">
-		<h3>Compte d'épargne :</h3>
+		<p:panel header="Compte d'Epargne"
+			style="display:flex; width:50%; display:block">
+			<h:form>
+				<h:panelGrid columns="2">
+		Numéro : <h:outputText value="#{clientMB.compteEpargne.numero}" />
+					<br />
+		Date d'ouverture : <h:outputText
+						value="#{clientMB.compteEpargne.dateOuverture}" />
+					<br />
+		Solde : <h:outputText value="#{clientMB.compteEpargne.solde}" />
+					<br />
+		Taux : <h:outputText value="#{clientMB.compteEpargne.taux}" />
+					<br />
+				</h:panelGrid>
+			</h:form>
+		</p:panel>
+	</div>
+	<p:panel header="Compte d'Epargne" style="display:flex; display:block">
 		<h:form>
 			<h:panelGrid columns="2">
-		Numéro : <h:outputText value="#{clientMB.compteEpargne.numero}" />
+			Montant : <h:inputText id="solde" value="#{clientMB.solde}" />
 				<br />
-		Date d'ouverture : <h:outputText
-					value="#{clientMB.compteEpargne.dateOuverture}" />
-				<br />
-		Solde : <h:outputText value="#{clientMB.compteEpargne.solde}" />
-				<br />
-		Taux : <h:outputText value="#{clientMB.compteEpargne.taux}" />
-				<br />
+				<input type="radio" name="sens" value="true">Vers le compte
+					d'épargne</input>
+				<input type="radio" name="sens" value="false">Vers le compte
+					courant</input>
+				<h:commandButton value="Valider"
+					action="#{clientMB.virementInterne}" />
 			</h:panelGrid>
 		</h:form>
-	</div>
-</body>
+	</p:panel>
+	<h4>Taux de change :</h4>
+	<h:form>
+		<h:outputText id="id" value="#{changeMB.getChangeEuro()}" />
+	</h:form>
+</h:body>
 </html>
