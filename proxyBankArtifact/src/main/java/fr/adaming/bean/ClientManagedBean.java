@@ -31,8 +31,8 @@ public class ClientManagedBean implements Serializable {
 
 	private Client client;
 	private boolean editMode = false;
-	private boolean addCompteEpargne;
-	private boolean addCompteCourant;
+	private boolean addCompteEpargne=true;
+	private boolean addCompteCourant=true;
 	private CompteCourant compteCourant;
 	private ConseillerClientele conseiller;
 	private Gerant gerant;

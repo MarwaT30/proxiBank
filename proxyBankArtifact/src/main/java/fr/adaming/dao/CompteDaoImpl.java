@@ -99,8 +99,6 @@ public class CompteDaoImpl implements ICompteDao {
 
 		CompteEpargne compte = (CompteEpargne) query.uniqueResult();
 
-		// fermer la session
-		// session.close();
 
 		return compte;
 	}
@@ -109,7 +107,6 @@ public class CompteDaoImpl implements ICompteDao {
 	public int ajouterCompteC(CompteCourant compteC) {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(compteC);
-		// session.close();
 
 		return 1;
 	}
@@ -117,28 +114,17 @@ public class CompteDaoImpl implements ICompteDao {
 	@Override
 	public int modifierCompteC(CompteCourant compteC) {
 		Session session = sessionFactory.getCurrentSession();
-		session.update(compteC);
-		// // avec SQL natif
-		// String sqlreq =
-		// "update comptes_courants set date_ouverture=:date1 , solde=:solde1, aut_decouvert:=dec1 where id=:id1";
-		// SQLQuery query = session.createSQLQuery(sqlreq);
-		// // ajouter l'entité : SQL natif, par default, ne travaille pas avec
-		// les classes
-		// query.addEntity(CompteCourant.class);
-		// query.setParameter("date1", compteC.getDateOuverture());
-		// query.setParameter("solde1", compteC.getSolde());
-		// query.setParameter("dec1", compteC.getAutDecouvert());
-		// query.setParameter("id1", compteC.getNumero());
-		// query.executeUpdate();
-		// session.close();
-		// return query.executeUpdate();
+		CompteCourant compteC1=(CompteCourant)session.get(CompteCourant.class, compteC.getNumero());
+		session.update(compteC1);
+		
 		return 1;
 	}
 
 	@Override
 	public int supprimerCompteC(CompteCourant compteC) {
 		Session session = sessionFactory.getCurrentSession();
-		session.delete(compteC);
+		CompteCourant compteC1=(CompteCourant)session.get(CompteCourant.class, compteC.getNumero());
+		session.delete(compteC1);
 		return 1;
 	}
 
@@ -152,28 +138,16 @@ public class CompteDaoImpl implements ICompteDao {
 	@Override
 	public int modifierCompteE(CompteEpargne compteE) {
 		Session session = sessionFactory.getCurrentSession();
-		session.update(compteE);
-		// avec SQL natif
-		// String sqlreq =
-		// "update comptes_epargnes set date_ouverture=:date1 , solde=:solde1, taux:=dec1 where id=:id1";
-		// SQLQuery query = session.createSQLQuery(sqlreq);
-		// // ajouter l'entité : SQL natif, par default, ne travaille pas avec
-		// les classes
-		// query.addEntity(CompteEpargne.class);
-		// query.setParameter("date1", compteE.getDateOuverture());
-		// query.setParameter("solde1", compteE.getSolde());
-		// query.setParameter("dec1", compteE.getTaux());
-		// query.setParameter("id1", compteE.getNumero());
-		// query.executeUpdate();
-		// session.close();
-		// return query.executeUpdate();
+		CompteEpargne compteE1=(CompteEpargne)session.get(CompteEpargne.class, compteE.getNumero());
+		session.update(compteE1);
 		return 1;
 	}
 
 	@Override
 	public int supprimerCompteE(CompteEpargne compteE) {
 		Session session = sessionFactory.getCurrentSession();
-		session.delete(compteE);
+		CompteEpargne compteE1=(CompteEpargne)session.get(CompteEpargne.class, compteE.getNumero());
+		session.delete(compteE1);
 		return 1;
 	}
 

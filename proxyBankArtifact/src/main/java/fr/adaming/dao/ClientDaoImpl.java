@@ -80,68 +80,45 @@ public class ClientDaoImpl implements IClientDao {
 	@Override
 	public int modifierClient(Client client) {
 		Session session = sessionFactory.getCurrentSession();
-		session.update(client);
-		// avec SQL natif
-//		String sqlreq = "update clients set nom=:nom1, prenom=:prenom1, adresse=:adresse1, code_postal=:codePostal1, ville=:ville1, telephone=:telephone1  where id=:id1";
-//		SQLQuery query = session.createSQLQuery(sqlreq);
-//		// ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
-//		query.addEntity(Client.class);
-//
-//		query.setParameter("nom1", client.getNom());
-//		query.setParameter("prenom1", client.getPrenom());
-//		query.setParameter("adresse1", client.getAdresse());
-//		query.setParameter("codePostal1", client.getCodePostal());
-//		query.setParameter("ville1", client.getVille());
-//		query.setParameter("telephone1", client.getTelephone());
-//		query.setParameter("id2", client.getConseiller().getId());
-//		query.setParameter("id1", client.getId());
-		//query.executeUpdate();
-		// session.close();
-		//return query.executeUpdate();
+		Client cl1=(Client) session.get(Client.class, client.getId());
+		session.update(cl1);
+
+		
 		return 1;
 	}
 
 	@Override
 	public int supprimerClient(int id) {
 		Session session = sessionFactory.getCurrentSession();
-
-		// declaration de la requete
-		String hqlReq = "delete from clientEntity where id=:id1";
-
-		// creer la requete
-		Query query = session.createQuery(hqlReq);
-
-		// parametres de requete
-		query.setParameter("id1", id);
-
-		// envoyer la requete
-		
-		// session.close();
-		return query.executeUpdate();
+		Client cl1=(Client) session.get(Client.class, id);
+		session.delete(cl1);
+		return 1;
 	}
 
 	@Override
 	public int supprimerClient(Client client) {
 		Session session = sessionFactory.getCurrentSession();
-
-		// declaration de la requete
-		String hqlReq = "delete from clientEntity where nom=:nom1 and prenom=:prenom1 and adresse=:adresse1 and codePostal=:codePostal1 and ville=:ville1 and telephone=:telephone1";
-
-		// creer la requete
-		Query query = session.createQuery(hqlReq);
-
-		// parametres de requete
-		query.setParameter("nom1", client.getNom());
-		query.setParameter("prenom1", client.getPrenom());
-		query.setParameter("adresse1", client.getAdresse());
-		query.setParameter("codePostal1", client.getCodePostal());
-		query.setParameter("ville1", client.getVille());
-		query.setParameter("telephone1", client.getTelephone());
-
-		// envoyer la requete
-		
-		// session.close();
-		return query.executeUpdate();
+		Client cl1=(Client) session.get(Client.class, client.getId());
+		session.delete(cl1);
+//		// declaration de la requete
+//		String hqlReq = "delete from clientEntity where nom=:nom1 and prenom=:prenom1 and adresse=:adresse1 and codePostal=:codePostal1 and ville=:ville1 and telephone=:telephone1";
+//
+//		// creer la requete
+//		Query query = session.createQuery(hqlReq);
+//
+//		// parametres de requete
+//		query.setParameter("nom1", client.getNom());
+//		query.setParameter("prenom1", client.getPrenom());
+//		query.setParameter("adresse1", client.getAdresse());
+//		query.setParameter("codePostal1", client.getCodePostal());
+//		query.setParameter("ville1", client.getVille());
+//		query.setParameter("telephone1", client.getTelephone());
+//
+//		// envoyer la requete
+//		
+//		// session.close();
+//		return query.executeUpdate();
+		return 1;
 	}
 
 	@Override
