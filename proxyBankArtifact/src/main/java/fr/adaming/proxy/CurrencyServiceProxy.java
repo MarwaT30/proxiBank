@@ -60,7 +60,7 @@ public class CurrencyServiceProxy {
 			JSONObject exchangeRates = new JSONObject(
 					EntityUtils.toString(entity));
 
-			System.out.println("Live Currency Exchange Rates");
+		//	System.out.println("Live Currency Exchange Rates");
 
 			// Parsed JSON Objects are accessed according to the JSON resonse's
 			// hierarchy, output strings are built

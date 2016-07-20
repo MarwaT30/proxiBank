@@ -3,34 +3,9 @@ package fr.adaming.bean;
 import java.io.Serializable;
 import java.util.List;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-
-
-
-
-
-
-
-
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -44,6 +19,7 @@ import fr.adaming.model.ConseillerClientele;
 import fr.adaming.model.Gerant;
 import fr.adaming.service.ClientServiceImpl;
 import fr.adaming.service.IClientService;
+import fr.adaming.service.ICompteService;
 import fr.adaming.service.IConseillerService;
 import fr.adaming.service.IGerantService;
 
@@ -52,19 +28,18 @@ import fr.adaming.service.IGerantService;
 @Component
 public class ClientManagedBean implements Serializable {
 	private static final long serialVersionUID = 86L;
-	
-	
+
 	private Client client;
-	private boolean editMode=false;
+	private boolean editMode = false;
 	private boolean addCompteEpargne;
 	private boolean addCompteCourant;
 	private CompteCourant compteCourant;
 	private ConseillerClientele conseiller;
 	private Gerant gerant;
 	private CompteEpargne compteEpargne;
-	private List<Client> list =null;
-	private String passwordConseiller="CS";
-	private String passwordGerant="GR";
+	private List<Client> list = null;
+	private String passwordConseiller = "CS";
+	private String passwordGerant = "GR";
 	private String nom;
 	private String prenom;
 	private String password;
@@ -74,28 +49,29 @@ public class ClientManagedBean implements Serializable {
 	private int idCompteEpargne2;
 	private int idComptecourant2;
 	private boolean sens;
-	
-	@ManagedProperty(value="#{clientServiceBean}")
-	//@Autowired
+
+	@ManagedProperty(value = "#{clientServiceBean}")
+	// @Autowired
 	IClientService clientService;
-	
+
 	@Autowired
 	IConseillerService conseillerService;
-	
+
 	@Autowired
 	IGerantService gerantService;
 	
+	@Autowired
+	ICompteService compteService;
+
 	private List<Client> listeClients;
 
 	/**
 	 * ctor vide
 	 */
 	public ClientManagedBean() {
-		client=new Client();
+		client = new Client();
 	}
-	
-	
-	
+
 	public void reload() {
 		setListeClients(clientService.getAllClients());
 	}
@@ -103,7 +79,7 @@ public class ClientManagedBean implements Serializable {
 	/**
 	 * Pour créer le client à partir du formulaire
 	 */
-	public void ajouter() throws ExceptionNombreClient{
+	public void ajouter() throws ExceptionNombreClient {
 		if (editMode == false) {
 			if (addCompteCourant != true) {
 				compteCourant = null;
@@ -113,7 +89,8 @@ public class ClientManagedBean implements Serializable {
 				compteEpargne = null;
 			}
 
-			clientService.ajouterClient(1, client, compteCourant,compteEpargne);
+			clientService
+					.ajouterClient(1, client, compteCourant, compteEpargne);
 			list = clientService.getClientsByConseiller(conseiller);
 			client = new Client();
 			compteCourant = new CompteCourant();
@@ -126,8 +103,6 @@ public class ClientManagedBean implements Serializable {
 			client = new Client();
 		}
 	}
-	
-	
 
 	/**
 	 * @return the conseillerService
@@ -136,16 +111,13 @@ public class ClientManagedBean implements Serializable {
 		return conseillerService;
 	}
 
-
-
 	/**
-	 * @param conseillerService the conseillerService to set
+	 * @param conseillerService
+	 *            the conseillerService to set
 	 */
 	public void setConseillerService(IConseillerService conseillerService) {
 		this.conseillerService = conseillerService;
 	}
-
-
 
 	/**
 	 * @return the clientService
@@ -154,26 +126,26 @@ public class ClientManagedBean implements Serializable {
 		return clientService;
 	}
 
-
-
 	/**
-	 * @param clientService the clientService to set
+	 * @param clientService
+	 *            the clientService to set
 	 */
 	public void setClientService(IClientService clientService) {
 		this.clientService = clientService;
 	}
 
-	public void virementInterne() throws ExceptionSolde{
-		clientService.virementInterne(solde, client);}
+	public void virementInterne() throws ExceptionSolde {
+		clientService.virementInterne(solde, client);
+	}
 
-	
-//	public void virement() throws ExceptionSolde{
-//		clientService.virement(solde, idComptecourant1, idCompteEpargne1, idComptecourant2, idComptecourant2);}
+	// public void virement() throws ExceptionSolde{
+	// clientService.virement(solde, idComptecourant1, idCompteEpargne1,
+	// idComptecourant2, idComptecourant2);}
 
-//	public void getAllClients() {
-//		this.listeClients=clientService.getAllClients();
-//	}
-	
+	// public void getAllClients() {
+	// this.listeClients=clientService.getAllClients();
+	// }
+
 	public List<Client> getAllClients() {
 		return clientService.getAllClients();
 	}
@@ -195,13 +167,14 @@ public class ClientManagedBean implements Serializable {
 		clientService.supprimerClient(client);
 	}
 
-	
-	public String isConseillerExistMB(){
-		int verif=conseillerService.isExist(this.nom,this.prenom);
-		if(verif==1 && this.password.equals(this.passwordConseiller) ){   return "succes";}else {return "echec";}
+	public String isConseillerExistMB() {
+		int verif = conseillerService.isExist(this.nom, this.prenom);
+		if (verif == 1 && this.password.equals(this.passwordConseiller)) {
+			return "succes";
+		} else {
+			return "echec";
 		}
-
-	
+	}
 
 	public Client getClient() {
 		return client;
@@ -219,8 +192,6 @@ public class ClientManagedBean implements Serializable {
 		this.listeClients = listeClients;
 	}
 
-
-
 	/**
 	 * @return the editMode
 	 */
@@ -228,16 +199,13 @@ public class ClientManagedBean implements Serializable {
 		return editMode;
 	}
 
-
-
 	/**
-	 * @param editMode the editMode to set
+	 * @param editMode
+	 *            the editMode to set
 	 */
 	public void setEditMode(boolean editMode) {
 		this.editMode = editMode;
 	}
-
-
 
 	/**
 	 * @return the addCompteEpargne
@@ -246,16 +214,13 @@ public class ClientManagedBean implements Serializable {
 		return addCompteEpargne;
 	}
 
-
-
 	/**
-	 * @param addCompteEpargne the addCompteEpargne to set
+	 * @param addCompteEpargne
+	 *            the addCompteEpargne to set
 	 */
 	public void setAddCompteEpargne(boolean addCompteEpargne) {
 		this.addCompteEpargne = addCompteEpargne;
 	}
-
-
 
 	/**
 	 * @return the addCompteCourant
@@ -264,16 +229,13 @@ public class ClientManagedBean implements Serializable {
 		return addCompteCourant;
 	}
 
-
-
 	/**
-	 * @param addCompteCourant the addCompteCourant to set
+	 * @param addCompteCourant
+	 *            the addCompteCourant to set
 	 */
 	public void setAddCompteCourant(boolean addCompteCourant) {
 		this.addCompteCourant = addCompteCourant;
 	}
-
-
 
 	/**
 	 * @return the compteCourant
@@ -282,16 +244,13 @@ public class ClientManagedBean implements Serializable {
 		return compteCourant;
 	}
 
-
-
 	/**
-	 * @param compteCourant the compteCourant to set
+	 * @param compteCourant
+	 *            the compteCourant to set
 	 */
 	public void setCompteCourant(CompteCourant compteCourant) {
 		this.compteCourant = compteCourant;
 	}
-
-
 
 	/**
 	 * @return the conseiller
@@ -300,16 +259,13 @@ public class ClientManagedBean implements Serializable {
 		return conseiller;
 	}
 
-
-
 	/**
-	 * @param conseiller the conseiller to set
+	 * @param conseiller
+	 *            the conseiller to set
 	 */
 	public void setConseiller(ConseillerClientele conseiller) {
 		this.conseiller = conseiller;
 	}
-
-
 
 	/**
 	 * @return the gerant
@@ -318,16 +274,13 @@ public class ClientManagedBean implements Serializable {
 		return gerant;
 	}
 
-
-
 	/**
-	 * @param gerant the gerant to set
+	 * @param gerant
+	 *            the gerant to set
 	 */
 	public void setGerant(Gerant gerant) {
 		this.gerant = gerant;
 	}
-
-
 
 	/**
 	 * @return the gerantService
@@ -336,16 +289,13 @@ public class ClientManagedBean implements Serializable {
 		return gerantService;
 	}
 
-
-
 	/**
-	 * @param gerantService the gerantService to set
+	 * @param gerantService
+	 *            the gerantService to set
 	 */
 	public void setGerantService(IGerantService gerantService) {
 		this.gerantService = gerantService;
 	}
-
-
 
 	/**
 	 * @return the compteEpargne
@@ -354,16 +304,13 @@ public class ClientManagedBean implements Serializable {
 		return compteEpargne;
 	}
 
-
-
 	/**
-	 * @param compteEpargne the compteEpargne to set
+	 * @param compteEpargne
+	 *            the compteEpargne to set
 	 */
 	public void setCompteEpargne(CompteEpargne compteEpargne) {
 		this.compteEpargne = compteEpargne;
 	}
-
-
 
 	/**
 	 * @return the list
@@ -372,16 +319,13 @@ public class ClientManagedBean implements Serializable {
 		return list;
 	}
 
-
-
 	/**
-	 * @param list the list to set
+	 * @param list
+	 *            the list to set
 	 */
 	public void setList(List<Client> list) {
 		this.list = list;
 	}
-
-
 
 	/**
 	 * @return the passwordConseiller
@@ -390,16 +334,13 @@ public class ClientManagedBean implements Serializable {
 		return passwordConseiller;
 	}
 
-
-
 	/**
-	 * @param passwordConseiller the passwordConseiller to set
+	 * @param passwordConseiller
+	 *            the passwordConseiller to set
 	 */
 	public void setPasswordConseiller(String passwordConseiller) {
 		this.passwordConseiller = passwordConseiller;
 	}
-
-
 
 	/**
 	 * @return the passwordGerant
@@ -408,16 +349,13 @@ public class ClientManagedBean implements Serializable {
 		return passwordGerant;
 	}
 
-
-
 	/**
-	 * @param passwordGerant the passwordGerant to set
+	 * @param passwordGerant
+	 *            the passwordGerant to set
 	 */
 	public void setPasswordGerant(String passwordGerant) {
 		this.passwordGerant = passwordGerant;
 	}
-
-
 
 	/**
 	 * @return the nom
@@ -426,16 +364,13 @@ public class ClientManagedBean implements Serializable {
 		return nom;
 	}
 
-
-
 	/**
-	 * @param nom the nom to set
+	 * @param nom
+	 *            the nom to set
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
-
 
 	/**
 	 * @return the prenom
@@ -444,16 +379,13 @@ public class ClientManagedBean implements Serializable {
 		return prenom;
 	}
 
-
-
 	/**
-	 * @param prenom the prenom to set
+	 * @param prenom
+	 *            the prenom to set
 	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-
-
 
 	/**
 	 * @return the password
@@ -462,16 +394,13 @@ public class ClientManagedBean implements Serializable {
 		return password;
 	}
 
-
-
 	/**
-	 * @param password the password to set
+	 * @param password
+	 *            the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
 
 	/**
 	 * @return the solde
@@ -480,16 +409,13 @@ public class ClientManagedBean implements Serializable {
 		return solde;
 	}
 
-
-
 	/**
-	 * @param solde the solde to set
+	 * @param solde
+	 *            the solde to set
 	 */
 	public void setSolde(float solde) {
 		this.solde = solde;
 	}
-
-
 
 	/**
 	 * @return the idCompteEpargne1
@@ -498,16 +424,13 @@ public class ClientManagedBean implements Serializable {
 		return idCompteEpargne1;
 	}
 
-
-
 	/**
-	 * @param idCompteEpargne1 the idCompteEpargne1 to set
+	 * @param idCompteEpargne1
+	 *            the idCompteEpargne1 to set
 	 */
 	public void setIdCompteEpargne1(int idCompteEpargne1) {
 		this.idCompteEpargne1 = idCompteEpargne1;
 	}
-
-
 
 	/**
 	 * @return the idComptecourant1
@@ -516,16 +439,13 @@ public class ClientManagedBean implements Serializable {
 		return idComptecourant1;
 	}
 
-
-
 	/**
-	 * @param idComptecourant1 the idComptecourant1 to set
+	 * @param idComptecourant1
+	 *            the idComptecourant1 to set
 	 */
 	public void setIdComptecourant1(int idComptecourant1) {
 		this.idComptecourant1 = idComptecourant1;
 	}
-
-
 
 	/**
 	 * @return the idCompteEpargne2
@@ -534,16 +454,13 @@ public class ClientManagedBean implements Serializable {
 		return idCompteEpargne2;
 	}
 
-
-
 	/**
-	 * @param idCompteEpargne2 the idCompteEpargne2 to set
+	 * @param idCompteEpargne2
+	 *            the idCompteEpargne2 to set
 	 */
 	public void setIdCompteEpargne2(int idCompteEpargne2) {
 		this.idCompteEpargne2 = idCompteEpargne2;
 	}
-
-
 
 	/**
 	 * @return the idComptecourant2
@@ -552,16 +469,13 @@ public class ClientManagedBean implements Serializable {
 		return idComptecourant2;
 	}
 
-
-
 	/**
-	 * @param idComptecourant2 the idComptecourant2 to set
+	 * @param idComptecourant2
+	 *            the idComptecourant2 to set
 	 */
 	public void setIdComptecourant2(int idComptecourant2) {
 		this.idComptecourant2 = idComptecourant2;
 	}
-
-
 
 	/**
 	 * @return the sens
@@ -570,15 +484,25 @@ public class ClientManagedBean implements Serializable {
 		return sens;
 	}
 
-
-
 	/**
-	 * @param sens the sens to set
+	 * @param sens
+	 *            the sens to set
 	 */
 	public void setSens(boolean sens) {
 		this.sens = sens;
 	}
 	
-	
+	public String affComptes(Client client){
+		setClient(client);
+		setCompteCourant(client.getCompteCourant());
+		setCompteEpargne(client.getCompteEpargne());
+		
+		return "affComptesClient";
+	}
+	public void loadComptes(){
+		setClient(clientService.getClientById(client.getId()));
+		setCompteCourant(client.getCompteCourant());
+		setCompteEpargne(client.getCompteEpargne());
+	}
 
 }

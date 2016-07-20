@@ -22,6 +22,8 @@ public interface IClientService {
 	 * @return les clients gérés par ce conseiller
 	 */
 	public List<Client> getClientsByConseiller(ConseillerClientele conseiller);
+	
+	public Client getClientById(int id);
 
 	/**
 	 * ajoute le client dans la base

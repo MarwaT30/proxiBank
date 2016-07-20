@@ -172,4 +172,9 @@ public class ClientServiceImpl implements IClientService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public Client getClientById(int id) {
+		return clientDao.getClientById(id);
+	}
 }

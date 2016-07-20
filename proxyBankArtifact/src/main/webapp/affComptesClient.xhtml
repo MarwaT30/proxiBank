@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>Comptes de client</title>
+</head>
+<body>
+	<div style="width: 25em; display: block">
+		<h3>Informations du client :</h3>
+		<h:form>
+			Numéro : <h:inputText id="id" value="#{clientMB.client.id}" />
+		<h:commandButton value="Charger le client" action="#{clientMB.loadComptes}" />
+	</h:form>
+		<h:form>
+			<h:panelGrid columns="2">
+				Nom : <h:outputText value="#{clientMB.client.nom}" />
+				<br />
+				Prénom : <h:outputText value="#{clientMB.client.prenom}" />
+				<br />
+				Téléphone : <h:outputText value="#{clientMB.client.telephone}" />
+				<br />
+				Adresse : <h:outputText value="#{clientMB.client.adresse}" />
+				<br />
+				Code Postal : <h:outputText value="#{clientMB.client.codePostal}" />
+				<br />
+				Ville : <h:outputText value="#{clientMB.client.ville}" />
+				<br />
+			</h:panelGrid>
+		</h:form>
+	</div>
+
+	<div style="width: 25em; display: block">
+		<h3>Compte courant :</h3>
+		<h:form>
+			<h:panelGrid columns="2">
+		Numéro : <h:outputText value="#{clientMB.compteCourant.numero}" />
+				<br />
+		Date d'ouverture : <h:outputText
+					value="#{clientMB.compteCourant.dateOuverture}" />
+				<br />
+		Solde : <h:outputText value="#{clientMB.compteCourant.solde}" />
+				<br />
+		Découvert autorisé : <h:outputText
+					value="#{clientMB.compteCourant.autDecouvert}" />
+				<br />
+			</h:panelGrid>
+		</h:form>
+	</div>
+
+	<div style="width: 25em; display: block">
+		<h3>Compte d'épargne :</h3>
+		<h:form>
+			<h:panelGrid columns="2">
+		Numéro : <h:outputText value="#{clientMB.compteEpargne.numero}" />
+				<br />
+		Date d'ouverture : <h:outputText
+					value="#{clientMB.compteEpargne.dateOuverture}" />
+				<br />
+		Solde : <h:outputText value="#{clientMB.compteEpargne.solde}" />
+				<br />
+		Taux : <h:outputText value="#{clientMB.compteEpargne.taux}" />
+				<br />
+			</h:panelGrid>
+		</h:form>
+	</div>
+</body>
+</html>
