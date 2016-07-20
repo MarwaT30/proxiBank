@@ -43,7 +43,7 @@ public class ClientManagedBean implements Serializable {
 	private String nom;
 	private String prenom;
 	private String password;
-	private float solde;
+	private float montant;
 	private int idCompteEpargne1;
 	private int idComptecourant1;
 	private int idCompteEpargne2;
@@ -134,12 +134,16 @@ public class ClientManagedBean implements Serializable {
 		this.clientService = clientService;
 	}
 
+	/**
+	 * "montant" est le montant du virement
+	 * @throws ExceptionSolde
+	 */
 	public void virementInterne() throws ExceptionSolde {
-		clientService.virementInterne(solde, client,sens);
+		clientService.virementInterne(montant, client,sens);
 	}
 
 	 public void virement() throws ExceptionSolde{
-	 clientService.virement(solde, idComptecourant1, idCompteEpargne1,
+	 clientService.virement(montant, idComptecourant1, idCompteEpargne1,
 	 idComptecourant2, idComptecourant2);}
 
 	
@@ -412,18 +416,18 @@ public class ClientManagedBean implements Serializable {
 	}
 
 	/**
-	 * @return the solde
+	 * @return the montant
 	 */
 	public float getSolde() {
-		return solde;
+		return montant;
 	}
 
 	/**
-	 * @param solde
-	 *            the solde to set
+	 * @param montant
+	 *            the montant to set
 	 */
 	public void setSolde(float solde) {
-		this.solde = solde;
+		this.montant = solde;
 	}
 
 	/**

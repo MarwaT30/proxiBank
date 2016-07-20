@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Liste des Clients</title>
+</h:head>
+<h:body>
+	<ui:decorate template="/templates/layout.xhtml">
+		<ui:define name="content">
+			<h3>Liste des utilisateurs :</h3>
+			<p:dataTable var="users" value="#{clientMB.listeClients}">
+				<p:column headerText="Id">
+					<h:outputText value="#{users.id}" />
+				</p:column>
+				<p:column headerText="Nom">
+					<h:outputText value="#{users.nom}" />
+				</p:column>
+				<p:column headerText="Prenom">
+					<h:outputText value="#{users.prenom}" />
+				</p:column>
+				<p:column headerText="Mail">
+					<h:outputText value="#{users.mail}" />
+				</p:column>
+				<p:column headerText="Mot de Passe">
+					<h:outputText value="#{users.motDePasse}" />
+				</p:column>
+			</p:dataTable>
+			<h:form>
+				<p:breadCrumb>
+					<p:menuitem value="Accueil" url="accueil.xhtml" />
+					<p:menuitem value="Nouvel utilisateur" url="ajout.xhtml" />
+					<p:menuitem value="Modifier utilisateur" url="modif.xhtml" />
+					<p:menuitem value="Supprimer utilisateur" url="suppr.xhtml" />
+				</p:breadCrumb>
+			</h:form>
+		</ui:define>
+	</ui:decorate>
+</h:body>
+</html>
