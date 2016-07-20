@@ -47,4 +47,9 @@ xmlns="http://java.sun.com/xml/ns/javaee"
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
+    <!-- pour executer la validation dans le cpntexte faces -->
+  <context-param>
+    <param-name>javax.faces.VALIDATE_EMPTY_FIELDS</param-name>
+    <param-value>true</param-value>
+  </context-param>
 </web-app>
