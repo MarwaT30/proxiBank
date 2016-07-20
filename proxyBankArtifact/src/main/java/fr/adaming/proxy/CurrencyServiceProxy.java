@@ -76,8 +76,8 @@ public class CurrencyServiceProxy {
 					+ " : "
 					+ exchangeRates.getJSONObject("quotes").getDouble(
 							"USD" + currency);
-			System.out.println(retour + " (Date: " + formattedDate + ")");
-			System.out.println("\n");
+//			System.out.println(retour + " (Date: " + formattedDate + ")");
+//			System.out.println("\n");
 			response.close();
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block

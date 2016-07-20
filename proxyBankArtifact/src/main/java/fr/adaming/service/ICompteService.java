@@ -23,14 +23,14 @@ public interface ICompteService {
 	 * @param client
 	 * @return
 	 */
-	public List<CompteCourant> getCompteCourantByClient(Client client);
+	public CompteCourant getCompteCourantByClient(Client client);
 
 	/**
 	 * 
 	 * @param client
 	 * @return
 	 */
-	public List<CompteEpargne> getEpargneByClient(Client client);
+	public CompteEpargne getEpargneByClient(Client client);
 
 	/**
 	 * 
