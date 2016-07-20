@@ -47,15 +47,17 @@ public class CarteDaoImpl implements ICarteDao {
 	@Override
 	public int modifierCarte(CarteBancaire carte) {
 		Session session = sessionFactory.getCurrentSession();
-		session.update(carte);
+		CarteBancaire carte1 =(CarteBancaire)session.get(CarteBancaire.class, carte.getId_carte());
+		session.update(carte1);
 		return 1;
 	}
 
 	@Override
 	public int supprimerCarte(CarteBancaire carte) {
 		Session session = sessionFactory.getCurrentSession();
-		session.delete(carte);
-		return 0;
+		CarteBancaire carte1 =(CarteBancaire)session.get(CarteBancaire.class, carte.getId_carte());
+		session.update(carte1);
+		return 1;
 	}	
 
 }

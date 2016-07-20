@@ -48,7 +48,7 @@
 
 		<p:column headerText=" ">
 			<h:form>
-				<p:commandButton action="#{clientMB.supprimer()}" icon="ui-icon-trash"
+				<p:commandButton action="#{clientMB.supprimerById()}" icon="ui-icon-trash"
 					title="supprimer" process="@this" update="@all">
 					<f:setPropertyActionListener value="#{client}"
 						target="#{clientMB.client}" />
