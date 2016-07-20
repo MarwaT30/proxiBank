@@ -1,4 +1,4 @@
-package fr.adaming.proxy;
+package fr.adaming.service;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -16,7 +16,7 @@ import org.apache.http.util.EntityUtils;
 import org.primefaces.json.JSONException;
 import org.primefaces.json.JSONObject;
 
-public class CurrencyServiceProxy {
+public class CurrencyService {
 	// essential URL structure is built using constants
 	public static final String ACCESS_KEY = "2d154320152861c5cd257c40aa49c597";
 	public static final String BASE_URL = "http://apilayer.net/api/";

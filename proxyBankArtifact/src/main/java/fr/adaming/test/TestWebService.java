@@ -1,11 +1,11 @@
 package fr.adaming.test;
 
-import fr.adaming.proxy.CurrencyServiceProxy;
+import fr.adaming.service.CurrencyService;
 
 
 public class TestWebService {
 
 	public static void main(String[] args) {
-		CurrencyServiceProxy.sendLiveRequest("EUR");
+		CurrencyService.sendLiveRequest("EUR");
 	}
 }
