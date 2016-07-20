@@ -42,12 +42,12 @@ public class CompteServiceImpl implements ICompteService {
 	}
 
 	@Override
-	public List<CompteCourant> getCompteCourantByClient(Client client) {
+	public CompteCourant getCompteCourantByClient(Client client) {
 		return compteDao.getCompteCourantByClient(client);
 	}
 
 	@Override
-	public List<CompteEpargne> getEpargneByClient(Client client) {
+	public CompteEpargne getEpargneByClient(Client client) {
 		return compteDao.getEpargneByClient(client);
 	}
 

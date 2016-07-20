@@ -29,13 +29,11 @@ public class CompteDaoImpl implements ICompteDao {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
-	
 
 	@Override
 	public Compte getCompteCourantByNumero(int numero) {
 		// ouvrir une session
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 
 		// declaration de la requete
 		String hqlReq = "from compteCourantEntity c where id_conmpte=:id1";
@@ -46,7 +44,7 @@ public class CompteDaoImpl implements ICompteDao {
 		CompteCourant compte = (CompteCourant) query.uniqueResult();
 
 		// fermer la session
-		session.close();
+		// session.close();
 
 		return compte;
 	}
@@ -54,7 +52,7 @@ public class CompteDaoImpl implements ICompteDao {
 	@Override
 	public Compte getCompteEpargneByNumero(int numero) {
 		// ouvrir une session
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 
 		// declaration de la requete
 		String hqlReq = "from compteEpargneEntity c where id_conmpte=:id1";
@@ -65,33 +63,33 @@ public class CompteDaoImpl implements ICompteDao {
 		CompteEpargne compte = (CompteEpargne) query.uniqueResult();
 
 		// fermer la session
-		session.close();
+		// session.close();
 
 		return compte;
 	}
 
 	@Override
-	public List<CompteCourant> getCompteCourantByClient(Client client) {
+	public CompteCourant getCompteCourantByClient(Client client) {
 		// ouvrir une session
-				Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 
-				// declaration de la requete
-				String hqlReq = "from compteCourantEntity c where id_client=:id1";
+		// declaration de la requete
+		String hqlReq = "from compteCourantEntity c where id_client=:id1";
 
-				Query query = session.createQuery(hqlReq);
-				query.setParameter("id1", client.getId());
+		Query query = session.createQuery(hqlReq);
+		query.setParameter("id1", client.getId());
 
-				List<CompteCourant> liste= (List<CompteCourant>)query.list();
+		CompteCourant compte = (CompteCourant) query.uniqueResult();
 
-				// fermer la session
-				session.close();
+		// fermer la session
+		// session.close();
 
-				return liste;
+		return compte;
 	}
 
 	@Override
-	public List<CompteEpargne> getEpargneByClient(Client client) {
-		Session session = sessionFactory.openSession();
+	public CompteEpargne getEpargneByClient(Client client) {
+		Session session = sessionFactory.getCurrentSession();
 
 		// declaration de la requete
 		String hqlReq = "from compteEpargneEntity c where id_client=:id1";
@@ -99,19 +97,19 @@ public class CompteDaoImpl implements ICompteDao {
 		Query query = session.createQuery(hqlReq);
 		query.setParameter("id1", client.getId());
 
-		List<CompteEpargne> liste= (List<CompteEpargne>)query.list();
+		CompteEpargne compte = (CompteEpargne) query.uniqueResult();
 
 		// fermer la session
-		session.close();
+		// session.close();
 
-		return liste;
+		return compte;
 	}
 
 	@Override
 	public int ajouterCompteC(CompteCourant compteC) {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(compteC);
-		//session.close();
+		// session.close();
 
 		return 1;
 	}
@@ -119,20 +117,22 @@ public class CompteDaoImpl implements ICompteDao {
 	@Override
 	public int modifierCompteC(CompteCourant compteC) {
 		Session session = sessionFactory.getCurrentSession();
-			session.update(compteC);
-//		// avec SQL natif
-//		String sqlreq = "update comptes_courants set date_ouverture=:date1 , solde=:solde1, aut_decouvert:=dec1 where id=:id1";
-//		SQLQuery query = session.createSQLQuery(sqlreq);
-//		// ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
-//		query.addEntity(CompteCourant.class);
-//		query.setParameter("date1", compteC.getDateOuverture());
-//		query.setParameter("solde1", compteC.getSolde());
-//		query.setParameter("dec1", compteC.getAutDecouvert());
-//		query.setParameter("id1", compteC.getNumero());
+		session.update(compteC);
+		// // avec SQL natif
+		// String sqlreq =
+		// "update comptes_courants set date_ouverture=:date1 , solde=:solde1, aut_decouvert:=dec1 where id=:id1";
+		// SQLQuery query = session.createSQLQuery(sqlreq);
+		// // ajouter l'entité : SQL natif, par default, ne travaille pas avec
+		// les classes
+		// query.addEntity(CompteCourant.class);
+		// query.setParameter("date1", compteC.getDateOuverture());
+		// query.setParameter("solde1", compteC.getSolde());
+		// query.setParameter("dec1", compteC.getAutDecouvert());
+		// query.setParameter("id1", compteC.getNumero());
 		// query.executeUpdate();
 		// session.close();
-		//return query.executeUpdate();
-			return 1;
+		// return query.executeUpdate();
+		return 1;
 	}
 
 	@Override
@@ -154,17 +154,19 @@ public class CompteDaoImpl implements ICompteDao {
 		Session session = sessionFactory.getCurrentSession();
 		session.update(compteE);
 		// avec SQL natif
-//		String sqlreq = "update comptes_epargnes set date_ouverture=:date1 , solde=:solde1, taux:=dec1 where id=:id1";
-//		SQLQuery query = session.createSQLQuery(sqlreq);
-//		// ajouter l'entité : SQL natif, par default, ne travaille pas avec les classes
-//		query.addEntity(CompteEpargne.class);
-//		query.setParameter("date1", compteE.getDateOuverture());
-//		query.setParameter("solde1", compteE.getSolde());
-//		query.setParameter("dec1", compteE.getTaux());
-//		query.setParameter("id1", compteE.getNumero());
+		// String sqlreq =
+		// "update comptes_epargnes set date_ouverture=:date1 , solde=:solde1, taux:=dec1 where id=:id1";
+		// SQLQuery query = session.createSQLQuery(sqlreq);
+		// // ajouter l'entité : SQL natif, par default, ne travaille pas avec
+		// les classes
+		// query.addEntity(CompteEpargne.class);
+		// query.setParameter("date1", compteE.getDateOuverture());
+		// query.setParameter("solde1", compteE.getSolde());
+		// query.setParameter("dec1", compteE.getTaux());
+		// query.setParameter("id1", compteE.getNumero());
 		// query.executeUpdate();
 		// session.close();
-		//return query.executeUpdate();
+		// return query.executeUpdate();
 		return 1;
 	}
 

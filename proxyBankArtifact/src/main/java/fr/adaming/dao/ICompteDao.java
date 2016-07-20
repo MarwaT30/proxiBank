@@ -15,7 +15,7 @@ public interface ICompteDao {
 	 * @return le compte correspondant
 	 */
 	public Compte getCompteCourantByNumero(int numero);
-	
+
 	/**
 	 * 
 	 * @param numero
@@ -28,16 +28,15 @@ public interface ICompteDao {
 	 * @param client
 	 * @return
 	 */
-	public List<CompteCourant> getCompteCourantByClient(Client client);
-	
-	
+	public CompteCourant getCompteCourantByClient(Client client);
+
 	/**
 	 * 
 	 * @param client
 	 * @return
 	 */
-	public List<CompteEpargne> getEpargneByClient(Client client);
-	
+	public CompteEpargne getEpargneByClient(Client client);
+
 	/**
 	 * 
 	 * @param compteC
@@ -58,9 +57,6 @@ public interface ICompteDao {
 	 * @return
 	 */
 	public int supprimerCompteC(CompteCourant compteC);
-	
-	
-
 
 	/**
 	 * 

@@ -19,7 +19,7 @@ public class ConseillerServiceImpl implements IConseillerService{
 	/**
 	 * @param consService the consService to set
 	 */
-	public void setConsService(IConseillerDao consService) {
+	public void setConsDao(IConseillerDao consDao) {
 		this.consDao = consDao;
 	}
 
