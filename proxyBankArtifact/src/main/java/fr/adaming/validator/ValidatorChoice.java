@@ -19,7 +19,7 @@ public class ValidatorChoice implements Validator{
 			throws ValidatorException {
 		//recuperation de la valeur du champ
 		String saisie=(String)valeur;
-		try {if(!saisie.isEmpty()){
+		try {if(saisie.isEmpty()){
 			throw new Exception("le champ ne doit pas etre vide");}
 		} catch (Exception e) {//renvoie le message vers la page html
 			throw new ValidatorException(new FacesMessage(e.getMessage()));
