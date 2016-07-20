@@ -135,7 +135,7 @@ public class ClientManagedBean implements Serializable {
 	}
 
 	public void virementInterne() throws ExceptionSolde {
-		clientService.virementInterne(solde, client);
+		clientService.virementInterne(solde, client,sens);
 	}
 
 	// public void virement() throws ExceptionSolde{
@@ -176,6 +176,15 @@ public class ClientManagedBean implements Serializable {
 		}
 	}
 
+//	public String isGerantExistMB() {
+//		int verif = gerantService.isExist(this.nom, this.prenom);
+//		if (verif == 1 && this.password.equals(this.passwordGerant)) {
+//			return "succes";
+//		} else {
+//			return "echec";
+//		}
+//	}
+	
 	public Client getClient() {
 		return client;
 	}

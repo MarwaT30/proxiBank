@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14683346360880" configfile="/proxyBankArtifact/src/main/webapp/WEB-INF/faces-config.xml"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14683346360880" configfile="/proxyBankArtifact/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="logger.xhtml" id="pf14690088552850" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf14690088552851 pf14690088552852" inlinks="pf14690088552852" path="/loginConseiller.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="indexConseiller.xhtml" id="pf14690088552853" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14690088552851" path="/indexConseiller.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="loginGerant.xhtml" id="pf14690089337358" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf14690089337359 pf146900893373510" inlinks="pf146900893373510" path="/loginGerant.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="indexGerant.xhtml" id="pf146900893373511" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14690089337359" path="/indexGerant.xhtml"/>
+  <links id="pf14690088552851" target="pf14690088552853" source="pf14690088552850" outcome="succes"/>
+  <links id="pf14690088552852" target="pf14690088552850" source="pf14690088552850" outcome="echec"/>
+  <links id="pf14690089337359" target="pf146900893373511" source="pf14690089337358" outcome="succes"/>
+  <links id="pf146900893373510" target="pf14690089337358" source="pf14690089337358" outcome="echec"/>
+</pageflow:Pageflow>
