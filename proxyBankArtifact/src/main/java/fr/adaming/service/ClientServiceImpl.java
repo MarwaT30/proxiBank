@@ -128,36 +128,48 @@ public class ClientServiceImpl implements IClientService {
 			
 					if (idComptecourant1 != 0 && idCompteEpargne1 ==0 ){ 
 						CompteCourant compte1 = (CompteCourant) compteDao.getCompteCourantByNumero(idComptecourant1);
-						compte1.setSolde(solde);
+						compte1.setSolde(compte1.getSolde()-solde);
 						compteService.modifierCompteC(compte1);
 			
 						if (idComptecourant2 != 0 ){ 
 							CompteCourant compte2 = (CompteCourant) compteDao.getCompteCourantByNumero(idComptecourant2);
-							compte2.setSolde(solde);
+							compte2.setSolde(compte2.getSolde()+solde);
 							compteService.modifierCompteC(compte2);
 
 						}
 						else { 
 							CompteEpargne compte2 = (CompteEpargne) compteDao.getCompteCourantByNumero(idCompteEpargne2);
-							compte2.setSolde(solde);
-							compteService.modifierCompteE(compte2);
-							compteService.addMoney(solde, idCompteEpargne2);
+							compte2.setSolde(compte2.getSolde()+solde);
+							compteService.modifierCompteE(compte2);}
+
 					}
 					else {
-			
-						compteService.TakeMoney(solde, idCompteEpargne1);
+						CompteEpargne compte1 = (CompteEpargne) compteDao.getCompteCourantByNumero(idCompteEpargne1);
+						compte1.setSolde(compte1.getSolde()-solde);
+						compteService.modifierCompteE(compte1);
+
 			
 						if (idComptecourant2 != 0 ){ 
-			
-							compteService.addMoney(solde, idComptecourant2);
+							CompteCourant compte2 = (CompteCourant) compteDao.getCompteCourantByNumero(idComptecourant2);
+							compte2.setSolde(compte2.getSolde()+solde);
+							compteService.modifierCompteC(compte2);
+
 			
 						}
 						else { 
-			
-							compteService.addMoney(solde, idCompteEpargne2);
+							CompteEpargne compte2 = (CompteEpargne) compteDao.getCompteCourantByNumero(idCompteEpargne2);
+							compte2.setSolde(compte2.getSolde()+solde);
+							compteService.modifierCompteE(compte2);
+
 						}
 			
+				
 				}
-				}
+					}
 
+	@Override
+	public void virementInterne(float solde, Client client, boolean sens) {
+		// TODO Auto-generated method stub
+		
+	}
 }

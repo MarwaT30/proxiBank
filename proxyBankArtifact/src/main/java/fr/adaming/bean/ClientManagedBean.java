@@ -73,6 +73,7 @@ public class ClientManagedBean implements Serializable {
 	private int idComptecourant1;
 	private int idCompteEpargne2;
 	private int idComptecourant2;
+	private boolean sens;
 	
 	@ManagedProperty(value="#{clientServiceBean}")
 	//@Autowired
@@ -468,6 +469,114 @@ public class ClientManagedBean implements Serializable {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+
+	/**
+	 * @return the solde
+	 */
+	public float getSolde() {
+		return solde;
+	}
+
+
+
+	/**
+	 * @param solde the solde to set
+	 */
+	public void setSolde(float solde) {
+		this.solde = solde;
+	}
+
+
+
+	/**
+	 * @return the idCompteEpargne1
+	 */
+	public int getIdCompteEpargne1() {
+		return idCompteEpargne1;
+	}
+
+
+
+	/**
+	 * @param idCompteEpargne1 the idCompteEpargne1 to set
+	 */
+	public void setIdCompteEpargne1(int idCompteEpargne1) {
+		this.idCompteEpargne1 = idCompteEpargne1;
+	}
+
+
+
+	/**
+	 * @return the idComptecourant1
+	 */
+	public int getIdComptecourant1() {
+		return idComptecourant1;
+	}
+
+
+
+	/**
+	 * @param idComptecourant1 the idComptecourant1 to set
+	 */
+	public void setIdComptecourant1(int idComptecourant1) {
+		this.idComptecourant1 = idComptecourant1;
+	}
+
+
+
+	/**
+	 * @return the idCompteEpargne2
+	 */
+	public int getIdCompteEpargne2() {
+		return idCompteEpargne2;
+	}
+
+
+
+	/**
+	 * @param idCompteEpargne2 the idCompteEpargne2 to set
+	 */
+	public void setIdCompteEpargne2(int idCompteEpargne2) {
+		this.idCompteEpargne2 = idCompteEpargne2;
+	}
+
+
+
+	/**
+	 * @return the idComptecourant2
+	 */
+	public int getIdComptecourant2() {
+		return idComptecourant2;
+	}
+
+
+
+	/**
+	 * @param idComptecourant2 the idComptecourant2 to set
+	 */
+	public void setIdComptecourant2(int idComptecourant2) {
+		this.idComptecourant2 = idComptecourant2;
+	}
+
+
+
+	/**
+	 * @return the sens
+	 */
+	public boolean isSens() {
+		return sens;
+	}
+
+
+
+	/**
+	 * @param sens the sens to set
+	 */
+	public void setSens(boolean sens) {
+		this.sens = sens;
 	}
 	
 	
